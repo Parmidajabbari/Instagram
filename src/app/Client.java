@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Client {
     private final int port = 9090;
@@ -12,6 +14,7 @@ public class Client {
     private DataInputStream input;
     private DataOutputStream output;
     private int indexOfConn;
+    private static final ExecutorService threadPool = Executors.newCachedThreadPool();
 
     public void setConnection() throws IOException {
 
@@ -20,6 +23,10 @@ public class Client {
             input = new DataInputStream(socket.getInputStream());
             output = new DataOutputStream(socket.getOutputStream());
             indexOfConn = input.readInt();
+
+            ClientListener clientListener = new ClientListener(socket);
+            threadPool.execute(clientListener);
+
         }
         catch (IOException e) {
             e.printStackTrace();
