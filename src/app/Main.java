@@ -11,8 +11,19 @@ public class Main extends Application {
         PageController.openPage("mainPage");
     }
 
-
     public static void main(String[] args) {
+
+        /*
+                try {
+            Client client = new Client();
+            client.setConnection();
+        }
+       catch (IOException e) {
+            e.printStackTrace();
+       }
+         */
+
         launch(args);
     }
+
 }
