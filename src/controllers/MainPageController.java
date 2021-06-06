@@ -10,8 +10,6 @@ public class MainPageController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws Exception {
-        PageController.openPage("LoginPage");
-        PageController.closePage(event);
     }
 
     @FXML

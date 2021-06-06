@@ -28,4 +28,7 @@ public class LoginPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    @FXML
+    public void cancel(ActionEvent actionEvent) {
+    }
 }

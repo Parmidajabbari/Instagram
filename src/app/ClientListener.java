@@ -1,26 +1,28 @@
 package app;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
-import static app.ClientThreadHandler.isOnline;
 
 public class ClientListener implements Runnable{
 
     private Socket socket;
     private DataOutputStream output;
     private ObjectInputStream input;
+    private DataInputStream onlineInput;
 
     public ClientListener(Socket socket) throws IOException {
         this.socket = socket;
         input = new ObjectInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());
+        onlineInput = new DataInputStream(socket.getInputStream());
     }
-    public void sendMassage() {
-        while (isOnline) {
+    public void sendMassage() throws IOException {
+        while (onlineInput.readBoolean()) {
             try {
                 output.writeUTF("Online");
             }
