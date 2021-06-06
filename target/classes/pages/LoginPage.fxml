@@ -62,5 +62,6 @@
       <Line endX="500.0" endY="551.0" layoutY="5.0" startY="551.0" stroke="#dfdfdf" />
       <TextField fx:id="username1" layoutX="86.0" layoutY="251.0" onAction="#getUserName" prefHeight="36.0" prefWidth="344.0" promptText="Email" />
       <JFXButton buttonType="RAISED" layoutX="85.0" layoutY="356.0" onAction="#login" prefHeight="36.0" prefWidth="344.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" onAction="#cancel" text="Cancel" />
    </children>
 </AnchorPane>
