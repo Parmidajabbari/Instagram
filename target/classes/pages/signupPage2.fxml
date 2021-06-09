@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SecondSignUpController">
+   <children>
+      <Text layoutX="63.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Confirmation Code" textAlignment="CENTER" wrappingWidth="373.22900390625">
+         <font>
+            <Font name="Avenir Book" size="29.0" />
+         </font>
+      </Text>
+      <TextField layoutX="89.0" layoutY="170.0" onAction="#setCode" prefHeight="33.0" prefWidth="346.0" promptText="Confirmation Code" />
+      <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="218.0" onAction="#nextPage" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="464.0" layoutY="-2.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
+         </graphic>
+      </JFXButton>
+      <JFXButton text=" " />
+      <Label alignment="CENTER" layoutX="88.0" layoutY="97.0" prefHeight="40.0" prefWidth="346.0" text="Enter confirmation code we just sent">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

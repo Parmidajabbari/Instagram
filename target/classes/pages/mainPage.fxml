@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="controllers.MainPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
    <children>
-      <JFXButton layoutX="56.0" layoutY="238.0" onAction="#newAccount" prefHeight="47.0" prefWidth="389.0" style="-fx-background-color: black;" text="Create New Account" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="238.0" onAction="#newAccount" prefHeight="47.0" prefWidth="389.0" style="-fx-background-color: black;" text="Create New Account" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="56.0" layoutY="315.0" onAction="#login" prefHeight="47.0" prefWidth="389.0" style="-fx-background-color: white;" text="Log In">
+      <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="315.0" onAction="#login" prefHeight="47.0" prefWidth="389.0" style="-fx-background-color: white;" text="Log In">
          <font>
             <Font size="18.0" />
          </font>
