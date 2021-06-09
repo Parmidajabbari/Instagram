@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
+
+<AnchorPane fx:controller="controllers.MainPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton layoutX="56.0" layoutY="238.0" onAction="#newAccount" prefHeight="47.0" prefWidth="389.0" style="-fx-background-color: black;" text="Create New Account" textFill="WHITE">
          <font>
@@ -19,15 +19,10 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <ImageView fitHeight="105.0" fitWidth="291.0" layoutX="96.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="91.0" fitWidth="289.0" layoutX="106.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../media/instagramlogo.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="459.0" layoutY="6.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
-         <graphic>
-            <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="10.428571701049805" />
-         </graphic>
-      </JFXButton>
    </children>
 </AnchorPane>

@@ -22,16 +22,13 @@ public class LoginPageController implements Initializable {
 
     @FXML
     public void signUp(ActionEvent actionEvent) {
-//        PageController.closePage(actionEvent);
     }
-    @FXML
-    public void close(ActionEvent actionEvent) {
-        PageController.closePage(actionEvent);
-        System.exit(1);
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+    @FXML
+    public void cancel(ActionEvent actionEvent) {
+    }
 }
