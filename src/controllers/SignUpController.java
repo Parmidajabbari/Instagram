@@ -7,31 +7,29 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginPageController implements Initializable {
+public class SignUpController implements Initializable {
     @FXML
-    public void getUserName(ActionEvent actionEvent) {
+    public void enterEmail(ActionEvent actionEvent) {
     }
-
     @FXML
-    public void getPassword(ActionEvent actionEvent) {
+    public void nextPage(ActionEvent actionEvent) {
     }
-
     @FXML
-    public void login(ActionEvent actionEvent) {
+    public void signIn(ActionEvent actionEvent) {
     }
-
     @FXML
-    public void signUp(ActionEvent actionEvent) {
-//        PageController.closePage(actionEvent);
+    public void back(ActionEvent actionEvent) throws Exception {
+        PageController.closePage(actionEvent);
+        //PageController.openPage("mainPage");
     }
     @FXML
     public void close(ActionEvent actionEvent) {
         PageController.closePage(actionEvent);
         System.exit(1);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 }

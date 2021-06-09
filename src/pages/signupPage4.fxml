@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FourthSignUpController">
+   <children>
+      <Text layoutX="66.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Password" textAlignment="CENTER" wrappingWidth="373.22900390625">
+         <font>
+            <Font name="Avenir Book" size="29.0" />
+         </font>
+      </Text>
+      <TextField layoutX="88.0" layoutY="120.0" onAction="#setPassword" prefHeight="33.0" prefWidth="346.0" promptText="Password" />
+      <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="171.0" onAction="#completeSignUp" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="464.0" layoutY="-2.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
+         </graphic>
+      </JFXButton>
+      <JFXButton text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
+         </graphic>
+      </JFXButton>
+      <TextField layoutX="75.0" layoutY="65.0" prefHeight="40.0" prefWidth="361.0" style="-fx-background-color: white;" text="Create a strong password using words,numbers and characters" />
+   </children>
+</AnchorPane>
