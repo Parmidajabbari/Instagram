@@ -2,11 +2,12 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.control.TextField;
 
-public class HomePageController implements Initializable {
+public class SearchPageController {
+
+    @FXML
+    private TextField searchedName;
 
     @FXML
     void activity(ActionEvent event) throws Exception {
@@ -15,8 +16,8 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void direct(ActionEvent event) {
-
+    void enterSearch(ActionEvent event) {
+        String name = searchedName.getText();
     }
 
     @FXML
@@ -26,7 +27,9 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void home(ActionEvent event) {
+    void home(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("homePage");
     }
 
     @FXML
@@ -40,13 +43,7 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void search(ActionEvent event) throws Exception {
-        PageController.closePage(event);
-        PageController.openPage("searchPage");
+    void search(ActionEvent event) {
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

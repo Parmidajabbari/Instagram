@@ -2,21 +2,11 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class HomePageController implements Initializable {
+public class ActivityPageController {
 
     @FXML
-    void activity(ActionEvent event) throws Exception {
-        PageController.closePage(event);
-        PageController.openPage("activityPage");
-    }
-
-    @FXML
-    void direct(ActionEvent event) {
-
+    void activity(ActionEvent event) {
     }
 
     @FXML
@@ -26,7 +16,9 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void home(ActionEvent event) {
+    void home(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("homePage");
     }
 
     @FXML
@@ -45,8 +37,5 @@ public class HomePageController implements Initializable {
         PageController.openPage("searchPage");
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
 }
