@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
             <Font name="Avenir Book" size="29.0" />
          </font>
       </Text>
-      <TextField layoutX="88.0" layoutY="120.0" onAction="#setPassword" prefHeight="33.0" prefWidth="346.0" promptText="Password" />
+      <TextField fx:id="passwordText" layoutX="88.0" layoutY="120.0" onAction="#setPassword" prefHeight="33.0" prefWidth="346.0" promptText="Password" />
       <JFXButton layoutX="88.0" layoutY="171.0" onAction="#completeSignUp" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -25,11 +26,12 @@
             <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
          </graphic>
       </JFXButton>
-      <JFXButton text=" ">
+      <JFXButton layoutY="1.0" onAction="#back" text=" ">
          <graphic>
             <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
          </graphic>
       </JFXButton>
       <TextField layoutX="75.0" layoutY="65.0" prefHeight="40.0" prefWidth="361.0" style="-fx-background-color: white;" text="Create a strong password using words, numbers and characters" />
+      <JFXTextField fx:id="resultText" editable="false" layoutX="83.0" layoutY="215.0" prefHeight="32.0" prefWidth="357.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
    </children>
 </AnchorPane>

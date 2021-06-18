@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewPostController">
+   <children>
+      <JFXTextArea layoutY="-3.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: black;" unFocusColor="TRANSPARENT" />
+      <Text fill="WHITE" layoutX="207.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Post" wrappingWidth="87.22900390625">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <JFXButton layoutY="3.0" onAction="#back" text=" ">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="466.0" layoutY="3.0" onAction="#next" prefHeight="24.0" prefWidth="40.0" text=" " textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="CHEVRON_RIGHT" size="20" text="" wrappingWidth="11.00000512599945" />
+         </graphic></JFXButton>
+      <ImageView fx:id="newPostPhoto" fitHeight="234.0" fitWidth="437.0" layoutX="34.0" layoutY="57.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="335.0" onAction="#setPhoto" prefHeight="42.0" prefWidth="107.0" style="-fx-background-color: black;" text="Select photo" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
