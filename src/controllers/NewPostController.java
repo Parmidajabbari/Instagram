@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Post;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,9 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.io.File;
-import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,8 +20,13 @@ import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 public class NewPostController implements Initializable {
 
     private boolean isSet = false;
+    private String caption;
+
     @FXML
     ImageView newPostPhoto;
+
+    @FXML
+    TextField captionText;
 
     public static String getFileExtension(String fullName) {
         checkNotNull(fullName);
@@ -47,16 +51,25 @@ public class NewPostController implements Initializable {
             return;
         }
     }
+
+    @FXML
+    public void setCaption(ActionEvent actionEvent) {
+        caption = captionText.getText();
+    }
+
     @FXML
     public void back(ActionEvent actionEvent) throws Exception {
         PageController.closePage(actionEvent);
         PageController.openPage("homePage");
     }
+
     @FXML
-    public void next(ActionEvent actionEvent) throws Exception {
+    public void share(ActionEvent actionEvent) throws Exception {
         if(isSet) {
+            // Post post = new Post();
+            //send post to user
             PageController.closePage(actionEvent);
-            PageController.openPage("newPost2");
+            PageController.openPage("homePage");
         }
     }
 

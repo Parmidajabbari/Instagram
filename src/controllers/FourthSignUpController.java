@@ -62,7 +62,7 @@ public class FourthSignUpController implements Initializable {
     @FXML
     public void completeSignUp(ActionEvent actionEvent) throws Exception {
         if(!passwordText.isEditable()) {
-            User newUser = new User(userName,password,email);
+            User user = new User(userName,password,email);
             //send user to server
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
