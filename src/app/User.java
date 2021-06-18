@@ -14,14 +14,13 @@ public class User {
     private long userId;
     private String bio;
     private static long idGenerate= 10^6;
-    private String firstName, lastName;
+    private static String userNameError;
+    private static String passwordError;
 
-    public User(String userName , String password , String email, String firstName, String lastName) {
+    public User(String userName , String password , String email) {
         this.userName = userName;
         this.password = password.hashCode();
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.userId = generateId();
     }
 
@@ -34,31 +33,38 @@ public class User {
         Matcher checker = p.matcher(userName);
 
         if (checker.find()) {
-            System.out.println("invalid username");
+            userNameError = "invalid";
             return false;
         } else if (userName.contains(" ") || userName.equals("")) {
-            System.out.println("invalid username");
+            userNameError = "invalid";
             return false;
         }
         else if (userName.length() < 3 || userName.length() > 20) {
-            System.out.println("userName length must be between 4 and 20");
+            userNameError = "length";
             return false;
         }
         return true;
+    }
+
+    public static String getUserNameError() {
+        return userNameError;
     }
 
     public int getPassword() {
         return password;
     }
 
+    public static String getPasswordError() {
+        return passwordError;
+    }
 
     public static boolean isPasswordAcceptable(String password) {
         if(password.equals("") || password.contains(" ")) {
-            System.out.println("invalid password");
+            passwordError = "invalid";
             return false;
         }
         else if(password.length() < 5) {
-            System.out.println("invalid password length");
+            passwordError = "length";
             return false;
         }
         return true;

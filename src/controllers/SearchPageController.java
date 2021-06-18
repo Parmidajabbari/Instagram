@@ -38,8 +38,9 @@ public class SearchPageController {
     }
 
     @FXML
-    void newPost(ActionEvent event) {
-
+    void newPost(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("newPost");
     }
 
     @FXML

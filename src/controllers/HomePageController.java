@@ -35,8 +35,9 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void newPost(ActionEvent event) {
-
+    void newPost(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("newPost");
     }
 
     @FXML

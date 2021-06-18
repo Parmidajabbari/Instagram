@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,5 +24,10 @@
             <Image url="@../media/instagramlogo.png" />
          </image>
       </ImageView>
+      <JFXButton layoutX="466.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

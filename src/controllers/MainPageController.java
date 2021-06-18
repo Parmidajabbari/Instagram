@@ -20,8 +20,15 @@ public class MainPageController implements Initializable {
         PageController.openPage("signupPage1");
     }
 
+    @FXML
+    public void close(ActionEvent actionEvent) {
+        PageController.closePage(actionEvent);
+        System.exit(0);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 }

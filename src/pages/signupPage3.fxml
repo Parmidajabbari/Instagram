@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ThirdSignUpController">
    <children>
-      <Text layoutX="63.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Your User Name" textAlignment="CENTER" wrappingWidth="373.22900390625">
+      <Text layoutX="63.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Your User Name" textAlignment="CENTER" wrappingWidth="373.22900390625">
          <font>
             <Font name="Avenir Book" size="29.0" />
          </font>
@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <TextField layoutX="88.0" layoutY="127.0" onAction="#setUserName" prefHeight="33.0" prefWidth="346.0" promptText="User name" />
+      <TextField fx:id="usernameText" layoutX="88.0" layoutY="127.0" onAction="#setUserName" prefHeight="33.0" prefWidth="346.0" promptText="User name" />
       <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="177.0" onAction="#nextPage" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -29,6 +29,12 @@
       <JFXButton layoutX="464.0" layoutY="-2.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
          <graphic>
             <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="resultText" editable="false" layoutX="89.0" layoutY="219.0" prefHeight="32.0" prefWidth="344.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <JFXButton layoutY="1.0" onAction="#back" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
          </graphic>
       </JFXButton>
    </children>

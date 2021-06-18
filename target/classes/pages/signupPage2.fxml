@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -15,8 +16,8 @@
             <Font name="Avenir Book" size="29.0" />
          </font>
       </Text>
-      <TextField layoutX="89.0" layoutY="170.0" onAction="#setCode" prefHeight="33.0" prefWidth="346.0" promptText="Confirmation Code" />
-      <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="218.0" onAction="#nextPage" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
+      <TextField fx:id="codeText" layoutX="88.0" layoutY="152.0" onAction="#setCode" prefHeight="33.0" prefWidth="346.0" promptText="Confirmation Code" />
+      <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="202.0" onAction="#nextPage" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -27,10 +28,21 @@
          </graphic>
       </JFXButton>
       <JFXButton text=" " />
-      <Label alignment="CENTER" layoutX="88.0" layoutY="97.0" prefHeight="40.0" prefWidth="346.0" text="Enter confirmation code we just sent">
+      <Label alignment="CENTER" layoutX="84.0" layoutY="72.0" prefHeight="40.0" prefWidth="346.0" text="Enter confirmation code we just sent to ">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <JFXButton layoutX="-1.0" layoutY="3.0" onAction="#back" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="emailText" alignment="CENTER" layoutX="111.0" layoutY="105.0" prefHeight="27.0" prefWidth="297.0" unFocusColor="#4d4d4d00">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="resultText" editable="false" layoutX="89.0" layoutY="251.0" prefHeight="32.0" prefWidth="344.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
    </children>
 </AnchorPane>
