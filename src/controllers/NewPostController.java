@@ -21,6 +21,7 @@ public class NewPostController implements Initializable {
 
     private boolean isSet = false;
     private String caption;
+    private Image image;
 
     @FXML
     ImageView newPostPhoto;
@@ -43,7 +44,7 @@ public class NewPostController implements Initializable {
         File file = chooser.showOpenDialog(new Stage());
         String extension = getFileExtension(file.getName());
         if(extension.equals("jpg") || extension.equals("png")) {
-            Image image = new Image(file.toURI().toString());
+            image = new Image(file.toURI().toString());
             newPostPhoto.setImage(image);
             isSet = true;
         }
