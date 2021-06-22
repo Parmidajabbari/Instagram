@@ -19,7 +19,7 @@
                </graphic></JFXButton>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="100.0" layoutY="560.0" onAction="#search" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true" />
+      <JFXButton buttonType="RAISED" layoutX="100.0" layoutY="560.0" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true" />
       <JFXButton buttonType="RAISED" layoutX="200.0" layoutY="560.0" onAction="#newPost" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." textFill="WHITE" underline="true" />
       <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="300.0" layoutY="560.0" onAction="#activity" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true" />
       <JFXButton buttonType="RAISED" layoutX="410.0" layoutY="560.0" onAction="#myProfile" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true" />

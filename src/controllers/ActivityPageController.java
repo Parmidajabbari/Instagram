@@ -9,11 +9,7 @@ public class ActivityPageController {
     void activity(ActionEvent event) {
     }
 
-    @FXML
-    void exit(ActionEvent event) {
-        PageController.closePage(event);
-        System.exit(0);
-    }
+
 
     @FXML
     void home(ActionEvent event) throws Exception {
@@ -22,20 +18,26 @@ public class ActivityPageController {
     }
 
     @FXML
-    void myProfile(ActionEvent event) {
-
-    }
-
-    @FXML
-    void newPost(ActionEvent event) {
-
-    }
-
-    @FXML
     void search(ActionEvent event) throws Exception {
         PageController.closePage(event);
         PageController.openPage("searchPage");
     }
 
+    @FXML
+    void newPost(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("newPost");
+    }
 
+    @FXML
+    void myProfile(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("myProfile");
+    }
+
+    @FXML
+    void exit(ActionEvent event) {
+        PageController.closePage(event);
+        System.exit(0);
+    }
 }

@@ -9,29 +9,14 @@ import java.util.ResourceBundle;
 public class HomePageController implements Initializable {
 
     @FXML
-    void activity(ActionEvent event) throws Exception {
-        PageController.closePage(event);
-        PageController.openPage("activityPage");
-    }
-
-    @FXML
     void direct(ActionEvent event) {
 
     }
 
     @FXML
-    void exit(ActionEvent event) {
+    void search(ActionEvent event) throws Exception {
         PageController.closePage(event);
-        System.exit(0);
-    }
-
-    @FXML
-    void home(ActionEvent event) {
-    }
-
-    @FXML
-    void myProfile(ActionEvent event) {
-
+        PageController.openPage("searchPage");
     }
 
     @FXML
@@ -41,9 +26,21 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    void search(ActionEvent event) throws Exception {
+    void activity(ActionEvent event) throws Exception {
         PageController.closePage(event);
-        PageController.openPage("searchPage");
+        PageController.openPage("activityPage");
+    }
+
+    @FXML
+    void myProfile(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("myProfile");
+    }
+
+    @FXML
+    void exit(ActionEvent event) {
+        PageController.closePage(event);
+        System.exit(0);
     }
 
     @Override

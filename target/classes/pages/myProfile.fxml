@@ -25,7 +25,7 @@
             <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
          </graphic>
       </JFXButton>
-      <Button layoutX="18.0" layoutY="54.0" mnemonicParsing="false" onAction="#setProfilePhoto" prefHeight="116.0" prefWidth="113.0" style="-fx-background-color: #f0f5f5; -fx-background-radius: 100;" text=" ">
+      <Button layoutX="18.0" layoutY="52.0" mnemonicParsing="false" onAction="#setProfilePhoto" prefHeight="116.0" prefWidth="113.0" style="-fx-background-color: #f0f5f5; -fx-background-radius: 100;" text=" ">
          <graphic>
             <ImageView fx:id="profilePhoto" fitHeight="114.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
@@ -35,7 +35,7 @@
             <Font name="Proxima Nova Light" size="17.0" />
          </font>
       </Text>
-      <Text layoutX="283.0" layoutY="117.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers" wrappingWidth="80.22900390625">
+      <Text layoutX="284.0" layoutY="117.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers" wrappingWidth="80.22900390625">
          <font>
             <Font name="Proxima Nova Light" size="17.0" />
          </font>
@@ -50,7 +50,7 @@
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="followersCount" alignment="CENTER" editable="false" layoutX="298.0" layoutY="70.0" onAction="#setFollowersCount" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
+      <TextField fx:id="followersCount" alignment="CENTER" editable="false" layoutX="299.0" layoutY="70.0" onAction="#setFollowersCount" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
          <font>
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
@@ -60,12 +60,12 @@
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="12.0" layoutY="220.0" onAction="#editProfile" prefHeight="37.0" prefWidth="474.0" ripplerFill="#0a0404" style="-fx-border-color: gray;" text="Edit Profile">
+      <JFXButton layoutX="13.0" layoutY="231.0" onAction="#editProfile" prefHeight="37.0" prefWidth="474.0" ripplerFill="#0a0404" style="-fx-border-color: #CAC8C7;" text="Edit Profile">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <GridPane fx:id="photosPane" layoutX="10.0" layoutY="283.0" prefHeight="303.0" prefWidth="474.0">
+      <GridPane fx:id="photosPane" layoutX="10.0" layoutY="280.0" prefHeight="265.0" prefWidth="474.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,5 +75,31 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <JFXTextField fx:id="bio" layoutX="13.0" layoutY="183.0" onAction="#setBio" prefHeight="37.0" prefWidth="474.0" unFocusColor="#4d4d4d00" />
+      <JFXButton buttonType="RAISED" layoutY="558.0" onAction="#home" prefHeight="40.0" prefWidth="90.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="." underline="true">
+         <graphic>
+            <FontAwesomeIconView glyphName="HOME" size="30" wrappingWidth="15.142857551574707" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="106.0" layoutY="559.0" onAction="#search" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+         <graphic>
+            <FontAwesomeIconView glyphName="SEARCH" size="28" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="209.0" layoutY="558.0" onAction="#newPost" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." textFill="WHITE" underline="true">
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS_SQUARE" size="30" />
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="310.0" layoutY="558.0" onAction="#activity" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+         <graphic>
+            <FontAwesomeIconView glyphName="HEART" size="30" />
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="409.0" layoutY="560.0" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+         <graphic>
+            <FontAwesomeIconView glyphName="USER" size="30" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
