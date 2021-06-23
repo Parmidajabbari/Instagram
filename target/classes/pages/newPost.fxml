@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewPostController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewPostController">
    <children>
       <JFXTextArea layoutY="-3.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: black;" unFocusColor="TRANSPARENT" />
       <Text fill="WHITE" layoutX="211.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Post" wrappingWidth="87.22900390625">
@@ -33,7 +33,7 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="439.0" onAction="#share" prefHeight="31.0" prefWidth="68.0" text="share" textFill="WHITE">
+      <JFXButton layoutX="439.0" layoutY="1.0" onAction="#share" prefHeight="31.0" prefWidth="68.0" text="share" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

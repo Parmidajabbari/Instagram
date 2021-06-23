@@ -6,24 +6,14 @@ import javafx.scene.control.TextField;
 
 public class SearchPageController {
 
+    private static String searchText;
     @FXML
     private TextField searchedName;
 
     @FXML
-    void activity(ActionEvent event) throws Exception {
-        PageController.closePage(event);
-        PageController.openPage("activityPage");
-    }
-
-    @FXML
     void enterSearch(ActionEvent event) {
         String name = searchedName.getText();
-    }
-
-    @FXML
-    void exit(ActionEvent event) {
-        PageController.closePage(event);
-        System.exit(0);
+        searchText = name;
     }
 
     @FXML
@@ -33,18 +23,27 @@ public class SearchPageController {
     }
 
     @FXML
-    void myProfile(ActionEvent event) {
-
-    }
-
-    @FXML
     void newPost(ActionEvent event) throws Exception {
         PageController.closePage(event);
         PageController.openPage("newPost");
     }
 
     @FXML
-    void search(ActionEvent event) {
+    void activity(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("activityPage");
+    }
+
+    @FXML
+    void myProfile(ActionEvent event) throws Exception {
+        PageController.closePage(event);
+        PageController.openPage("myProfile");
+    }
+
+    @FXML
+    void exit(ActionEvent event) {
+        PageController.closePage(event);
+        System.exit(0);
     }
 
 }

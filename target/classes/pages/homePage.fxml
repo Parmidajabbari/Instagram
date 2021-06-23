@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
    <children>
-      <JFXButton buttonType="RAISED" layoutY="560.0" onAction="#home" prefHeight="40.0" prefWidth="90.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="." underline="true">
+      <JFXButton buttonType="RAISED" layoutY="560.0" prefHeight="40.0" prefWidth="90.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="." underline="true">
          <graphic>
             <FontAwesomeIconView glyphName="HOME" size="30" wrappingWidth="15.142857551574707" />
          </graphic></JFXButton>
