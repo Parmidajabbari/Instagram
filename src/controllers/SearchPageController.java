@@ -6,12 +6,14 @@ import javafx.scene.control.TextField;
 
 public class SearchPageController {
 
+    private static String searchText;
     @FXML
     private TextField searchedName;
 
     @FXML
     void enterSearch(ActionEvent event) {
         String name = searchedName.getText();
+        searchText = name;
     }
 
     @FXML

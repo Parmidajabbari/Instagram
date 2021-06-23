@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MyProfileController">
    <children>
-      <JFXTextField fx:id="username" editable="false" layoutX="9.0" onAction="#setUsername" prefHeight="49.0" prefWidth="446.0" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="usernameText" editable="false" layoutX="9.0" prefHeight="49.0" prefWidth="446.0" unFocusColor="#4d4d4d00">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
@@ -25,7 +25,7 @@
             <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
          </graphic>
       </JFXButton>
-      <Button layoutX="18.0" layoutY="52.0" mnemonicParsing="false" onAction="#setProfilePhoto" prefHeight="116.0" prefWidth="113.0" style="-fx-background-color: #f0f5f5; -fx-background-radius: 100;" text=" ">
+      <Button layoutX="18.0" layoutY="52.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="113.0" style="-fx-background-color: #f0f5f5; -fx-background-radius: 100;" text=" ">
          <graphic>
             <ImageView fx:id="profilePhoto" fitHeight="114.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
@@ -45,17 +45,17 @@
             <Font name="Proxima Nova Light" size="17.0" />
          </font>
       </Text>
-      <TextField fx:id="postsCount" alignment="CENTER" editable="false" layoutX="216.0" layoutY="71.0" onAction="#setPostsCount" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
+      <TextField fx:id="postsCountText" alignment="CENTER" editable="false" layoutX="216.0" layoutY="71.0" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
          <font>
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="followersCount" alignment="CENTER" editable="false" layoutX="299.0" layoutY="70.0" onAction="#setFollowersCount" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
+      <TextField fx:id="followersCountText" alignment="CENTER" editable="false" layoutX="299.0" layoutY="70.0" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
          <font>
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="followingsCount" alignment="CENTER" editable="false" layoutX="386.0" layoutY="71.0" onAction="#setFollowingsCount" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
+      <TextField fx:id="followingsCountText" alignment="CENTER" editable="false" layoutX="386.0" layoutY="71.0" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
          <font>
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
@@ -75,7 +75,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <JFXTextField fx:id="bio" layoutX="13.0" layoutY="183.0" onAction="#setBio" prefHeight="37.0" prefWidth="474.0" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="bioText" layoutX="13.0" layoutY="183.0" prefHeight="37.0" prefWidth="474.0" unFocusColor="#4d4d4d00" />
       <JFXButton buttonType="RAISED" layoutY="558.0" onAction="#home" prefHeight="40.0" prefWidth="90.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="." underline="true">
          <graphic>
             <FontAwesomeIconView glyphName="HOME" size="30" wrappingWidth="15.142857551574707" />
