@@ -33,5 +33,6 @@
             <FontAwesomeIconView glyphName="SEARCH" size="20" />
          </graphic>
       </JFXButton>
+      <JFXTextField fx:id="searchError" editable="false" focusColor="WHITE" layoutX="158.0" layoutY="224.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
    </children>
 </AnchorPane>
