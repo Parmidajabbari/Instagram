@@ -1,19 +1,35 @@
 package controllers;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class SearchPageController {
 
-    private static String searchText;
     @FXML
-    private TextField searchedName;
+    private JFXTextField searchName;
+
+    @FXML
+    private JFXTextField searchError;
 
     @FXML
     void enterSearch(ActionEvent event) {
-        String name = searchedName.getText();
-        searchText = name;
+        String name = searchName.getText();
+
+        // send username to server and get a profile json
+
+        /*
+        if(json == null) {
+            searchError.setText("No Results Found");
+            searchError.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            PageController.closePage(event);
+            PageController.openPage("showProfile");
+        }
+        */
+
     }
 
     @FXML
