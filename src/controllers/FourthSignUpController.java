@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -62,8 +64,10 @@ public class FourthSignUpController implements Initializable {
     @FXML
     public void completeSignUp(ActionEvent actionEvent) throws Exception {
         if(!passwordText.isEditable()) {
-            User user = new User(userName,password,email);
+            User user = new User(userName, password, email);
             //send user to server
+            String message = Tasks.getSignUpTask(userName, password, email);
+            //Client.sendRequest(message);
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
         }
@@ -72,7 +76,7 @@ public class FourthSignUpController implements Initializable {
     @FXML
     public void back(ActionEvent actionEvent) throws Exception {
         PageController.closePage(actionEvent);
-        PageController.openPage("signupPage3");
+        PageController.openPage("signupPage2");
     }
 
     @FXML

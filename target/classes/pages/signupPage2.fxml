@@ -28,7 +28,7 @@
          </graphic>
       </JFXButton>
       <JFXButton text=" " />
-      <Label alignment="CENTER" layoutX="84.0" layoutY="72.0" prefHeight="40.0" prefWidth="346.0" text="Enter confirmation code we just sent to ">
+      <Label alignment="CENTER" layoutX="84.0" layoutY="72.0" prefHeight="40.0" prefWidth="346.0" text="Enter confirmation code we just sent to">
          <font>
             <Font size="16.0" />
          </font>

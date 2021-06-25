@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 public class Tasks {
 
     private static final String signUp =
-            "{'task':'signUp', 'currentUserId':'%s', 'password':'%s', 'email':'%s'}";
+            "{'task':'signUp', 'currentUsername':'%s', 'password':'%s', 'email':'%s'}";
+    private static final String signUpPart1 =
+            "{'task':'signUpPart1', 'username':'%s', 'email':'%s'}";
     private static final String login =
             "{'task':'login', 'currentUserId':'%s', 'password':'%s'}";
     private static final String timeline =
@@ -37,8 +39,12 @@ public class Tasks {
     private static final String direct =
             "{'task':'direct', 'currentUserId':'%s', 'secondUserId':'%s', 'message':'%s'}";
 
-    public static String getSignUpTask(String currentUserId, String password, String email) {
-        return new Gson().toJson(String.format(signUp, currentUserId, password, email));
+    public static String getSignUpPart1(String username, String email) {
+        return new Gson().toJson(String.format(signUpPart1, username, email));
+    }
+
+    public static String getSignUpTask(String currentUsername, String password, String email) {
+        return new Gson().toJson(String.format(signUp, currentUsername, password, email));
     }
 
     public static String getLoginTask(String currentUserId, String password) {

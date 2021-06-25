@@ -12,11 +12,14 @@ import java.util.ResourceBundle;
 
 public class SecondSignUpController implements Initializable {
 
-    private int userCode;
     private int serverCode = 0;
     private static String email;
+    private static String username;
     public static void setEmail(String Email) {
         email = Email;
+    }
+    public static void setUsername(String Username) {
+        username = Username;
     }
 
     @FXML
@@ -31,7 +34,7 @@ public class SecondSignUpController implements Initializable {
     @FXML
     public void setCode(ActionEvent actionEvent) {
         try {
-            userCode = Integer.parseInt(codeText.getText());
+            int userCode = Integer.parseInt(codeText.getText());
             //get serverCode from server
             if(userCode == serverCode) {
                 resultText.setText("Email verified successfully");
@@ -56,7 +59,7 @@ public class SecondSignUpController implements Initializable {
     public void nextPage(ActionEvent actionEvent) throws Exception {
         if(!codeText.isEditable()) {
             PageController.closePage(actionEvent);
-            PageController.openPage("signupPage3");
+            PageController.openPage("signupPage4");
         }
     }
 

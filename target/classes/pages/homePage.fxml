@@ -27,7 +27,7 @@
             <Image url="@../media/instagramlogo.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="100.0" layoutY="560.0" onAction="#search" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+      <JFXButton buttonType="RAISED" layoutX="100.0" layoutY="560.0" onAction="#search" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." textFill="WHITE" underline="true">
          <graphic>
             <FontAwesomeIconView glyphName="SEARCH" size="28" />
          </graphic></JFXButton>
@@ -35,11 +35,11 @@
          <graphic>
             <FontAwesomeIconView glyphName="PLUS_SQUARE" size="30" />
          </graphic></JFXButton>
-      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="300.0" layoutY="560.0" onAction="#activity" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" layoutX="300.0" layoutY="560.0" onAction="#activity" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." textFill="WHITE" underline="true">
          <graphic>
             <FontAwesomeIconView glyphName="HEART" size="30" />
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="410.0" layoutY="560.0" onAction="#myProfile" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." underline="true">
+      <JFXButton buttonType="RAISED" layoutX="410.0" layoutY="560.0" onAction="#myProfile" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;" text="." textFill="WHITE" underline="true">
          <graphic>
             <FontAwesomeIconView glyphName="USER" size="30" />
          </graphic></JFXButton>
@@ -63,5 +63,15 @@
             <Line endY="150.0" layoutX="24.0" layoutY="167.0" startY="-150.0" />
             <Line endY="150.0" layoutX="325.0" layoutY="167.0" startY="-150.0" />
          </children></AnchorPane>
+      <JFXButton layoutX="425.0" layoutY="143.0" onAction="#nextPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="n" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="80" />
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="15.0" layoutY="143.0" onAction="#prevPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="b" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" size="80" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
