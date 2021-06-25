@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,8 @@ public class SignUpController implements Initializable {
 
     private String email;
 
+    private String username;
+
     @FXML
     TextField emailText;
 
@@ -20,14 +24,7 @@ public class SignUpController implements Initializable {
     JFXTextField resultText;
 
     @FXML
-    public void enterEmail(ActionEvent actionEvent) throws NullPointerException{
-        email = emailText.getText();
-        //send email to server
-        resultText.setText("Email saved successfully");
-        resultText.setStyle("-fx-text-inner-color: green;");
-        SecondSignUpController.setEmail(email);
-        emailText.setEditable(false);
-    }
+    TextField usernameText;
 
     @FXML
     public void signIn(ActionEvent actionEvent) throws Exception {
@@ -37,6 +34,17 @@ public class SignUpController implements Initializable {
 
     @FXML
     public void nextPage(ActionEvent actionEvent) throws Exception {
+        username = usernameText.getText();
+        email = emailText.getText();
+        //send email and username to server
+        String message = Tasks.getSignUpPart1(username, email);
+        //Client.sendRequest(message);
+        resultText.setText("Email and Username saved successfully");
+        resultText.setStyle("-fx-text-inner-color: green;");
+        SecondSignUpController.setEmail(email);
+        FourthSignUpController.setUserName(username);
+        emailText.setEditable(false);
+
         if(!emailText.isEditable()) {
             PageController.closePage(actionEvent);
             PageController.openPage("signupPage2");

@@ -12,20 +12,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
    <children>
-      <Text layoutX="175.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Email" wrappingWidth="156.22900390625">
+      <Text layoutX="135.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Email and Username" wrappingWidth="236.8956298828125">
          <font>
-            <Font name="Avenir Book" size="30.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="emailText" layoutX="46.0" layoutY="101.0" onAction="#enterEmail" prefHeight="41.0" prefWidth="415.0" promptText="Email" />
+      <TextField fx:id="emailText" layoutX="46.0" layoutY="101.0" prefHeight="41.0" prefWidth="415.0" promptText="Email" />
       <Line endX="500.0" endY="89.29289245605469" layoutY="-13.0" startY="89.29287719726562" stroke="#d7d7d7" />
-      <JFXButton layoutX="47.0" layoutY="162.0" onAction="#nextPage" prefHeight="41.0" prefWidth="415.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
+      <JFXButton layoutX="46.0" layoutY="239.0" onAction="#nextPage" prefHeight="41.0" prefWidth="415.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
       <Line endX="500.0" endY="89.29289245605469" layoutY="468.0" startY="89.29287719726562" stroke="#d7d7d7" />
-      <Button layoutX="287.0" layoutY="564.0" mnemonicParsing="false" onAction="#signIn" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: white;" text="Sign In." textFill="#0090f7">
+      <Button layoutX="287.0" layoutY="564.0" mnemonicParsing="false" onAction="#signIn" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: white;" text="Sign In." textFill="#0090f7">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -41,6 +41,7 @@
             <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="resultText" editable="false" layoutX="46.0" layoutY="211.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="415.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <JFXTextField fx:id="resultText" editable="false" layoutX="46.0" layoutY="300.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="415.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <TextField fx:id="usernameText" layoutX="46.0" layoutY="170.0" prefHeight="41.0" prefWidth="415.0" promptText="Username" />
    </children>
 </AnchorPane>

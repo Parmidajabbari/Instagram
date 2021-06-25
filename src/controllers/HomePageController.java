@@ -73,4 +73,11 @@ public class HomePageController implements Initializable {
     }
 
 
+    public void nextPost(ActionEvent actionEvent) {
+        // send a request to receive the next post
+    }
+
+    public void prevPost(ActionEvent actionEvent) {
+        // send a request to receive the previous post
+    }
 }
