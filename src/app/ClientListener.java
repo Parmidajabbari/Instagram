@@ -12,15 +12,16 @@ public class ClientListener implements Runnable{
 
     private Socket socket;
     private DataOutputStream output;
-    private ObjectInputStream input;
+    private DataInputStream input;
     private DataInputStream onlineInput;
 
     public ClientListener(Socket socket) throws IOException {
         this.socket = socket;
-        input = new ObjectInputStream(socket.getInputStream());
+        input = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());
         onlineInput = new DataInputStream(socket.getInputStream());
     }
+
     public void sendMassage() throws IOException {
         while (onlineInput.readBoolean()) {
             try {
@@ -37,28 +38,20 @@ public class ClientListener implements Runnable{
             }
         }
     }
+
     @Override
     public void run() {
 
         while (true) {
             try {
-                Object object = input.readObject();
-                ObjectHandler objectHandler = new ObjectHandler(object);
-                sendMassage();
-//                if(objectHandler.getUser() != null) {
-//                }
-//                else if(objectHandler.getPost() != null) {
-//                }
-//                else {
-//
-//                }
+                String message = input.readUTF();
+                Process process = new Process(message);
+                process.doTask();
             }
             catch (IOException e) {
                 e.printStackTrace();
             }
-            catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+
         }
     }
 }
