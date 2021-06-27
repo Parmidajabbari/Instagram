@@ -19,7 +19,8 @@ public class LoginPageController implements Initializable {
 
     private String username;
     private String password;
-    private static boolean set;
+    private static boolean isDone;
+    private static long userId;
 
     @FXML
     TextField usernameText;
@@ -30,8 +31,12 @@ public class LoginPageController implements Initializable {
     @FXML
     static JFXTextField resultText;
 
-    public static void setSet(boolean set) {
-        LoginPageController.set = set;
+    public static long getUserId() {
+        return userId;
+    }
+
+    public static void setIsDone(boolean isDone) {
+        LoginPageController.isDone = isDone;
     }
 
     public static JFXTextField getResultText() {
@@ -56,7 +61,10 @@ public class LoginPageController implements Initializable {
     public void login(ActionEvent actionEvent) throws Exception {
         String message = Tasks.getLoginTask(username,password);
         //Client.sendRequest(message);
-        if(set) {
+        //User user;
+        //get user from server
+        //userId = user.getUserId();
+        if(isDone) {
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
         }

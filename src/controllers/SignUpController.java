@@ -17,7 +17,7 @@ public class SignUpController implements Initializable {
 
     private String username;
 
-    private static boolean set;
+    private static boolean isDone;
 
     @FXML
     TextField emailText;
@@ -28,8 +28,8 @@ public class SignUpController implements Initializable {
     @FXML
     TextField usernameText;
 
-    public static void setSet(boolean set) {
-        SignUpController.set = set;
+    public static void setIsDone(boolean isDone) {
+        SignUpController.isDone = isDone;
     }
 
     public static JFXTextField getResultText() {
@@ -53,7 +53,7 @@ public class SignUpController implements Initializable {
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         //Client.sendRequest(message);
-        if(set) {
+        if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);
             emailText.setEditable(false);

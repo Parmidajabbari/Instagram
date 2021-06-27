@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -41,6 +43,14 @@ public class ShowProfileController implements Initializable {
     }
     @FXML
     public void followOrUnfollow(ActionEvent actionEvent) {
+        if(follow.getText().equals("Follow")) {
+//            String massage = Tasks.getUnFollowTask();
+//            Client.sendRequest(massage);
+        }
+        else {
+     //       String massage = Tasks.getFollowTask();
+//            Client.sendRequest(massage);
+        }
     }
     @FXML
     public void home(ActionEvent actionEvent) throws Exception {
