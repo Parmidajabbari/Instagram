@@ -5,11 +5,21 @@ import com.google.gson.Gson;
 public class Tasks {
 
     private static final String signUp =
-            "{'task':'signUp', 'currentUsername':'%s', 'password':'%s', 'email':'%s'}";
+            "{'task':'signUp', 'currentUserId':'0', 'currentUsername':'%s', 'password':'%s', 'email':'%s'}";
     private static final String signUpPart1 =
-            "{'task':'signUpPart1', 'username':'%s', 'email':'%s'}";
+            "{'task':'signUpPart1', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
+    private static final String showFollowers =
+            "{'task':'showFollowers', 'currentUserId':'%s', 'username':'%s'}";
+    private static final String showFollowings =
+            "{'task':'showFollowings', 'currentUserId':'%s', 'username':'%s'}";
+    private static final String showComments =
+            "{'task':'showComments', 'currentUserId':'%s', 'postId':'%s'}";
+    private static final String sendEmail =
+            "{'task':'sendEmail', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
+    private static final String checkCode =
+            "{'task':'checkCode', 'currentUserId':'0', 'username':'%s', 'email':'%s', 'code':'%s'}";
     private static final String login =
-            "{'task':'login', 'currentUserId':'%s', 'password':'%s'}";
+            "{'task':'login', 'currentUserId':'0', 'username':'%s' 'password':'%s'}";
     private static final String timeline =
             "{'task':'timeline', 'currentUserId':'%s'}";
     private static final String newPost =
@@ -35,9 +45,29 @@ public class Tasks {
     private static final String postView =
             "{'task':'postView', 'currentUserId':'%s', 'postId':'%s'}";
     private static final String notification =
-            "{'task':'notification', 'currentUserId':'%s', 'event':'%s'}";
+            "{'task':'notification', 'currentUserId':'%s'}";
     private static final String direct =
             "{'task':'direct', 'currentUserId':'%s', 'secondUserId':'%s', 'message':'%s'}";
+
+    public static String getSendEmail(String username, String email) {
+        return new Gson().toJson(String.format(sendEmail, username, email));
+    }
+
+    public static String getCheckCode(String username, String email, String code) {
+        return new Gson().toJson(String.format(checkCode, username, email, code));
+    }
+
+    public static String getShowFollowers(String currentUserId, String username) {
+        return new Gson().toJson(String.format(showFollowers, currentUserId, username));
+    }
+
+    public static String getShowFollowings(String currentUserId, String username) {
+        return new Gson().toJson(String.format(showFollowings, currentUserId, username));
+    }
+
+    public static String getShowComments(String currentUserId, String username) {
+        return new Gson().toJson(String.format(showComments, currentUserId, username));
+    }
 
     public static String getSignUpPart1(String username, String email) {
         return new Gson().toJson(String.format(signUpPart1, username, email));
@@ -47,8 +77,8 @@ public class Tasks {
         return new Gson().toJson(String.format(signUp, currentUsername, password, email));
     }
 
-    public static String getLoginTask(String currentUserId, String password) {
-        return new Gson().toJson(String.format(login, currentUserId, password));
+    public static String getLoginTask(String username, String password) {
+        return new Gson().toJson(String.format(login, username, password));
     }
 
     public static String getTimelineTask(String currentUserId) {
@@ -100,7 +130,7 @@ public class Tasks {
     }
 
     public static String getNotificationTask(String currentUserId, String event) {
-        return new Gson().toJson(String.format(notification, currentUserId, event));
+        return new Gson().toJson(String.format(notification, currentUserId));
     }
 
     public  static String getDirectTask(String currentUserId, String secondUserId, String message) {
