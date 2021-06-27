@@ -76,22 +76,51 @@ public class Process {
     }
 
     private void directTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void notificationTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void postViewTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void searchTask() {
-
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void unBlockTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void blockTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void unFollowTask() {
