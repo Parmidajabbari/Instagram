@@ -106,7 +106,7 @@ public class Process {
         }
         else {
             //get given username id from server
-            //String massage = Tasks.getProfileViewTask(userId,);
+           // String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
     }
@@ -135,7 +135,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getProfileViewTask(userId,);
+            //String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
            // Client.sendRequest(massage);
         }
     }
@@ -148,7 +148,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getProfileViewTask(userId,);
+            //String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
 }
@@ -161,7 +161,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getProfileViewTask(userId,);
+            //String massage = Tasks.getCommentTask();
             // Client.sendRequest(massage);
         }
     }
@@ -178,7 +178,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getPostViewTask();
+            //String massage = Tasks.getPostViewTask(Long.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
     }
@@ -191,7 +191,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getPostViewTask();
+            //String massage = Tasks.getPostViewTask(Long.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
     }

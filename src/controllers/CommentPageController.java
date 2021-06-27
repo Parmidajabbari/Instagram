@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +14,8 @@ public class CommentPageController {
     @FXML
     void addNewComment(ActionEvent event) {
         String comment = newCommentText.getText();
-
-        if(!comment.equals("")) {
-            // add the comment and send it to database.
-        }
+       // String massage = Tasks.getCommentTask(Long.toString(LoginPageController.getUserId()),"post id" , comment);
+        //Client.sendRequest(massage);
 
     }
 

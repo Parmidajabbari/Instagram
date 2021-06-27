@@ -1,17 +1,18 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class SearchPageController {
 
     @FXML
-    private JFXTextField searchName;
-
-    @FXML
-    private JFXTextField searchError;
+     JFXTextField searchText;
 
     @FXML
     private static JFXTextField resultText;
@@ -25,11 +26,10 @@ public class SearchPageController {
     }
 
     @FXML
-    void enterSearch(ActionEvent event) {
-        String name = searchName.getText();
-
-        // send username to server and get a profile json
-
+    void enterSearch(ActionEvent event) throws IOException {
+        String name = searchText.getText();
+        String massage = Tasks.getSearchTask(Long.toString(LoginPageController.getUserId()),name);
+        //Client.sendRequest(massage);
         /*
         if(json == null) {
             searchError.setText("No Results Found");
