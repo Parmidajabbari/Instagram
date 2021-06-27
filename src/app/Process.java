@@ -120,7 +120,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setText(jsonObject.get("result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             LoginPageController.setResultText(resultText);
             LoginPageController.setSet(false);
@@ -150,7 +150,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setText(jsonObject.get("result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -163,7 +163,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setText(jsonObject.get("result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SignUpController.setSet(false);
         }
