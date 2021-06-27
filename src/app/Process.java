@@ -2,6 +2,12 @@ package app;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.jfoenix.controls.JFXTextField;
+import controllers.FourthSignUpController;
+import controllers.LoginPageController;
+import controllers.SecondSignUpController;
+import controllers.SignUpController;
+
 import java.util.Locale;
 
 public class Process {
@@ -70,28 +76,78 @@ public class Process {
     }
 
     private void directTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void notificationTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void postViewTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void searchTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void unBlockTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void blockTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+        }
     }
 
     private void unFollowTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            //String massage = Tasks.getProfileViewTask(userId,);
+           // Client.sendRequest(massage);
+        }
     }
 
     private void followTask() {
-    }
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            //String massage = Tasks.getProfileViewTask(userId,);
+            // Client.sendRequest(massage);
+        }
+}
 
     private void commentTask() {
     }
@@ -100,9 +156,29 @@ public class Process {
     }
 
     private void unlikeTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            //String massage = Tasks.getPostViewTask();
+            // Client.sendRequest(massage);
+        }
     }
 
     private void likeTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            //String massage = Tasks.getPostViewTask();
+            // Client.sendRequest(massage);
+        }
     }
 
     private void newPostTask() {
@@ -112,12 +188,44 @@ public class Process {
     }
 
     private void loginTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = LoginPageController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            LoginPageController.setResultText(resultText);
+            LoginPageController.setIsDone(false);
+        }
+        else {
+            LoginPageController.setIsDone(true);
+        }
     }
 
     private void checkCodeTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = SecondSignUpController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            SecondSignUpController.setIsDone(false);
+
+        }
+        else {
+            resultText.setText("Email verified successfully");
+            resultText.setStyle("-fx-text-inner-color: green;");
+            SecondSignUpController.setIsDone(true);
+        }
+        SecondSignUpController.setResultText(resultText);
     }
 
     private void sendEmailTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+
+        }
+        else {
+        }
     }
 
     private void showCommentsTask() {
@@ -130,18 +238,33 @@ public class Process {
     }
 
     private void signupTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = FourthSignUpController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            FourthSignUpController.setIsDone(false);
+        }
+        else {
+            FourthSignUpController.setIsDone(true);
+        }
+        FourthSignUpController.setResultText(resultText);
     }
 
     private void signupPart1Task() {
         boolean error = jsonObject.get("error").getAsBoolean();
-
+        JFXTextField resultText = SignUpController.getResultText();
         if(error) {
-
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            SignUpController.setIsDone(false);
         }
         else {
-
+            resultText.setText("Email and Username saved successfully");
+            resultText.setStyle("-fx-text-inner-color: green;");
+            SignUpController.setIsDone(true);
         }
-
+        SignUpController.setResultText(resultText);
     }
 
 }

@@ -52,5 +52,7 @@
       </Label>
       <Line endX="413.0" layoutX="87.0" layoutY="281.0" startX="-87.0" stroke="#eeeeee" />
       <JFXTextField fx:id="bioText" layoutX="92.0" layoutY="285.0" onAction="#changeBio" prefHeight="37.0" prefWidth="398.0" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="resultText" editable="false" layoutX="11.0" layoutY="355.0" prefHeight="37.0" prefWidth="485.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <Line endX="413.0" layoutX="87.0" layoutY="335.0" startX="-87.0" stroke="#eeeeee" />
    </children>
 </AnchorPane>

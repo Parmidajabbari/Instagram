@@ -17,14 +17,28 @@ public class SignUpController implements Initializable {
 
     private String username;
 
+    private static boolean isDone;
+
     @FXML
     TextField emailText;
 
     @FXML
-    JFXTextField resultText;
+    static JFXTextField resultText;
 
     @FXML
     TextField usernameText;
+
+    public static void setIsDone(boolean isDone) {
+        SignUpController.isDone = isDone;
+    }
+
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        SignUpController.resultText = resultText;
+    }
 
     @FXML
     public void signIn(ActionEvent actionEvent) throws Exception {
@@ -39,12 +53,11 @@ public class SignUpController implements Initializable {
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         //Client.sendRequest(message);
-        resultText.setText("Email and Username saved successfully");
-        resultText.setStyle("-fx-text-inner-color: green;");
-        SecondSignUpController.setEmail(email);
-        FourthSignUpController.setUserName(username);
-        emailText.setEditable(false);
-
+        if(isDone) {
+            SecondSignUpController.setEmail(email);
+            FourthSignUpController.setUserName(username);
+            emailText.setEditable(false);
+        }
         if(!emailText.isEditable()) {
             PageController.closePage(actionEvent);
             PageController.openPage("signupPage2");

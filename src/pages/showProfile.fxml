@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowProfileController">
    <children>
-      <JFXTextField fx:id="usernameText" editable="false" layoutX="9.0" prefHeight="49.0" prefWidth="446.0" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="usernameText" editable="false" focusColor="#405aa800" layoutX="9.0" prefHeight="49.0" prefWidth="446.0" unFocusColor="#4d4d4d00">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
@@ -65,7 +65,7 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="follow" layoutX="19.0" layoutY="235.0" onAction="#followOrUnfollow" prefHeight="35.0" prefWidth="226.0" ripplerFill="#0a0404" style="-fx-border-color: #CAC8C7;" text=" ">
+      <JFXButton fx:id="follow" layoutX="19.0" layoutY="235.0" onAction="#followOrUnfollow" prefHeight="35.0" prefWidth="226.0" ripplerFill="#0a0404" style="-fx-border-color: #CAC8C7;" text="Follow">
          <font>
             <Font size="18.0" />
          </font>

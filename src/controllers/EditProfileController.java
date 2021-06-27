@@ -87,6 +87,9 @@ public class EditProfileController implements Initializable {
         }
 
     }
+    @FXML
+    public void logOut(ActionEvent actionEvent) {
+    }
 
     @FXML
     public void done(ActionEvent actionEvent) throws Exception {
@@ -106,4 +109,5 @@ public class EditProfileController implements Initializable {
         //get profile photo from server
         //profilePhoto.setImage();
     }
+
 }

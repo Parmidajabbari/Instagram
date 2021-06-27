@@ -27,11 +27,35 @@ public class FourthSignUpController implements Initializable {
         userName = UserName;
     }
 
+    private static boolean isDone;
+    private static User user;
+    private static long userId;
+
     @FXML
     TextField passwordText;
 
     @FXML
-    JFXTextField resultText;
+    static JFXTextField resultText;
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static long getUserId() {
+        return userId;
+    }
+
+    public static void setIsDone(boolean isDone) {
+        FourthSignUpController.isDone = isDone;
+    }
+
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        FourthSignUpController.resultText = resultText;
+    }
 
     @FXML
     public void setPassword(ActionEvent actionEvent) {
@@ -64,12 +88,15 @@ public class FourthSignUpController implements Initializable {
     @FXML
     public void completeSignUp(ActionEvent actionEvent) throws Exception {
         if(!passwordText.isEditable()) {
-            User user = new User(userName, password, email);
-            //send user to server
             String message = Tasks.getSignUpTask(userName, password, email);
             //Client.sendRequest(message);
-            PageController.closePage(actionEvent);
-            PageController.openPage("homePage");
+            if(isDone) {
+                user = new User(userName,password,email);
+                userId = user.getUserId();
+                //send user to server
+                PageController.closePage(actionEvent);
+                PageController.openPage("homePage");
+            }
         }
     }
 
