@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -29,13 +30,22 @@ public class SecondSignUpController implements Initializable {
     JFXTextField emailText;
 
     @FXML
-    JFXTextField resultText;
+    static JFXTextField resultText;
+
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        SecondSignUpController.resultText = resultText;
+    }
 
     @FXML
     public void setCode(ActionEvent actionEvent) {
         try {
             int userCode = Integer.parseInt(codeText.getText());
             //get serverCode from server
+//            String message = Tasks.getCheckCode(username, email,userCode);
             if(userCode == serverCode) {
                 resultText.setText("Email verified successfully");
                 resultText.setStyle("-fx-text-inner-color: green;");

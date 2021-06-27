@@ -2,6 +2,11 @@ package app;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.jfoenix.controls.JFXTextField;
+import controllers.FourthSignUpController;
+import controllers.LoginPageController;
+import controllers.SignUpController;
+
 import java.util.Locale;
 
 public class Process {
@@ -112,9 +117,21 @@ public class Process {
     }
 
     private void loginTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            LoginPageController.setResultText(resultText);
+            LoginPageController.setSet(false);
+        }
+        else {
+            LoginPageController.setSet(true);
+        }
     }
 
     private void checkCodeTask() {
+
     }
 
     private void sendEmailTask() {
@@ -130,18 +147,32 @@ public class Process {
     }
 
     private void signupTask() {
-    }
-
-    private void signupPart1Task() {
         boolean error = jsonObject.get("error").getAsBoolean();
-
+        JFXTextField resultText = new JFXTextField();
         if(error) {
-
+            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
 
         }
+        FourthSignUpController.setResultText(resultText);
+    }
 
+    private void signupPart1Task() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("value").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            SignUpController.setSet(false);
+        }
+        else {
+            resultText.setText("Email and Username saved successfully");
+            resultText.setStyle("-fx-text-inner-color: green;");
+            SignUpController.setSet(true);
+        }
+        SignUpController.setResultText(resultText);
     }
 
 }

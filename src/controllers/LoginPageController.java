@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -16,50 +17,55 @@ import java.util.ResourceBundle;
 
 public class LoginPageController implements Initializable {
 
-    private String newPassword;
-    private String newEmail;
+    private String username;
+    private String password;
+    private static boolean set;
 
     @FXML
-    TextField username;
+    TextField usernameText;
 
     @FXML
-    TextField password;
+    TextField passwordText;
 
     @FXML
-    TextField email;
+    static JFXTextField resultText;
 
-    @FXML
-    JFXTextField resultText;
+    public static void setSet(boolean set) {
+        LoginPageController.set = set;
+    }
 
-    @FXML
-    public void getUserName(ActionEvent actionEvent) {
-        String userName = username.getText();
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        LoginPageController.resultText = resultText;
     }
 
     @FXML
-    public void getEmail(ActionEvent actionEvent) {
-        String Email = email.getText();
+    public void getUserName(ActionEvent actionEvent) {
+        username = usernameText.getText();
     }
 
     @FXML
     public void getPassword(ActionEvent actionEvent) {
-        String Password = password.getText();
+        password= passwordText.getText();
     }
 
     @FXML
     public void login(ActionEvent actionEvent) throws Exception {
-        PageController.closePage(actionEvent);
-        PageController.openPage("homePage");
+        String message = Tasks.getLoginTask(username,password);
+        //Client.sendRequest(message);
+        if(set) {
+            PageController.closePage(actionEvent);
+            PageController.openPage("homePage");
+        }
     }
 
     @FXML
     public void signUp(ActionEvent actionEvent) throws Exception {
         PageController.closePage(actionEvent);
         PageController.openPage("signupPage1");
-    }
-
-    @FXML
-    public void setResult(ActionEvent actionEvent) {
     }
 
     @FXML

@@ -51,9 +51,9 @@
             <Image url="@../media/instagramlogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="username" layoutX="86.0" layoutY="202.0" onAction="#getUserName" prefHeight="36.0" prefWidth="344.0" promptText="Username" />
-      <TextField fx:id="password" layoutX="86.0" layoutY="300.0" onAction="#getPassword" prefHeight="36.0" prefWidth="344.0" promptText="Password" />
-      <Button fx:id="SignUp" layoutX="283.0" layoutY="562.0" mnemonicParsing="false" onAction="#signUp" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: white;" text="Sign up." textFill="#0090f7">
+      <TextField fx:id="usernameText" layoutX="86.0" layoutY="202.0" onAction="#getUserName" prefHeight="36.0" prefWidth="344.0" promptText="Username" />
+      <TextField fx:id="passwordText" layoutX="85.0" layoutY="255.0" onAction="#getPassword" prefHeight="36.0" prefWidth="344.0" promptText="Password" />
+      <Button fx:id="SignUp" layoutX="278.0" layoutY="560.0" mnemonicParsing="false" onAction="#signUp" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: white;" text="Sign up." textFill="#0090f7">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -61,8 +61,7 @@
       <Text fill="GREY" layoutX="161.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" wrappingWidth="131.5009765625" />
       <Line endX="100.0" startX="-100.0" />
       <Line endX="500.0" endY="551.0" layoutY="5.0" startY="551.0" stroke="#dfdfdf" />
-      <TextField fx:id="email" layoutX="86.0" layoutY="251.0" onAction="#getEmail" prefHeight="36.0" prefWidth="344.0" promptText="Email" />
-      <JFXButton buttonType="RAISED" layoutX="85.0" layoutY="356.0" onAction="#login" prefHeight="36.0" prefWidth="344.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="84.0" layoutY="314.0" onAction="#login" prefHeight="36.0" prefWidth="344.0" style="-fx-background-color: black;" text="Log In" textFill="WHITE" />
       <JFXButton layoutX="467.0" onAction="#close" prefHeight="25.0" prefWidth="25.0" text="." textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="TIMES" size="20" text="" />
@@ -72,8 +71,7 @@
             <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="resultText" layoutX="85.0" layoutY="406.0" onAction="#setResult" prefHeight="32.0" prefWidth="344.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
-      <JFXTextField fx:id="resultText" layoutX="86.0" layoutY="413.0" prefHeight="36.0" prefWidth="344.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="resultText" focusColor="#405aa800" layoutX="84.0" layoutY="360.0" prefHeight="36.0" prefWidth="344.0" style="-fx-background-color: white;" unFocusColor="#4d4d4d00">
          <font>
             <Font size="15.0" />
          </font>

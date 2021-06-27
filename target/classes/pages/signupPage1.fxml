@@ -25,7 +25,7 @@
          </font>
       </JFXButton>
       <Line endX="500.0" endY="89.29289245605469" layoutY="468.0" startY="89.29287719726562" stroke="#d7d7d7" />
-      <Button layoutX="287.0" layoutY="564.0" mnemonicParsing="false" onAction="#signIn" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: white;" text="Sign In." textFill="#0090f7">
+      <Button layoutX="284.0" layoutY="562.0" mnemonicParsing="false" onAction="#signIn" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: white;" text="Sign In." textFill="#0090f7">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
