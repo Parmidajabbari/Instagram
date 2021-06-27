@@ -3,10 +3,7 @@ package app;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXTextField;
-import controllers.FourthSignUpController;
-import controllers.LoginPageController;
-import controllers.SecondSignUpController;
-import controllers.SignUpController;
+import controllers.*;
 
 import java.util.Locale;
 
@@ -101,9 +98,16 @@ public class Process {
 
     private void searchTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = SearchPageController.getResultText();
         if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            SearchPageController.setResultText(resultText);
         }
         else {
+            //get given username id from server
+            //String massage = Tasks.getProfileViewTask(userId,);
+            // Client.sendRequest(massage);
         }
     }
 
@@ -150,9 +154,20 @@ public class Process {
 }
 
     private void commentTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            //String massage = Tasks.getProfileViewTask(userId,);
+            // Client.sendRequest(massage);
+        }
     }
 
     private void profileViewTask() {
+
     }
 
     private void unlikeTask() {

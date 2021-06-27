@@ -14,6 +14,17 @@ public class SearchPageController {
     private JFXTextField searchError;
 
     @FXML
+    private static JFXTextField resultText;
+
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        SearchPageController.resultText = resultText;
+    }
+
+    @FXML
     void enterSearch(ActionEvent event) {
         String name = searchName.getText();
 
