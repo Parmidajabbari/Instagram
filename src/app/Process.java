@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXTextField;
 import controllers.*;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 public class Process {
@@ -19,7 +21,7 @@ public class Process {
         jsonObject = gson.fromJson(message, JsonObject.class);
     }
 
-    public void doTask() {
+    public void doTask() throws IOException {
         String task = jsonObject.get("task").getAsString();
 
         switch (task.toLowerCase(Locale.ROOT)) {
@@ -82,9 +84,11 @@ public class Process {
 
     private void notificationTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
+
         if(error) {
         }
         else {
+            //get activity list
         }
     }
 
@@ -96,7 +100,7 @@ public class Process {
         }
     }
 
-    private void searchTask() {
+    private void searchTask() throws IOException {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SearchPageController.getResultText();
         if(error) {
@@ -105,9 +109,9 @@ public class Process {
             SearchPageController.setResultText(resultText);
         }
         else {
-            //get given username id from server
-           // String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
-            // Client.sendRequest(massage);
+            String message = Tasks.getProfileViewTask(Integer.toString(User.getUserId()),
+                    jsonObject.get("result").getAsString());
+            //Client.sendRequest(message);
         }
     }
 
@@ -136,7 +140,7 @@ public class Process {
         }
         else {
             //String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
-           // Client.sendRequest(massage);
+            //Client.sendRequest(massage);
         }
     }
 
@@ -261,6 +265,7 @@ public class Process {
             FourthSignUpController.setIsDone(false);
         }
         else {
+            User.setUserId(jsonObject.get("result").getAsInt());
             FourthSignUpController.setIsDone(true);
         }
         FourthSignUpController.setResultText(resultText);
