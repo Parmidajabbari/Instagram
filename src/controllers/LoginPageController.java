@@ -20,7 +20,7 @@ public class LoginPageController implements Initializable {
     private String username;
     private String password;
     private static boolean isDone;
-    private static long userId;
+    private static int userId;
 
     @FXML
     TextField usernameText;
@@ -31,11 +31,11 @@ public class LoginPageController implements Initializable {
     @FXML
     static JFXTextField resultText;
 
-    public static long getUserId() {
+    public static int getUserId() {
         return userId;
     }
 
-    public static void setUserId(long userId) {
+    public static void setUserId(int userId) {
         LoginPageController.userId = userId;
     }
 

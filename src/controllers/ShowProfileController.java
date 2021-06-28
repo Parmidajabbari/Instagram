@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowProfileController implements Initializable {
+
     private String username;
     private String bio;
     private Image profileImage;
@@ -23,6 +25,14 @@ public class ShowProfileController implements Initializable {
     private int followersCount;
     private int followingsCount;
 
+    @FXML
+    ImageView photo;
+    @FXML
+    Label caption;
+    @FXML
+    Label likes;
+    @FXML
+    Label comments;
     @FXML
     JFXTextField usernameText;
     @FXML
@@ -88,16 +98,28 @@ public class ShowProfileController implements Initializable {
         System.exit(0);
     }
 
+    public void like(ActionEvent actionEvent) {
+    }
+
+    public void showComments(ActionEvent actionEvent) {
+    }
+
+    public void nextPost(ActionEvent actionEvent) {
+    }
+
+    public void prevPost(ActionEvent actionEvent) {
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //get data from server
+
 //        usernameText.setText(username);
 //        bioText.setText(bio);
 //        profilePhoto.setImage(profileImage);
 //        postsCountText.setText(Integer.toString(postsCount));
 //        followersCountText.setText(Integer.toString(followersCount));
 //        followingsCountText.setText(Integer.toString(followingsCount));
-    //        follow.setText("follow/following");
+//        follow.setText("follow/following");
     }
 
 }

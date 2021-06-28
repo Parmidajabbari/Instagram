@@ -11,7 +11,7 @@ public class User {
     private String email;
     private ArrayList<Long> followers = new ArrayList<>();
     private ArrayList<Long> followings = new ArrayList<>();
-    private long userId;
+    private static int userId;
     private String bio;
     private static long idGenerate= 10^6;
     private static String userNameError;
@@ -21,7 +21,14 @@ public class User {
         this.userName = userName;
         this.password = password.hashCode();
         this.email = email;
-        this.userId = generateId();
+    }
+
+    public static int getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(int userId) {
+        User.userId = userId;
     }
 
     public String getUserName() {
@@ -71,10 +78,6 @@ public class User {
     }
 
 
-    public void addFollower(User user) {
-        followers.add(user.getUserId());
-    }
-
     public void addFollower(long id) {
         followers.add(id);
     }
@@ -95,9 +98,6 @@ public class User {
         return followers.size();
     }
 
-    public void addFollowing(User user) {
-        followings.add(user.getUserId());
-    }
 
     public void addFollowing(long id) {
         followings.add(id);
@@ -117,10 +117,6 @@ public class User {
 
     public int getFollowingsSize(){
         return followings.size();
-    }
-
-    public long getUserId() {
-        return userId;
     }
 
     public long generateId() {
