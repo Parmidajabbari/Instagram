@@ -2,6 +2,7 @@ package controllers;
 
 import app.Client;
 import app.Tasks;
+import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,12 @@ public class SearchPageController {
     @FXML
     private static JFXTextField resultText;
 
+    private static boolean isSet;
+
+    public static void setIsSet(boolean set) {
+        isSet = set;
+    }
+
     public static JFXTextField getResultText() {
         return resultText;
     }
@@ -26,20 +33,15 @@ public class SearchPageController {
     }
 
     @FXML
-    void enterSearch(ActionEvent event) throws IOException {
+    void enterSearch(ActionEvent event) throws Exception {
         String name = searchText.getText();
-        String massage = Tasks.getSearchTask(Long.toString(LoginPageController.getUserId()),name);
-        // Client.sendRequest(massage);
-        /*
-        if(json == null) {
-            searchError.setText("No Results Found");
-            searchError.setStyle("-fx-text-inner-color: red;");
-        }
-        else {
+        String massage = Tasks.getSearchTask(Integer.toString(User.getUserId()), name);
+        //Client.sendRequest(massage);
+
+        if(isSet) {
             PageController.closePage(event);
             PageController.openPage("showProfile");
         }
-        */
 
     }
 

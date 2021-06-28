@@ -60,7 +60,7 @@ public class NewPostController implements Initializable {
             newPostPhoto.setImage(image);
             isSet = true;
             String imageString = encodeFileToBase64Binary(file);
-           // String massage =
+            //String massage = Tasks.getNewPostTask();
         }
         else {
             return;

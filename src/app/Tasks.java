@@ -129,7 +129,7 @@ public class Tasks {
         return new Gson().toJson(String.format(postView, currentUserId, postId));
     }
 
-    public static String getNotificationTask(String currentUserId, String event) {
+    public static String getNotificationTask(String currentUserId) {
         return new Gson().toJson(String.format(notification, currentUserId));
     }
 
