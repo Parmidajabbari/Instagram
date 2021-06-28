@@ -29,7 +29,7 @@ public class SearchPageController {
     void enterSearch(ActionEvent event) throws IOException {
         String name = searchText.getText();
         String massage = Tasks.getSearchTask(Long.toString(LoginPageController.getUserId()),name);
-        //Client.sendRequest(massage);
+        // Client.sendRequest(massage);
         /*
         if(json == null) {
             searchError.setText("No Results Found");
