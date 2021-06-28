@@ -109,7 +109,7 @@ public class Process {
             SearchPageController.setResultText(resultText);
         }
         else {
-            String message = Tasks.getProfileViewTask(Integer.toString(User.getUserId()),
+            String message = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),
                     jsonObject.get("result").getAsString());
             //Client.sendRequest(message);
         }
@@ -265,7 +265,7 @@ public class Process {
             FourthSignUpController.setIsDone(false);
         }
         else {
-            User.setUserId(jsonObject.get("result").getAsInt());
+            LoginPageController.setUserId(jsonObject.get("result").getAsInt());
             FourthSignUpController.setIsDone(true);
         }
         FourthSignUpController.setResultText(resultText);
