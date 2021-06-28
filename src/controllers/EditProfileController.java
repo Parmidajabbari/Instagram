@@ -88,7 +88,9 @@ public class EditProfileController implements Initializable {
 
     }
     @FXML
-    public void logOut(ActionEvent actionEvent) {
+    public void logOut(ActionEvent actionEvent) throws Exception {
+        PageController.closePage(actionEvent);
+        PageController.openPage("mainPage");
     }
 
     @FXML

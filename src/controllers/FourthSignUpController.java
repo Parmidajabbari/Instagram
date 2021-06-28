@@ -29,7 +29,6 @@ public class FourthSignUpController implements Initializable {
 
     private static boolean isDone;
     private static User user;
-    private static long userId;
 
     @FXML
     TextField passwordText;
@@ -39,10 +38,6 @@ public class FourthSignUpController implements Initializable {
 
     public static User getUser() {
         return user;
-    }
-
-    public static long getUserId() {
-        return userId;
     }
 
     public static void setIsDone(boolean isDone) {
@@ -92,7 +87,7 @@ public class FourthSignUpController implements Initializable {
             //Client.sendRequest(message);
             if(isDone) {
                 user = new User(userName,password,email);
-                userId = user.getUserId();
+                LoginPageController.setUserId(user.getUserId());
                 //send user to server
                 PageController.closePage(actionEvent);
                 PageController.openPage("homePage");

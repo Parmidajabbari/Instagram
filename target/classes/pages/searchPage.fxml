@@ -34,5 +34,6 @@
          </graphic>
       </JFXButton>
       <JFXTextField fx:id="searchError" editable="false" focusColor="WHITE" layoutX="158.0" layoutY="224.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <JFXTextField fx:id="resultText" editable="false" focusColor="#405aa800" layoutX="123.0" layoutY="202.0" prefHeight="37.0" prefWidth="300.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
    </children>
 </AnchorPane>

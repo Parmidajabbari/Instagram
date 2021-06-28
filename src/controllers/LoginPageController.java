@@ -35,6 +35,10 @@ public class LoginPageController implements Initializable {
         return userId;
     }
 
+    public static void setUserId(long userId) {
+        LoginPageController.userId = userId;
+    }
+
     public static void setIsDone(boolean isDone) {
         LoginPageController.isDone = isDone;
     }
@@ -54,7 +58,7 @@ public class LoginPageController implements Initializable {
 
     @FXML
     public void getPassword(ActionEvent actionEvent) {
-        password= passwordText.getText();
+        password = passwordText.getText();
     }
 
     @FXML
