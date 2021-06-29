@@ -71,7 +71,7 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String message = Tasks.getTimelineTask(Integer.toString(User.getUserId()));
+        String message = Tasks.getTimelineTask(Integer.toString(LoginPageController.getUserId()));
         /*
         try {
             Client.sendRequest(message);

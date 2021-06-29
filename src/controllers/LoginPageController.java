@@ -19,7 +19,7 @@ public class LoginPageController implements Initializable {
 
     private String username;
     private String password;
-    private static boolean isDone;
+    private static boolean isDone = false;
     private static int userId;
 
     @FXML
@@ -65,9 +65,6 @@ public class LoginPageController implements Initializable {
     public void login(ActionEvent actionEvent) throws Exception {
         String message = Tasks.getLoginTask(username,password);
         //Client.sendRequest(message);
-        //User user;
-        //get user from server
-        //userId = user.getUserId();
         if(isDone) {
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");

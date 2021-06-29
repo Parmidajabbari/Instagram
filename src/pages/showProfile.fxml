@@ -4,11 +4,12 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -95,31 +96,23 @@
             <FontAwesomeIconView glyphName="USER" size="30" />
          </graphic>
       </JFXButton>
-      <AnchorPane layoutX="125.0" layoutY="300.0" prefHeight="250.0" prefWidth="250.0">
-         <children>
-            <ImageView fx:id="photo" fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="caption" layoutY="164.0" prefHeight="30.0" prefWidth="250.0" />
-            <Label fx:id="likes" layoutX="50.0" layoutY="207.0" prefHeight="30.0" prefWidth="60.0" />
-            <Label fx:id="comments" layoutX="170.0" layoutY="207.0" prefHeight="30.0" prefWidth="60.0" />
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="207.0" onAction="#like" prefHeight="30.0" prefWidth="30.0" text="." textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="140.0" layoutY="207.0" onAction="#showComments" prefHeight="30.0" prefWidth="30.0" text="." textFill="WHITE" />
-            <FontAwesomeIconView glyphName="HEART" layoutX="24.0" layoutY="227.0" />
-            <FontAwesomeIconView glyphName="COMMENT" layoutX="149.0" layoutY="227.0" />
-         </children>
-      </AnchorPane>
-      <JFXButton layoutX="396.0" layoutY="300.0" onAction="#nextPost" prefHeight="250.0" prefWidth="50.0" text="n" textFill="WHITE">
+      <JFXButton layoutX="449.0" layoutY="300.0" onAction="#nextPost" prefHeight="250.0" prefWidth="50.0" text="n" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="73.0" layoutY="300.0" onAction="#prevPost" prefHeight="250.0" prefWidth="50.0" text="b" textFill="WHITE">
+      <JFXButton layoutX="3.0" layoutY="300.0" onAction="#prevPost" prefHeight="250.0" prefWidth="50.0" text="b" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_LEFT" size="60" />
          </graphic>
       </JFXButton>
-      <Line endX="125.0" layoutX="249.0" layoutY="300.0" startX="-125.0" />
-      <Line endX="125.0" layoutX="249.0" layoutY="550.0" startX="-125.0" />
-      <Line endY="125.0" layoutX="122.0" layoutY="426.0" startY="-125.0" />
-      <Line endY="125.0" layoutX="375.0" layoutY="426.0" startY="-125.0" />
+      <GridPane fx:id="gridPane" layoutX="59.0" layoutY="290.0" prefHeight="261.0" prefWidth="383.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
    </children>
 </AnchorPane>

@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,14 +27,6 @@ public class ShowProfileController implements Initializable {
     private int followersCount;
     private int followingsCount;
 
-    @FXML
-    ImageView photo;
-    @FXML
-    Label caption;
-    @FXML
-    Label likes;
-    @FXML
-    Label comments;
     @FXML
     JFXTextField usernameText;
     @FXML
@@ -49,12 +43,17 @@ public class ShowProfileController implements Initializable {
     JFXButton follow;
 
     @FXML
+    GridPane gridPane;
+    @FXML
+    AnchorPane anchorPane;
+
+    @FXML
     public void sendMassage(ActionEvent actionEvent) {
     }
     @FXML
     public void followOrUnfollow(ActionEvent actionEvent) {
         if(follow.getText().equals("Follow")) {
-//            String massage = Tasks.getUnFollowTask();
+      //      String massage = Tasks.getUnFollowTask();
 //            Client.sendRequest(massage);
         }
         else {
@@ -98,21 +97,20 @@ public class ShowProfileController implements Initializable {
         System.exit(0);
     }
 
-    public void like(ActionEvent actionEvent) {
-    }
-
-    public void showComments(ActionEvent actionEvent) {
-    }
-
     public void nextPost(ActionEvent actionEvent) {
+      //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+       // Client.sendRequest(massage);
     }
 
     public void prevPost(ActionEvent actionEvent) {
+        //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+        // Client.sendRequest(massage);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        anchorPane = ShowPostController.getShowPostPane();
+        gridPane.add(anchorPane,0,0);
 //        usernameText.setText(username);
 //        bioText.setText(bio);
 //        profilePhoto.setImage(profileImage);

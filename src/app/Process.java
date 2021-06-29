@@ -97,6 +97,15 @@ public class Process {
         if(error) {
         }
         else {
+            String photo = jsonObject.get("image").getAsString();
+            String caption = jsonObject.get("caption").getAsString();
+            int likesCount = jsonObject.get("likes").getAsInt();
+            int commentsCount = jsonObject.get("comments").getAsInt();
+            String username = jsonObject.get("ownerName").getAsString();
+            String date = jsonObject.get("uploaded").getAsString();
+            int ownerId = jsonObject.get("ownerId").getAsInt();
+            Post post = new Post(photo,caption,likesCount,commentsCount,username,date,ownerId);
+            ShowPostController.setPost(post);
         }
     }
 
@@ -104,13 +113,13 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SearchPageController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SearchPageController.setResultText(resultText);
         }
         else {
             String message = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),
-                    jsonObject.get("result").getAsString());
+                    jsonObject.get("Result").getAsString());
             //Client.sendRequest(message);
         }
     }
@@ -148,7 +157,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -161,7 +170,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -178,7 +187,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -191,7 +200,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -201,6 +210,18 @@ public class Process {
     }
 
     private void newPostTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = NewPostController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            NewPostController.setResultText(resultText);
+            NewPostController.setIsPosted(false);
+        }
+        else {
+            NewPostController.setPostId(jsonObject.get("Result").getAsInt());
+            NewPostController.setIsPosted(true);
+        }
     }
 
     private void timelineTask() {
@@ -210,12 +231,13 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = LoginPageController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             LoginPageController.setResultText(resultText);
             LoginPageController.setIsDone(false);
         }
         else {
+            LoginPageController.setUserId(jsonObject.get("Result").getAsInt());
             LoginPageController.setIsDone(true);
         }
     }
@@ -224,7 +246,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SecondSignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SecondSignUpController.setIsDone(false);
 
@@ -260,12 +282,12 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = FourthSignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             FourthSignUpController.setIsDone(false);
         }
         else {
-            LoginPageController.setUserId(jsonObject.get("result").getAsInt());
+            LoginPageController.setUserId(jsonObject.get("Result").getAsInt());
             FourthSignUpController.setIsDone(true);
         }
         FourthSignUpController.setResultText(resultText);
@@ -275,7 +297,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SignUpController.setIsDone(false);
         }

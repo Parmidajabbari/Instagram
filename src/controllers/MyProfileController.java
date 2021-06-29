@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,9 +35,26 @@ public class MyProfileController implements Initializable {
     TextField followingsCountText;
 
     @FXML
+    GridPane gridPane;
+
+    @FXML
+    AnchorPane anchorPane;
+    @FXML
     public void editProfile(ActionEvent actionEvent) throws Exception {
         PageController.closePage(actionEvent);
         PageController.openPage("editProfile");
+    }
+
+    @FXML
+    public void prevPost(ActionEvent actionEvent) {
+        //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+        // Client.sendRequest(massage);
+    }
+
+    @FXML
+    public void nextPost(ActionEvent actionEvent) {
+        //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+        // Client.sendRequest(massage);
     }
 
     @FXML
@@ -70,6 +89,8 @@ public class MyProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        anchorPane = ShowPostController.getShowPostPane();
+        gridPane.add(anchorPane,0,0);
         //get data from server
 //        usernameText.setText(username);
 //        bioText.setText(bio);
@@ -78,4 +99,5 @@ public class MyProfileController implements Initializable {
 //        followersCountText.setText(Integer.toString(followersCount));
 //        followingsCountText.setText(Integer.toString(followingsCount));
     }
+
 }
