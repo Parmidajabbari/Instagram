@@ -1,6 +1,7 @@
 package controllers;
 
 import app.Client;
+import app.Profile;
 import app.Tasks;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -15,17 +16,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ShowProfileController implements Initializable {
 
-    private String username;
-    private String bio;
-    private Image profileImage;
-    private int postsCount;
-    private int followersCount;
-    private int followingsCount;
+    private static Profile profile;
+    private ArrayList<Integer> postIds = new ArrayList<>();
+    int index = 0;
 
     @FXML
     JFXTextField usernameText;
@@ -47,17 +47,21 @@ public class ShowProfileController implements Initializable {
     @FXML
     AnchorPane anchorPane;
 
+    public static void setProfile(Profile profile) {
+        ShowProfileController.profile = profile;
+    }
+
     @FXML
     public void sendMassage(ActionEvent actionEvent) {
     }
     @FXML
     public void followOrUnfollow(ActionEvent actionEvent) {
         if(follow.getText().equals("Follow")) {
-      //      String massage = Tasks.getUnFollowTask();
+            String massage = Tasks.getFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
 //            Client.sendRequest(massage);
         }
         else {
-     //       String massage = Tasks.getFollowTask();
+            String massage = Tasks.getUnFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
 //            Client.sendRequest(massage);
         }
     }
@@ -97,27 +101,46 @@ public class ShowProfileController implements Initializable {
         System.exit(0);
     }
 
+    @FXML
     public void nextPost(ActionEvent actionEvent) {
-      //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+        String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
        // Client.sendRequest(massage);
+        anchorPane = ShowPostController.getShowPostPane();
+        gridPane.add(anchorPane,0,0);
+        index++;
     }
 
+    @FXML
     public void prevPost(ActionEvent actionEvent) {
-        //  String massage = Tasks.getPostViewTask(LoginPageController.getUserId(),postid);
+        String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         // Client.sendRequest(massage);
+        anchorPane = ShowPostController.getShowPostPane();
+        gridPane.add(anchorPane,0,0);
+        index++;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        usernameText.setText(profile.getUserName());
+        bioText.setText(profile.getBio());
+        followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
+        followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
+        postsCountText.setText(Integer.toString(profile.getPosts().size()));
+        if(profile.isFollowing()) {
+            follow.setText("Following");
+        }
+        else {
+            follow.setText("Follow");
+        }
+        String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId() ), Integer.toString(postIds.get(index)));
+        index++;
+        try {
+            Client.sendRequest(massage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         anchorPane = ShowPostController.getShowPostPane();
         gridPane.add(anchorPane,0,0);
-//        usernameText.setText(username);
-//        bioText.setText(bio);
-//        profilePhoto.setImage(profileImage);
-//        postsCountText.setText(Integer.toString(postsCount));
-//        followersCountText.setText(Integer.toString(followersCount));
-//        followingsCountText.setText(Integer.toString(followingsCount));
-//        follow.setText("follow/following");
     }
 
 }
