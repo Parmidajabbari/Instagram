@@ -11,7 +11,7 @@ public class User {
     private String email;
     private ArrayList<Long> followers = new ArrayList<>();
     private ArrayList<Long> followings = new ArrayList<>();
-    private static int userId;
+    private int userId;
     private String bio;
     private static long idGenerate= 10^6;
     private static String userNameError;
@@ -23,12 +23,12 @@ public class User {
         this.email = email;
     }
 
-    public static int getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public static void setUserId(int userId) {
-        User.userId = userId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

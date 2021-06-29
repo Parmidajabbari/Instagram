@@ -28,7 +28,6 @@ public class FourthSignUpController implements Initializable {
     }
 
     private static boolean isDone;
-    private static User user;
 
     @FXML
     TextField passwordText;
@@ -36,9 +35,6 @@ public class FourthSignUpController implements Initializable {
     @FXML
     static JFXTextField resultText;
 
-    public static User getUser() {
-        return user;
-    }
 
     public static void setIsDone(boolean isDone) {
         FourthSignUpController.isDone = isDone;
@@ -86,9 +82,6 @@ public class FourthSignUpController implements Initializable {
             String message = Tasks.getSignUpTask(userName, password, email);
             //Client.sendRequest(message);
             if(isDone) {
-                user = new User(userName,password,email);
-                LoginPageController.setUserId(user.getUserId());
-                //send user to server
                 PageController.closePage(actionEvent);
                 PageController.openPage("homePage");
             }

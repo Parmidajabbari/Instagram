@@ -1,11 +1,14 @@
 package app;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXTextField;
 import controllers.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -97,6 +100,15 @@ public class Process {
         if(error) {
         }
         else {
+            String photo = jsonObject.get("image").getAsString();
+            String caption = jsonObject.get("caption").getAsString();
+            int likesCount = jsonObject.get("likes").getAsInt();
+            int commentsCount = jsonObject.get("comments").getAsInt();
+            String username = jsonObject.get("ownerName").getAsString();
+            String date = jsonObject.get("uploaded").getAsString();
+            int ownerId = jsonObject.get("ownerId").getAsInt();
+            Post post = new Post(photo,caption,likesCount,commentsCount,username,date,ownerId);
+            ShowPostController.setPost(post);
         }
     }
 
@@ -104,13 +116,13 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SearchPageController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SearchPageController.setResultText(resultText);
         }
         else {
-            String message = Tasks.getProfileViewTask(Integer.toString(User.getUserId()),
-                    jsonObject.get("result").getAsString());
+            String message = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),
+                    jsonObject.get("Result").getAsString());
             //Client.sendRequest(message);
         }
     }
@@ -148,7 +160,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -161,16 +173,42 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
+            int commentId = jsonObject.get("Result").getAsInt();
             //String massage = Tasks.getCommentTask();
             // Client.sendRequest(massage);
         }
     }
 
     private void profileViewTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = new JFXTextField();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            String username = jsonObject.get("userName").getAsString();
+            String date = jsonObject.get("created").getAsString();
+            String bio = jsonObject.get("bio").getAsString();
+            int followersNumber = jsonObject.get("followersNumber").getAsInt();
+            int followingsNumber = jsonObject.get("followingNumber").getAsInt();
+            int userId = jsonObject.get("userId").getAsInt();
+            boolean isFollowing = jsonObject.get("isFollowing").getAsBoolean();
+
+            ArrayList<Integer> postIds = new ArrayList<Integer>();
+            JsonArray jArray = (JsonArray) jsonObject.get("posts");
+            if (jArray != null) {
+                for (int i = 0 ;i < jArray.size() ;i++){
+                    postIds.add(jArray.get(i).getAsInt());
+                }
+            }
+            Profile profile = new Profile(username,userId,date,bio,followersNumber,followingsNumber,postIds,isFollowing);
+            ShowProfileController.setProfile(profile);
+        }
 
     }
 
@@ -178,7 +216,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -191,7 +229,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
@@ -201,21 +239,46 @@ public class Process {
     }
 
     private void newPostTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = NewPostController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+            NewPostController.setResultText(resultText);
+            NewPostController.setIsPosted(false);
+        }
+        else {
+            NewPostController.setPostId(jsonObject.get("Result").getAsInt());
+            NewPostController.setIsPosted(true);
+        }
     }
 
     private void timelineTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+        }
+        else {
+            ArrayList<Integer> posts = new ArrayList<Integer>();
+            JsonArray jArray = (JsonArray) jsonObject.get("posts");
+            if (jArray != null) {
+                for (int i = 0 ;i < jArray.size() ;i++){
+                    posts.add(jArray.get(i).getAsInt());
+                }
+            }
+        }
     }
 
     private void loginTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = LoginPageController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             LoginPageController.setResultText(resultText);
             LoginPageController.setIsDone(false);
         }
         else {
+            LoginPageController.setUserId(jsonObject.get("Result").getAsInt());
             LoginPageController.setIsDone(true);
         }
     }
@@ -224,7 +287,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SecondSignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SecondSignUpController.setIsDone(false);
 
@@ -260,12 +323,12 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = FourthSignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             FourthSignUpController.setIsDone(false);
         }
         else {
-            User.setUserId(jsonObject.get("result").getAsInt());
+            LoginPageController.setUserId(jsonObject.get("Result").getAsInt());
             FourthSignUpController.setIsDone(true);
         }
         FourthSignUpController.setResultText(resultText);
@@ -275,7 +338,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = SignUpController.getResultText();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
             SignUpController.setIsDone(false);
         }

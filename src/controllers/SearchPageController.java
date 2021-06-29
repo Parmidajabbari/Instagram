@@ -35,7 +35,7 @@ public class SearchPageController {
     @FXML
     void enterSearch(ActionEvent event) throws Exception {
         String name = searchText.getText();
-        String massage = Tasks.getSearchTask(Integer.toString(User.getUserId()), name);
+        String massage = Tasks.getSearchTask(Integer.toString(LoginPageController.getUserId()), name);
         //Client.sendRequest(massage);
 
         if(isSet) {

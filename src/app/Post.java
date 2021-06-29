@@ -1,48 +1,64 @@
 package app;
 
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 public class Post implements Comparable<Post>{
-    private String photoAddress;
+    private String photoString;
     private String postId;
-    private long userId;
+    private int userId;
     private String caption;
-    private Date dateTime;
+    private String username;
+    private String dateTime;
+    private int likesCount;
+    private int commentsCount;
     private ArrayList<Comment> comments = new ArrayList<>();
     private ArrayList<Long> likedByUsers = new ArrayList<>();
-    public Post(String photoAddress , String caption , long userId) {
-        this.photoAddress = photoAddress;
+    public Post(String photoString, String caption, int likes, int comments, String ownerName, String uploaded, int ownerId) {
+        this.photoString = photoString;
         this.caption = caption;
-        this.userId = userId;
-        this.postId = generatePostId();
+        this.likesCount = likes;
+        this.commentsCount = comments;
+        this.username = ownerName;
+        this.dateTime = uploaded;
+        this.userId = ownerId;
     }
 
     public String getPostId() {
         return postId;
     }
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date datetime) {
-        this.dateTime = datetime;
+    public String getPhotoString() {
+        return photoString;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
 
     public ArrayList<Long> getLikedByUsers() {
         return likedByUsers;
-    }
-    public long getLikesCount() {
-        return likedByUsers.size();
     }
 
     public ArrayList<Comment> getComments() {
         return comments;
     }
-    public long getCommentsCount() {
-        return comments.size();
-    }
+
     public String generatePostId() {
         return UUID.randomUUID().toString();
     }
