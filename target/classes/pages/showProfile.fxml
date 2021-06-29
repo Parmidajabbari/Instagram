@@ -96,12 +96,12 @@
             <FontAwesomeIconView glyphName="USER" size="30" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="449.0" layoutY="300.0" onAction="#nextPost" prefHeight="250.0" prefWidth="50.0" text="n" textFill="WHITE">
+      <JFXButton fx:id="next" layoutX="449.0" layoutY="300.0" onAction="#nextPost" prefHeight="250.0" prefWidth="50.0" text="n" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="3.0" layoutY="300.0" onAction="#prevPost" prefHeight="250.0" prefWidth="50.0" text="b" textFill="WHITE">
+      <JFXButton fx:id="prev" layoutX="3.0" layoutY="300.0" onAction="#prevPost" prefHeight="250.0" prefWidth="50.0" text="b" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_LEFT" size="60" />
          </graphic>
