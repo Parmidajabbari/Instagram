@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
-
+    private static String result;
     private String email;
 
     private String username;
@@ -24,7 +24,7 @@ public class SignUpController implements Initializable {
     TextField emailText;
 
     @FXML
-    static JFXTextField resultText;
+    JFXTextField resultText;
 
     @FXML
     TextField usernameText;
@@ -33,12 +33,12 @@ public class SignUpController implements Initializable {
         SignUpController.isDone = isDone;
     }
 
-    public static JFXTextField getResultText() {
-        return resultText;
+    public static String getResult() {
+        return result;
     }
 
-    public static void setResultText(JFXTextField resultText) {
-        SignUpController.resultText = resultText;
+    public static void setResult(String result) {
+        SignUpController.result = result;
     }
 
     @FXML
@@ -79,6 +79,7 @@ public class SignUpController implements Initializable {
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
+        resultText.setText(result);
         if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);

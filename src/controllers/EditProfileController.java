@@ -25,6 +25,11 @@ public class EditProfileController implements Initializable {
     private String changedUsername;
     private String changedBio;
     private String photoString;
+    private static String result = "";
+
+    public static void setResult(String result) {
+        EditProfileController.result = result;
+    }
 
     @FXML
     JFXTextField usernameText;
@@ -34,15 +39,7 @@ public class EditProfileController implements Initializable {
     ImageView profilePhoto;
 
     @FXML
-    static JFXTextField resultText;
-
-    public static JFXTextField getResultText() {
-        return resultText;
-    }
-
-    public static void setResultText(JFXTextField resultText) {
-        EditProfileController.resultText = resultText;
-    }
+    JFXTextField resultText;
 
     public static String getFileExtension(String fullName) {
         checkNotNull(fullName);
@@ -97,10 +94,12 @@ public class EditProfileController implements Initializable {
             return;
         }
         String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
-        Client.sendRequest(massage);
+        Client.sendRequest(secondMassage);
+        resultText.setText(result);
         changedBio = bioText.getText();
         String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
-        Client.sendRequest(massage);
+        Client.sendRequest(thirdMassage);
+        resultText.setText(result);
         PageController.closePage(actionEvent);
         PageController.openPage("myProfile");
     }

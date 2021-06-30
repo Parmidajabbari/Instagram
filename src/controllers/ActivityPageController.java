@@ -4,6 +4,9 @@ import app.Client;
 import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,11 +16,12 @@ import java.util.ResourceBundle;
 
 public class ActivityPageController implements Initializable {
 
+    private static ObservableList<String> list = FXCollections.observableArrayList();
     @FXML
-    static JFXListView<String> notificationList;
+    JFXListView<String> notificationList;
 
-    public static JFXListView<String> getNotificationList() {
-        return notificationList;
+    public static void setList(ObservableList<String> list) {
+        ActivityPageController.list = list;
     }
 
     @FXML
@@ -57,13 +61,12 @@ public class ActivityPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getNotificationTask(Integer.toString(LoginPageController.getUserId()));
-
         try {
             Client.sendRequest(message);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-
+        notificationList.setItems(list);
     }
 }

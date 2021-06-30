@@ -3,7 +3,7 @@ package app;
 public class Tasks {
 
     private static final String signUp =
-            "{'task':'signUp', 'currentUserId':'0', 'currentUsername':'%s', 'password':'%s', 'email':'%s'}";
+            "{'task':'signUpPart2', 'currentUserId':'0', 'currentUsername':'%s', 'password':'%s', 'email':'%s'}";
     private static final String signUpPart1 =
             "{'task':'signUpPart1', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
     private static final String showFollowers =
@@ -13,11 +13,11 @@ public class Tasks {
     private static final String showComments =
             "{'task':'showComments', 'currentUserId':'%s', 'postId':'%s'}";
     private static final String editUsername =
-            "{'task':'editUsername', 'currentUserId':'%s', 'newUserName':'%s'}";
+            "{'task':'changeUsername', 'currentUserId':'%s', 'newUserName':'%s'}";
     private static final String editBio =
-            "{'task':'editBio', 'currentUserId':'%s', 'newBio':'%s'}";
+            "{'task':'changeBio', 'currentUserId':'%s', 'newBio':'%s'}";
     private static final String editPhoto =
-            "{'task':'editPhoto', 'currentUserId':'%s', 'newPhoto':'%s'}";
+            "{'task':'changeProPic', 'currentUserId':'%s', 'newPhoto':'%s'}";
     private static final String sendEmail =
             "{'task':'sendEmail', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
     private static final String checkCode =

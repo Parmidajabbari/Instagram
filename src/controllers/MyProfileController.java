@@ -70,7 +70,7 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getShowPostPane();
+        anchorPane = ShowPostController.getCopyPane();
         gridPane.add(anchorPane,0,0);
         index++;
     }
@@ -87,7 +87,7 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getShowPostPane();
+        anchorPane = ShowPostController.getCopyPane();
         gridPane.add(anchorPane,0,0);
         index++;
     }
@@ -136,7 +136,7 @@ public class MyProfileController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        anchorPane = ShowPostController.getShowPostPane();
+        anchorPane = ShowPostController.getCopyPane();
         gridPane.add(anchorPane,0,0);
     }
 

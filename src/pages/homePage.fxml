@@ -5,6 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
    <children>
@@ -45,15 +48,23 @@
          <graphic>
             <FontAwesomeIconView glyphName="LOCATION_ARROW" size="30" />
          </graphic></JFXButton>
-      <JFXButton fx:id="next" layoutX="425.0" layoutY="143.0" onAction="#nextPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="n" textFill="WHITE">
+      <JFXButton fx:id="next" layoutX="435.0" layoutY="143.0" onAction="#nextPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="n" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="80" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="prev" layoutX="15.0" layoutY="143.0" onAction="#prevPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="b" textFill="WHITE">
+      <JFXButton fx:id="prev" layoutX="4.0" layoutY="143.0" onAction="#prevPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="b" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_LEFT" size="80" />
          </graphic>
       </JFXButton>
+      <GridPane fx:id="gridPane" layoutX="70.0" layoutY="95.0" prefHeight="435.0" prefWidth="351.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
    </children>
 </AnchorPane>

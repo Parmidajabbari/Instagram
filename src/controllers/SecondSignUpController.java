@@ -17,12 +17,18 @@ public class SecondSignUpController implements Initializable {
 
     private static String email;
     private static String username;
+    private static String result;
     public static void setEmail(String Email) {
         email = Email;
     }
     public static void setUsername(String Username) {
         username = Username;
     }
+
+    public static void setResult(String result) {
+        SecondSignUpController.result = result;
+    }
+
     private static boolean isDone;
 
     @FXML
@@ -32,18 +38,10 @@ public class SecondSignUpController implements Initializable {
     JFXTextField emailText;
 
     @FXML
-    static JFXTextField resultText;
+    JFXTextField resultText;
 
     public static void setIsDone(boolean isSet) {
         SecondSignUpController.isDone = isSet;
-    }
-
-    public static JFXTextField getResultText() {
-        return resultText;
-    }
-
-    public static void setResultText(JFXTextField resultText) {
-        SecondSignUpController.resultText = resultText;
     }
 
     @FXML
