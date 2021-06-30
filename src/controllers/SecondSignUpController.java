@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Client;
 import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,10 +47,11 @@ public class SecondSignUpController implements Initializable {
     }
 
     @FXML
-    public void setCode(ActionEvent actionEvent) {
+    public void setCode(ActionEvent actionEvent) throws IOException {
             String userCode = codeText.getText();
             //send userCode to server
             String message = Tasks.getCheckCode(username, email, userCode);
+            Client.sendRequest(message);
             if(isDone) {
                 FourthSignUpController.setEmail(email);
                 codeText.setEditable(false);

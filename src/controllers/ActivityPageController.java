@@ -57,13 +57,13 @@ public class ActivityPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getNotificationTask(Integer.toString(LoginPageController.getUserId()));
-        /*
+
         try {
             Client.sendRequest(message);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
     }
 }

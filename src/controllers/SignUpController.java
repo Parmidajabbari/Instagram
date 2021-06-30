@@ -70,7 +70,7 @@ public class SignUpController implements Initializable {
         email = emailText.getText();
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
-        //Client.sendRequest(message);
+        Client.sendRequest(message);
         if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);

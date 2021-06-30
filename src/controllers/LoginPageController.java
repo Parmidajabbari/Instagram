@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Client;
 import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
@@ -64,7 +65,7 @@ public class LoginPageController implements Initializable {
     @FXML
     public void login(ActionEvent actionEvent) throws Exception {
         String message = Tasks.getLoginTask(username,password);
-        //Client.sendRequest(message);
+        Client.sendRequest(message);
         if(isDone) {
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
