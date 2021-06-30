@@ -76,6 +76,12 @@ public class Process {
                 break;
             case "direct" : directTask();
                 break;
+            case "editUsername" :  editUsernameTask();
+                break;
+            case "editBio" : editBioTask();
+                break;
+            case "editProfile" : editProfileTask();
+                break;
         }
 
     }
@@ -422,7 +428,7 @@ public class Process {
         SignUpController.setResultText(resultText);
 
     }
-    private void editBio() {
+    private void editBioTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = EditProfileController.getResultText();
         if(error) {
@@ -435,7 +441,7 @@ public class Process {
         }
         EditProfileController.setResultText(resultText);
     }
-    private void editProfile() {
+    private void editProfileTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = EditProfileController.getResultText();
         if(error) {
@@ -448,7 +454,7 @@ public class Process {
         }
         EditProfileController.setResultText(resultText);
     }
-    private void editUsername() {
+    private void editUsernameTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = EditProfileController.getResultText();
         if(error) {
