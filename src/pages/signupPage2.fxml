@@ -16,7 +16,7 @@
             <Font name="Avenir Book" size="29.0" />
          </font>
       </Text>
-      <TextField fx:id="codeText" layoutX="88.0" layoutY="152.0" onAction="#setCode" prefHeight="33.0" prefWidth="346.0" promptText="Confirmation Code" />
+      <TextField fx:id="codeText" layoutX="88.0" layoutY="152.0" prefHeight="33.0" prefWidth="346.0" promptText="Confirmation Code" />
       <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="202.0" onAction="#nextPage" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Next" textFill="WHITE">
          <font>
             <Font size="15.0" />
