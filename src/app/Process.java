@@ -11,8 +11,6 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class Process {
@@ -76,11 +74,11 @@ public class Process {
                 break;
             case "direct" : directTask();
                 break;
-            case "editUsername" :  editUsernameTask();
+            case "editusername" :  editUsernameTask();
                 break;
-            case "editBio" : editBioTask();
+            case "editbio" : editBioTask();
                 break;
-            case "editProfile" : editProfileTask();
+            case "editphoto" : editPhotoTask();
                 break;
         }
 
@@ -441,7 +439,7 @@ public class Process {
         }
         EditProfileController.setResultText(resultText);
     }
-    private void editProfileTask() {
+    private void editPhotoTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = EditProfileController.getResultText();
         if(error) {
