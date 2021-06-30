@@ -14,6 +14,12 @@ public class Tasks {
             "{'task':'showFollowings', 'currentUserId':'%s', 'username':'%s'}";
     private static final String showComments =
             "{'task':'showComments', 'currentUserId':'%s', 'postId':'%s'}";
+    private static final String editUsername =
+            "{'task':'editUsername', 'currentUserId':'%s', 'newUserName':'%s'}";
+    private static final String editBio =
+            "{'task':'editBio', 'currentUserId':'%s', 'newBio':'%s'}";
+    private static final String editPhoto =
+            "{'task':'editPhoto', 'currentUserId':'%s', 'newPhoto':'%s'}";
     private static final String sendEmail =
             "{'task':'sendEmail', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
     private static final String checkCode =
@@ -48,6 +54,18 @@ public class Tasks {
             "{'task':'notification', 'currentUserId':'%s'}";
     private static final String direct =
             "{'task':'direct', 'currentUserId':'%s', 'secondUserId':'%s', 'message':'%s'}";
+
+    public static String getEditPhoto(String currentUserId, String newPhoto) {
+        return new Gson().toJson(String.format(editPhoto, currentUserId, newPhoto));
+    }
+
+    public static String getEditBio(String currentUserId, String newBio) {
+        return new Gson().toJson(String.format(editBio, currentUserId, newBio));
+    }
+
+    public static String getEditUsername(String currentUserId, String newUserName) {
+        return new Gson().toJson(String.format(editUsername, currentUserId, newUserName));
+    }
 
     public static String getSendEmail(String username, String email) {
         return new Gson().toJson(String.format(sendEmail, username, email));
@@ -86,7 +104,7 @@ public class Tasks {
     }
 
     public static String getNewPostTask(String currentUserId, String photoString, String caption) {
-        return new Gson().toJson(String.format(newPost, currentUserId, photoString));
+        return new Gson().toJson(String.format(newPost, currentUserId, photoString, caption));
     }
 
     public static String getLikeTask(String currentUserId, String postId) {

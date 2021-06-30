@@ -2,9 +2,12 @@ package app;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXTextField;
 import controllers.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,7 +94,17 @@ public class Process {
         if(error) {
         }
         else {
-            //get activity list
+            JsonArray array = jsonObject.getAsJsonArray("notifications");
+            ArrayList<String> arrayCopy = new ArrayList<>();
+            ObservableList<String> notifications = FXCollections.observableArrayList();
+
+            for (JsonElement jsonElement : array) {
+                arrayCopy.add(jsonElement.getAsString());
+            }
+            for (String notification : arrayCopy) {
+                notifications.add(notification);
+            }
+            ActivityPageController.getNotificationList().setItems(notifications);
         }
     }
 
@@ -151,7 +164,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
+            //String massage = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),);
             //Client.sendRequest(massage);
         }
     }
@@ -164,7 +177,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getProfileViewTask(Long.toString(LoginPageController.getUserId()),);
+            //String massage = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()), );
             // Client.sendRequest(massage);
         }
 }
@@ -225,7 +238,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getPostViewTask(Long.toString(LoginPageController.getUserId()),);
+            //String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
     }
@@ -238,7 +251,7 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
-            //String massage = Tasks.getPostViewTask(Long.toString(LoginPageController.getUserId()),);
+            //String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),);
             // Client.sendRequest(massage);
         }
     }
@@ -317,12 +330,65 @@ public class Process {
     }
 
     private void showCommentsTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if(error) {
+
+        }
+        else {
+            JsonArray array = jsonObject.getAsJsonArray("comments");
+            ArrayList<String> arrayCopy = new ArrayList<>();
+            ObservableList<String> comments = FXCollections.observableArrayList();
+
+            for (JsonElement jsonElement : array) {
+                arrayCopy.add(jsonElement.getAsString());
+            }
+            for (String comment : arrayCopy) {
+                comments.add(comment);
+            }
+            CommentPageController.getCommentsList().setItems(comments);
+        }
+
     }
 
     private void showFollowingsTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if (error) {
+
+        }
+        else {
+            JsonArray array = jsonObject.getAsJsonArray("followings");
+            ArrayList<String> arrayCopy = new ArrayList<>();
+            ObservableList<String> followings = FXCollections.observableArrayList();
+
+            for (JsonElement jsonElement : array) {
+                arrayCopy.add(jsonElement.getAsString());
+            }
+            for (String following : arrayCopy) {
+                followings.add(following);
+            }
+            ShowFollowingsController.getFollowingsList().setItems(followings);
+        }
+
     }
 
     private void showFollowersTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        if (error) {
+
+        }
+        else {
+            JsonArray array = jsonObject.getAsJsonArray("followers");
+            ArrayList<String> arrayCopy = new ArrayList<>();
+            ObservableList<String> followers = FXCollections.observableArrayList();
+
+            for (JsonElement jsonElement : array) {
+                arrayCopy.add(jsonElement.getAsString());
+            }
+            for (String follower : arrayCopy) {
+                followers.add(follower);
+            }
+            ShowFollowersController.getFollowersList().setItems(followers);
+        }
     }
 
     private void signupTask() {

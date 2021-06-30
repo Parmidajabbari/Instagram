@@ -10,7 +10,11 @@ import java.util.ResourceBundle;
 public class ShowFollowersController implements Initializable {
 
     @FXML
-    private JFXListView<?> followersList;
+    static JFXListView<String> followersList;
+
+    public static JFXListView<String> getFollowersList() {
+        return followersList;
+    }
 
     @FXML
     void back(ActionEvent event) throws Exception {
