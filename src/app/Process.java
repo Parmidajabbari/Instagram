@@ -297,15 +297,18 @@ public class Process {
             LoginPageController.setIsDone(true);
         }
     }
+    public static boolean isCodeOk;
 
     private void checkCodeTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
+            isCodeOk= false;
             SecondSignUpController.setResult(jsonObject.get("Result").getAsString());
             SecondSignUpController.setIsDone(false);
 
         }
         else {
+            isCodeOk = true;
             SecondSignUpController.setResult("Email verified successfully");
             SecondSignUpController.setIsDone(true);
         }

@@ -1,6 +1,7 @@
 package controllers;
 
 import app.Client;
+import app.Process;
 import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
@@ -82,7 +83,8 @@ public class SignUpController implements Initializable {
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
         resultText.setText(result);
-        if(isDone) {
+        System.out.println(Process.isCodeOk);
+        if(Process.isCodeOk) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);
             emailText.setEditable(false);
