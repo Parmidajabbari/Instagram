@@ -11,7 +11,11 @@ public class ShowFollowingsController implements Initializable {
 
 
     @FXML
-    private JFXListView<?> followingsList;
+    static JFXListView<String> followingsList;
+
+    public static JFXListView<String> getFollowingsList() {
+        return followingsList;
+    }
 
     @FXML
     void back(ActionEvent event) throws Exception {

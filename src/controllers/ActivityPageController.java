@@ -3,10 +3,10 @@ package controllers;
 import app.Client;
 import app.Tasks;
 import app.User;
+import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,10 +14,15 @@ import java.util.ResourceBundle;
 public class ActivityPageController implements Initializable {
 
     @FXML
-    void activity(ActionEvent event) {
+    static JFXListView<String> notificationList;
+
+    public static JFXListView<String> getNotificationList() {
+        return notificationList;
     }
 
-
+    @FXML
+    void activity(ActionEvent event) {
+    }
 
     @FXML
     void home(ActionEvent event) throws Exception {
