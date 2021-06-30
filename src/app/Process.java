@@ -420,6 +420,45 @@ public class Process {
             SignUpController.setIsDone(true);
         }
         SignUpController.setResultText(resultText);
-    }
 
+    }
+    private void editBio() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
+    private void editProfile() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
+    private void editUsername() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText("Username saved successfully");
+            resultText.setStyle("-fx-text-inner-color: green;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
 }
