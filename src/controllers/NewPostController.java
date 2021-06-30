@@ -63,7 +63,7 @@ public class NewPostController implements Initializable {
         return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
     }
 
-    private static String encodeFileToBase64Binary(File file) throws Exception{
+    public static String encodeFileToBase64Binary(File file) throws Exception{
         FileInputStream fileInputStreamReader = new FileInputStream(file);
         byte[] bytes = new byte[(int)file.length()];
         fileInputStreamReader.read(bytes);

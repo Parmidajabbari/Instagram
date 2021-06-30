@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -22,6 +24,8 @@ public class EditProfileController implements Initializable {
     private Image image;
     private String changedUsername;
     private String changedBio;
+    private String photoString;
+
     @FXML
     JFXTextField usernameText;
     @FXML
@@ -30,24 +34,52 @@ public class EditProfileController implements Initializable {
     ImageView profilePhoto;
 
     @FXML
-    JFXTextField resultText;
+    static JFXTextField resultText;
+
+    public static JFXTextField getResultText() {
+        return resultText;
+    }
+
+    public static void setResultText(JFXTextField resultText) {
+        EditProfileController.resultText = resultText;
+    }
+
     public static String getFileExtension(String fullName) {
         checkNotNull(fullName);
         String fileName = new File(fullName).getName();
         int dotIndex = fileName.lastIndexOf('.');
         return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
     }
+
     @FXML
-    public void changeUsername(ActionEvent actionEvent) {
-        String username = usernameText.getText();
-        if(User.isUserAcceptable(username)) {
-            changedUsername = username;
-            resultText.setText("Username saved successfully");
-            resultText.setStyle("-fx-text-inner-color: green;");
-            FourthSignUpController.setUserName(username);
-            usernameText.setEditable(false);
+    public void changeProfilePhoto(ActionEvent actionEvent) throws Exception {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File file = chooser.showOpenDialog(new Stage());
+        String extension = getFileExtension(file.getName());
+        if(extension.equals("jpg") || extension.equals("png")) {
+            image = new Image(file.toURI().toString());
+            profilePhoto.setImage(image);
+            photoString = NewPostController.encodeFileToBase64Binary(file);
+
         }
-        else if(!User.isUserAcceptable(username)) {
+        else {
+            return;
+        }
+
+    }
+    @FXML
+    public void logOut(ActionEvent actionEvent) throws Exception {
+        PageController.closePage(actionEvent);
+        PageController.openPage("mainPage");
+    }
+
+    @FXML
+    public void done(ActionEvent actionEvent) throws Exception {
+        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),photoString);
+        //Client.sendRequest(massage);
+        String username = usernameText.getText();
+        if(!User.isUserAcceptable(username)) {
             switch (User.getUserNameError()) {
                 case "invalid" :
                 {
@@ -64,38 +96,11 @@ public class EditProfileController implements Initializable {
             }
             return;
         }
-    }
-
-    @FXML
-    public void changeBio(ActionEvent actionEvent) {
+        String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
+        //Client.sendRequest(massage);
         changedBio = bioText.getText();
-
-    }
-
-    @FXML
-    public void changeProfilePhoto(ActionEvent actionEvent) {
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Open File");
-        File file = chooser.showOpenDialog(new Stage());
-        String extension = getFileExtension(file.getName());
-        if(extension.equals("jpg") || extension.equals("png")) {
-            image = new Image(file.toURI().toString());
-            profilePhoto.setImage(image);
-        }
-        else {
-            return;
-        }
-
-    }
-    @FXML
-    public void logOut(ActionEvent actionEvent) throws Exception {
-        PageController.closePage(actionEvent);
-        PageController.openPage("mainPage");
-    }
-
-    @FXML
-    public void done(ActionEvent actionEvent) throws Exception {
-        //save changes and send it to server
+        String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
+        //Client.sendRequest(massage);
         PageController.closePage(actionEvent);
         PageController.openPage("myProfile");
     }

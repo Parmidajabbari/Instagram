@@ -76,6 +76,12 @@ public class Process {
                 break;
             case "direct" : directTask();
                 break;
+            case "editUsername" :  editUsernameTask();
+                break;
+            case "editBio" : editBioTask();
+                break;
+            case "editProfile" : editProfileTask();
+                break;
         }
 
     }
@@ -420,6 +426,45 @@ public class Process {
             SignUpController.setIsDone(true);
         }
         SignUpController.setResultText(resultText);
-    }
 
+    }
+    private void editBioTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
+    private void editProfileTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
+    private void editUsernameTask() {
+        boolean error = jsonObject.get("error").getAsBoolean();
+        JFXTextField resultText = EditProfileController.getResultText();
+        if(error) {
+            resultText.setText(jsonObject.get("Result").getAsString());
+            resultText.setStyle("-fx-text-inner-color: red;");
+        }
+        else {
+            resultText.setText("Username saved successfully");
+            resultText.setStyle("-fx-text-inner-color: green;");
+        }
+        EditProfileController.setResultText(resultText);
+    }
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import app.Client;
 import app.Tasks;
+import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,6 +50,23 @@ public class SignUpController implements Initializable {
     @FXML
     public void nextPage(ActionEvent actionEvent) throws Exception {
         username = usernameText.getText();
+        if(!User.isUserAcceptable(username)) {
+            switch (User.getUserNameError()) {
+                case "invalid" :
+                {
+                    resultText.setText("Username contains invalid characters");
+                    resultText.setStyle("-fx-text-inner-color: red;");
+                    break;
+                }
+                case "length" :
+                {
+                    resultText.setText("Username length must be between 3 and 20");
+                    resultText.setStyle("-fx-text-inner-color: red;");
+                    break;
+                }
+            }
+            return;
+        }
         email = emailText.getText();
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);

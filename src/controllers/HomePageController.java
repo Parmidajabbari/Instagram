@@ -72,15 +72,6 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    public void likePost(ActionEvent actionEvent) {
-        // add a like to post if its not liked
-    }
-
-    @FXML
-    public void comments(ActionEvent actionEvent) throws Exception {
-        PageController.openPage("commentPage");
-    }
-    @FXML
     public void nextPost(ActionEvent actionEvent) {
         if(index == postIds.size()-1) {
             next.setVisible(false);
