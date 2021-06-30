@@ -1,5 +1,7 @@
 package controllers;
 
+import app.Client;
+import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ public class EditProfileController implements Initializable {
     private Image image;
     private String changedUsername;
     private String changedBio;
+    private String photoString;
     @FXML
     JFXTextField usernameText;
     @FXML
@@ -73,7 +76,7 @@ public class EditProfileController implements Initializable {
     }
 
     @FXML
-    public void changeProfilePhoto(ActionEvent actionEvent) {
+    public void changeProfilePhoto(ActionEvent actionEvent) throws Exception {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(new Stage());
@@ -81,6 +84,8 @@ public class EditProfileController implements Initializable {
         if(extension.equals("jpg") || extension.equals("png")) {
             image = new Image(file.toURI().toString());
             profilePhoto.setImage(image);
+            photoString = NewPostController.encodeFileToBase64Binary(file);
+
         }
         else {
             return;
@@ -95,7 +100,12 @@ public class EditProfileController implements Initializable {
 
     @FXML
     public void done(ActionEvent actionEvent) throws Exception {
-        //save changes and send it to server
+        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),photoString);
+        //Client.sendRequest(massage);
+        String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
+        //Client.sendRequest(massage);
+        String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
+        //Client.sendRequest(massage);
         PageController.closePage(actionEvent);
         PageController.openPage("myProfile");
     }
