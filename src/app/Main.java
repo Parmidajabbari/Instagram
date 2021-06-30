@@ -14,8 +14,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
-        /*
         try {
             Client client = new Client();
             client.setConnection();
@@ -23,7 +21,6 @@ public class Main extends Application {
         catch (IOException e) {
             e.printStackTrace();
         }
-        */
 
         launch(args);
     }

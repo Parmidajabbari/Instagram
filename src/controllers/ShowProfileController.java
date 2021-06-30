@@ -59,14 +59,14 @@ public class ShowProfileController implements Initializable {
     public void sendMassage(ActionEvent actionEvent) {
     }
     @FXML
-    public void followOrUnfollow(ActionEvent actionEvent) {
+    public void followOrUnfollow(ActionEvent actionEvent) throws IOException {
         if(follow.getText().equals("Follow")) {
             String massage = Tasks.getFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
-//            Client.sendRequest(massage);
+            Client.sendRequest(massage);
         }
         else {
             String massage = Tasks.getUnFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
-//            Client.sendRequest(massage);
+            Client.sendRequest(massage);
         }
     }
     @FXML
@@ -106,7 +106,7 @@ public class ShowProfileController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) {
+    public void nextPost(ActionEvent actionEvent) throws IOException {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -116,14 +116,14 @@ public class ShowProfileController implements Initializable {
             next.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
-       // Client.sendRequest(massage);
+        Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
         gridPane.add(anchorPane,0,0);
         index++;
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) {
+    public void prevPost(ActionEvent actionEvent) throws IOException {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -133,7 +133,7 @@ public class ShowProfileController implements Initializable {
             prev.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
-        // Client.sendRequest(massage);
+        Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
         gridPane.add(anchorPane,0,0);
         index++;

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,10 +25,10 @@ public class CommentPageController implements Initializable {
     }
 
     @FXML
-    void addNewComment(ActionEvent event) {
+    void addNewComment(ActionEvent event) throws IOException {
         String comment = newCommentText.getText();
         String massage = Tasks.getCommentTask(Integer.toString(LoginPageController.getUserId()),"post id" , comment);
-        //Client.sendRequest(massage);
+        Client.sendRequest(massage);
 
     }
 

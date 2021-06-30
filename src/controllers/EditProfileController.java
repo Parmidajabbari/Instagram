@@ -77,7 +77,7 @@ public class EditProfileController implements Initializable {
     @FXML
     public void done(ActionEvent actionEvent) throws Exception {
         String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),photoString);
-        //Client.sendRequest(massage);
+        Client.sendRequest(massage);
         String username = usernameText.getText();
         if(!User.isUserAcceptable(username)) {
             switch (User.getUserNameError()) {
@@ -97,10 +97,10 @@ public class EditProfileController implements Initializable {
             return;
         }
         String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
-        //Client.sendRequest(massage);
+        Client.sendRequest(massage);
         changedBio = bioText.getText();
         String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
-        //Client.sendRequest(massage);
+        Client.sendRequest(massage);
         PageController.closePage(actionEvent);
         PageController.openPage("myProfile");
     }

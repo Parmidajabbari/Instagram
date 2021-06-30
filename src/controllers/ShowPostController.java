@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Client;
 import app.Post;
 import app.Tasks;
 import javafx.embed.swing.SwingFXUtils;
@@ -76,7 +77,7 @@ public class ShowPostController implements Initializable {
     @FXML
     public void like(ActionEvent actionEvent) throws IOException {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
-        // Client.sendRequest(massage);
+        Client.sendRequest(massage);
     }
 
     @FXML

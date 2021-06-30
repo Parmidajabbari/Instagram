@@ -72,7 +72,7 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) {
+    public void nextPost(ActionEvent actionEvent) throws IOException {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -82,14 +82,14 @@ public class HomePageController implements Initializable {
             next.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
-        // Client.sendRequest(massage);
+        Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
         gridPane.add(anchorPane,0,0);
         index++;
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) {
+    public void prevPost(ActionEvent actionEvent) throws IOException {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -99,7 +99,7 @@ public class HomePageController implements Initializable {
             prev.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
-        // Client.sendRequest(massage);
+        Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
         gridPane.add(anchorPane,0,0);
         index++;
@@ -108,13 +108,13 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getTimelineTask(Integer.toString(LoginPageController.getUserId()));
-        /*
+
         try {
             Client.sendRequest(message);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-        */
 
     }
 

@@ -80,7 +80,7 @@ public class FourthSignUpController implements Initializable {
     public void completeSignUp(ActionEvent actionEvent) throws Exception {
         if(!passwordText.isEditable()) {
             String message = Tasks.getSignUpTask(userName, password, email);
-            //Client.sendRequest(message);
+            Client.sendRequest(message);
             if(isDone) {
                 PageController.closePage(actionEvent);
                 PageController.openPage("homePage");

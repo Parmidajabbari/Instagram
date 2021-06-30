@@ -100,7 +100,7 @@ public class NewPostController implements Initializable {
     @FXML
     public void share(ActionEvent actionEvent) throws Exception {
         String massage = Tasks.getNewPostTask(Integer.toString(LoginPageController.getUserId()),imageString,caption);
-        // Client.sendRequest(massage);
+        Client.sendRequest(massage);
         if(isPosted) {
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
