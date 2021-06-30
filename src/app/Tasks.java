@@ -1,7 +1,5 @@
 package app;
 
-import com.google.gson.Gson;
-
 public class Tasks {
 
     private static final String signUp =
@@ -56,102 +54,102 @@ public class Tasks {
             "{'task':'direct', 'currentUserId':'%s', 'secondUserId':'%s', 'message':'%s'}";
 
     public static String getEditPhoto(String currentUserId, String newPhoto) {
-        return new Gson().toJson(String.format(editPhoto, currentUserId, newPhoto));
+        return (String.format(editPhoto, currentUserId, newPhoto));
     }
 
     public static String getEditBio(String currentUserId, String newBio) {
-        return new Gson().toJson(String.format(editBio, currentUserId, newBio));
+        return (String.format(editBio, currentUserId, newBio));
     }
 
     public static String getEditUsername(String currentUserId, String newUserName) {
-        return new Gson().toJson(String.format(editUsername, currentUserId, newUserName));
+        return (String.format(editUsername, currentUserId, newUserName));
     }
 
     public static String getSendEmail(String username, String email) {
-        return new Gson().toJson(String.format(sendEmail, username, email));
+        return (String.format(sendEmail, username, email));
     }
 
     public static String getCheckCode(String username, String email, String code) {
-        return new Gson().toJson(String.format(checkCode, username, email, code));
+        return (String.format(checkCode, username, email, code));
     }
 
     public static String getShowFollowers(String currentUserId, String username) {
-        return new Gson().toJson(String.format(showFollowers, currentUserId, username));
+        return (String.format(showFollowers, currentUserId, username));
     }
 
     public static String getShowFollowings(String currentUserId, String username) {
-        return new Gson().toJson(String.format(showFollowings, currentUserId, username));
+        return (String.format(showFollowings, currentUserId, username));
     }
 
     public static String getShowComments(String currentUserId, String username) {
-        return new Gson().toJson(String.format(showComments, currentUserId, username));
+        return (String.format(showComments, currentUserId, username));
     }
 
     public static String getSignUpPart1(String username, String email) {
-        return new Gson().toJson(String.format(signUpPart1, username, email));
+        return (String.format(signUpPart1, username, email));
     }
 
     public static String getSignUpTask(String currentUsername, String password, String email) {
-        return new Gson().toJson(String.format(signUp, currentUsername, password, email));
+        return (String.format(signUp, currentUsername, password, email));
     }
 
     public static String getLoginTask(String username, String password) {
-        return new Gson().toJson(String.format(login, username, password));
+        return (String.format(login, username, password));
     }
 
     public static String getTimelineTask(String currentUserId) {
-        return new Gson().toJson(String.format(timeline, currentUserId));
+        return (String.format(timeline, currentUserId));
     }
 
     public static String getNewPostTask(String currentUserId, String photoString, String caption) {
-        return new Gson().toJson(String.format(newPost, currentUserId, photoString, caption));
+        return (String.format(newPost, currentUserId, photoString, caption));
     }
 
     public static String getLikeTask(String currentUserId, String postId) {
-        return new Gson().toJson(String.format(like, currentUserId, postId));
+        return (String.format(like, currentUserId, postId));
     }
 
     public static String getUnLikeTask(String currentUserId, String postId) {
-        return new Gson().toJson(String.format(unLike, currentUserId, postId));
+        return (String.format(unLike, currentUserId, postId));
     }
 
     public static String getProfileViewTask(String currentUserId, String viewedUserId) {
-        return new Gson().toJson(String.format(profileView, currentUserId, viewedUserId));
+        return (String.format(profileView, currentUserId, viewedUserId));
     }
 
     public static String getCommentTask(String currentUserId, String postId, String commented) {
-        return new Gson().toJson(String.format(comment, currentUserId, postId, commented));
+        return (String.format(comment, currentUserId, postId, commented));
     }
 
     public static String getFollowTask(String currentUserId, String followedUserId) {
-        return new Gson().toJson(String.format(follow, currentUserId, followedUserId));
+        return (String.format(follow, currentUserId, followedUserId));
     }
 
     public static String getUnFollowTask(String currentUserId, String unFollowedUserId) {
-        return new Gson().toJson(String.format(unFollow, currentUserId, unFollowedUserId));
+        return (String.format(unFollow, currentUserId, unFollowedUserId));
     }
 
     public static String getBlockTask(String currentUserId, String blockedUserId) {
-        return new Gson().toJson(String.format(block, currentUserId, blockedUserId));
+        return (String.format(block, currentUserId, blockedUserId));
     }
 
     public static String getUnBlockTask(String currentUserId, String unBlockedUserId) {
-        return new Gson().toJson(String.format(unBlock, currentUserId, unBlockedUserId));
+        return (String.format(unBlock, currentUserId, unBlockedUserId));
     }
 
     public static String getSearchTask(String currentUserId, String searchedName) {
-        return new Gson().toJson(String.format(search, currentUserId, searchedName));
+        return (String.format(search, currentUserId, searchedName));
     }
 
     public static String getPostViewTask(String currentUserId, String postId) {
-        return new Gson().toJson(String.format(postView, currentUserId, postId));
+        return (String.format(postView, currentUserId, postId));
     }
 
     public static String getNotificationTask(String currentUserId) {
-        return new Gson().toJson(String.format(notification, currentUserId));
+        return (String.format(notification, currentUserId));
     }
 
     public  static String getDirectTask(String currentUserId, String secondUserId, String message) {
-        return new Gson().toJson(String.format(direct, currentUserId, secondUserId, message));
+        return (String.format(direct, currentUserId, secondUserId, message));
     }
 }
