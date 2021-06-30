@@ -207,7 +207,12 @@ public class Process {
                 }
             }
             Profile profile = new Profile(username,userId,date,bio,followersNumber,followingsNumber,postIds,isFollowing);
-            ShowProfileController.setProfile(profile);
+            if(userId == LoginPageController.getUserId()) {
+                MyProfileController.setProfile(profile);
+            }
+            else {
+                ShowProfileController.setProfile(profile);
+            }
         }
 
     }
@@ -265,6 +270,7 @@ public class Process {
                     posts.add(jArray.get(i).getAsInt());
                 }
             }
+            HomePageController.setPostIds(posts);
         }
     }
 

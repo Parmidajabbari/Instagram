@@ -2,11 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
    <children>
@@ -47,28 +45,12 @@
          <graphic>
             <FontAwesomeIconView glyphName="LOCATION_ARROW" size="30" />
          </graphic></JFXButton>
-      <AnchorPane layoutX="75.0" layoutY="124.0" prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: white;">
-         <children>
-            <Line endX="175.0" layoutX="175.0" layoutY="356.0" startX="-175.0" />
-            <Line endX="175.0" layoutX="175.0" layoutY="316.0" startX="-175.0" />
-            <Label fx:id="caption" layoutX="1.0" layoutY="317.0" prefHeight="40.0" prefWidth="350.0" />
-            <Label fx:id="likes" layoutX="54.0" layoutY="357.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
-            <Label fx:id="comments" layoutX="230.0" layoutY="357.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="357.0" onAction="#likePost" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="l" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="190.0" layoutY="357.0" onAction="#comments" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="c" textFill="WHITE" />
-            <FontAwesomeIconView glyphName="COMMENT" layoutX="201.0" layoutY="383.0" size="18" />
-            <FontAwesomeIconView glyphName="HEART" layoutX="25.0" layoutY="383.0" size="18" />
-            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="26.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
-            <Line endX="150.0" layoutX="175.0" layoutY="16.0" startX="-150.0" />
-            <Line endY="150.0" layoutX="24.0" layoutY="167.0" startY="-150.0" />
-            <Line endY="150.0" layoutX="325.0" layoutY="167.0" startY="-150.0" />
-         </children></AnchorPane>
-      <JFXButton layoutX="425.0" layoutY="143.0" onAction="#nextPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="n" textFill="WHITE">
+      <JFXButton fx:id="next" layoutX="425.0" layoutY="143.0" onAction="#nextPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="n" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="80" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="15.0" layoutY="143.0" onAction="#prevPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="b" textFill="WHITE">
+      <JFXButton fx:id="prev" layoutX="15.0" layoutY="143.0" onAction="#prevPost" prefHeight="300.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="b" textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="ANGLE_LEFT" size="80" />
          </graphic>

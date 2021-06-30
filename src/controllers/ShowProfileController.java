@@ -41,6 +41,10 @@ public class ShowProfileController implements Initializable {
     TextField followingsCountText;
     @FXML
     JFXButton follow;
+    @FXML
+    JFXButton next;
+    @FXML
+    JFXButton prev;
 
     @FXML
     GridPane gridPane;
@@ -103,6 +107,14 @@ public class ShowProfileController implements Initializable {
 
     @FXML
     public void nextPost(ActionEvent actionEvent) {
+        if(index == postIds.size()-1) {
+            next.setVisible(false);
+            next.setDisable(true);
+        }
+        else {
+            next.setVisible(true);
+            next.setDisable(false);
+        }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
        // Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
@@ -112,6 +124,14 @@ public class ShowProfileController implements Initializable {
 
     @FXML
     public void prevPost(ActionEvent actionEvent) {
+        if(index == 0) {
+            prev.setVisible(false);
+            prev.setDisable(true);
+        }
+        else  {
+            prev.setVisible(true);
+            prev.setDisable(false);
+        }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         // Client.sendRequest(massage);
         anchorPane = ShowPostController.getShowPostPane();
