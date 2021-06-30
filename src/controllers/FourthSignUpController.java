@@ -19,6 +19,8 @@ public class FourthSignUpController implements Initializable {
     private static String userName;
     private static String email;
 
+    private static String result;
+
     public static void setEmail(String Email) {
         email = Email;
     }
@@ -33,19 +35,15 @@ public class FourthSignUpController implements Initializable {
     TextField passwordText;
 
     @FXML
-    static JFXTextField resultText;
+    JFXTextField resultText;
 
 
     public static void setIsDone(boolean isDone) {
         FourthSignUpController.isDone = isDone;
     }
 
-    public static JFXTextField getResultText() {
-        return resultText;
-    }
-
-    public static void setResultText(JFXTextField resultText) {
-        FourthSignUpController.resultText = resultText;
+    public static void setResult(String result) {
+        FourthSignUpController.result = result;
     }
 
     @FXML
@@ -81,6 +79,7 @@ public class FourthSignUpController implements Initializable {
         if(!passwordText.isEditable()) {
             String message = Tasks.getSignUpTask(userName, password, email);
             Client.sendRequest(message);
+            resultText.setText(result);
             if(isDone) {
                 PageController.closePage(actionEvent);
                 PageController.openPage("homePage");

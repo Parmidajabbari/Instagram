@@ -12,37 +12,46 @@ import java.io.IOException;
 
 public class SearchPageController {
 
+    private static String result = "";
+    private static String search;
+    private static int showUserId;
     @FXML
-    static JFXTextField searchText;
+    JFXTextField searchText;
 
     @FXML
-    private static JFXTextField resultText;
+    JFXTextField resultText;
 
-    private static boolean isSet;
-
-    public static JFXTextField getSearchText() {
-        return searchText;
+    public static String getSearch() {
+        return search;
     }
 
-    public static void setIsSet(boolean set) {
-        isSet = set;
+    public static void setShowUserId(int showUserId) {
+        SearchPageController.showUserId = showUserId;
     }
 
-    public static JFXTextField getResultText() {
-        return resultText;
+    public static int getShowUserId() {
+        return showUserId;
     }
 
-    public static void setResultText(JFXTextField resultText) {
-        SearchPageController.resultText = resultText;
+    public static void setResult(String result) {
+        SearchPageController.result = result;
+    }
+
+    private static boolean isDone;
+
+    public static void setIsDone(boolean isDone) {
+        SearchPageController.isDone = isDone;
     }
 
     @FXML
     void enterSearch(ActionEvent event) throws Exception {
         String name = searchText.getText();
+        search = name;
         String massage = Tasks.getSearchTask(Integer.toString(LoginPageController.getUserId()), name);
         Client.sendRequest(massage);
+        resultText.setText(result);
 
-        if(isSet) {
+        if(isDone) {
             PageController.closePage(event);
             PageController.openPage("showProfile");
         }

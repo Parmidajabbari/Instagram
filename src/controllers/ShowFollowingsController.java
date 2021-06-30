@@ -3,6 +3,8 @@ package controllers;
 import app.Client;
 import app.Tasks;
 import com.jfoenix.controls.JFXListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,12 +15,13 @@ import java.util.ResourceBundle;
 
 public class ShowFollowingsController implements Initializable {
 
+    private static ObservableList<String> list = FXCollections.observableArrayList();
 
     @FXML
-    static JFXListView<String> followingsList;
+    JFXListView<String> followingsList;
 
-    public static JFXListView<String> getFollowingsList() {
-        return followingsList;
+    public static void setList(ObservableList<String> list) {
+        ShowFollowingsController.list = list;
     }
 
     @FXML
@@ -36,7 +39,7 @@ public class ShowFollowingsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getShowFollowers(Integer.toString(LoginPageController.getUserId()),
-                SearchPageController.getSearchText().toString());
+                SearchPageController.getSearch());
 
         try {
             Client.sendRequest(message);
@@ -44,5 +47,6 @@ public class ShowFollowingsController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
         }
+        followingsList.setItems(list);
     }
 }

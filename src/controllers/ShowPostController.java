@@ -25,8 +25,10 @@ public class ShowPostController implements Initializable {
     private static int postId;
     private static Post post;
 
+    private static AnchorPane copyPane;
+
     @FXML
-    static AnchorPane showPostPane;
+    AnchorPane showPostPane;
     @FXML
     ImageView photo;
     @FXML
@@ -40,8 +42,8 @@ public class ShowPostController implements Initializable {
     @FXML
     Label username;
 
-    public static AnchorPane getShowPostPane() {
-        return showPostPane;
+    public static AnchorPane getCopyPane() {
+        return copyPane;
     }
 
     public static void setPost(Post post) {
@@ -78,6 +80,7 @@ public class ShowPostController implements Initializable {
     public void like(ActionEvent actionEvent) throws IOException {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
         Client.sendRequest(massage);
+        copyPane = showPostPane;
     }
 
     @FXML
@@ -99,5 +102,6 @@ public class ShowPostController implements Initializable {
         likesCount.setText(Integer.toString(post.getLikesCount()));
         commentsCount.setText(Integer.toString(post.getCommentsCount()));
         date.setText(post.getDateTime());
+        copyPane = showPostPane;
     }
 }

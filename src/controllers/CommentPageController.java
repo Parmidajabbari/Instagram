@@ -4,6 +4,8 @@ import app.Client;
 import app.Tasks;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,14 +16,15 @@ import java.util.ResourceBundle;
 
 public class CommentPageController implements Initializable {
 
+    private static ObservableList<String> list = FXCollections.observableArrayList();
     @FXML
-    static JFXListView<String> commentsList;
+    JFXListView<String> commentsList;
 
     @FXML
     private JFXTextField newCommentText;
 
-    public static JFXListView<String> getCommentsList() {
-        return  commentsList;
+    public static void setList(ObservableList<String> list) {
+        CommentPageController.list = list;
     }
 
     @FXML
@@ -39,6 +42,6 @@ public class CommentPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        commentsList.setItems(list);
     }
 }

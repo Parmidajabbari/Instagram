@@ -31,6 +31,8 @@ public class NewPostController implements Initializable {
     private static int postId;
     private static boolean isPosted = false;
 
+    private static String result = "";
+
     @FXML
     ImageView newPostPhoto;
 
@@ -38,7 +40,11 @@ public class NewPostController implements Initializable {
     TextField captionText;
 
     @FXML
-    static JFXTextField resultText;
+    JFXTextField resultText;
+
+    public static void setResult(String result) {
+        NewPostController.result = result;
+    }
 
     public static void setPostId(int postId) {
         NewPostController.postId = postId;
@@ -46,14 +52,6 @@ public class NewPostController implements Initializable {
 
     public static void setIsPosted(boolean isPosted) {
         NewPostController.isPosted = isPosted;
-    }
-
-    public static JFXTextField getResultText() {
-        return resultText;
-    }
-
-    public static void setResultText(JFXTextField resultText) {
-        NewPostController.resultText = resultText;
     }
 
     public static String getFileExtension(String fullName) {
@@ -101,6 +99,7 @@ public class NewPostController implements Initializable {
     public void share(ActionEvent actionEvent) throws Exception {
         String massage = Tasks.getNewPostTask(Integer.toString(LoginPageController.getUserId()),imageString,caption);
         Client.sendRequest(massage);
+        resultText.setText(result);
         if(isPosted) {
             PageController.closePage(actionEvent);
             PageController.openPage("homePage");
