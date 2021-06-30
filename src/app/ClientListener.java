@@ -46,6 +46,7 @@ public class ClientListener implements Runnable{
             try {
                 String message = input.readUTF();
                 Process process = new Process(message);
+                System.out.println(message);
                 process.doTask();
             }
             catch (IOException e) {
