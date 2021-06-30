@@ -47,13 +47,12 @@ public class FourthSignUpController implements Initializable {
     }
 
     @FXML
-    public void setPassword(ActionEvent actionEvent) {
+    public void completeSignUp(ActionEvent actionEvent) throws Exception {
         String passwordString = passwordText.getText();
         if(User.isPasswordAcceptable(passwordString)) {
             password = passwordString;
             resultText.setText("Password saved successfully");
             resultText.setStyle("-fx-text-inner-color: green;");
-            passwordText.setEditable(false);
         }
         else if(!User.isPasswordAcceptable(passwordString)) {
             switch (User.getPasswordError()) {
@@ -70,20 +69,13 @@ public class FourthSignUpController implements Initializable {
                     break;
                 }
             }
-            return;
         }
-    }
-
-    @FXML
-    public void completeSignUp(ActionEvent actionEvent) throws Exception {
-        if(!passwordText.isEditable()) {
-            String message = Tasks.getSignUpTask(userName, password, email);
-            Client.sendRequest(message);
-            resultText.setText(result);
-            if(isDone) {
-                PageController.closePage(actionEvent);
-                PageController.openPage("homePage");
-            }
+        String message = Tasks.getSignUpTask(userName, password, email);
+        Client.sendRequest(message);
+        resultText.setText(result);
+        if(isDone) {
+            PageController.closePage(actionEvent);
+            PageController.openPage("homePage");
         }
     }
 

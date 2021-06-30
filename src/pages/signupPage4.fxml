@@ -15,7 +15,7 @@
             <Font name="Avenir Book" size="29.0" />
          </font>
       </Text>
-      <TextField fx:id="passwordText" layoutX="88.0" layoutY="120.0" onAction="#setPassword" prefHeight="33.0" prefWidth="346.0" promptText="Password" />
+      <TextField fx:id="passwordText" layoutX="88.0" layoutY="120.0" prefHeight="33.0" prefWidth="346.0" promptText="Password" />
       <JFXButton layoutX="88.0" layoutY="171.0" onAction="#completeSignUp" prefHeight="33.0" prefWidth="346.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="15.0" />

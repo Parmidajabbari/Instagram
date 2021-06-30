@@ -51,11 +51,15 @@ public class SignUpController implements Initializable {
 
     @FXML
     public void getEmail(ActionEvent actionEvent) {
-        email = emailText.getText();
+
+    }
+
+    public void getUsername(ActionEvent actionEvent) {
+
     }
 
     @FXML
-    public void getUsername(ActionEvent actionEvent) {
+    public void nextPage(ActionEvent actionEvent) throws Exception {
         username = usernameText.getText();
         if(!User.isUserAcceptable(username)) {
             switch (User.getUserNameError()) {
@@ -72,17 +76,12 @@ public class SignUpController implements Initializable {
                     break;
                 }
             }
-            return;
         }
-    }
-
-    @FXML
-    public void nextPage(ActionEvent actionEvent) throws Exception {
+        email = emailText.getText();
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
         resultText.setText(result);
-        TimeUnit.SECONDS.sleep(1);
         if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);

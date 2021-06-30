@@ -45,21 +45,14 @@ public class SecondSignUpController implements Initializable {
     }
 
     @FXML
-    public void setCode(ActionEvent actionEvent) throws IOException {
-            String userCode = codeText.getText();
-            //send userCode to server
-            String message = Tasks.getCheckCode(username, email, userCode);
-            Client.sendRequest(message);
-            resultText.setText(result);
-            if(isDone) {
-                FourthSignUpController.setEmail(email);
-                codeText.setEditable(false);
-            }
-    }
-
-    @FXML
     public void nextPage(ActionEvent actionEvent) throws Exception {
-        if(!codeText.isEditable()) {
+        String userCode = codeText.getText();
+        //send userCode to server
+        String message = Tasks.getCheckCode(username, email, userCode);
+        Client.sendRequest(message);
+        resultText.setText(result);
+        if(isDone) {
+            FourthSignUpController.setEmail(email);
             PageController.closePage(actionEvent);
             PageController.openPage("signupPage4");
         }
