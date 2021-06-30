@@ -48,7 +48,12 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    public void nextPage(ActionEvent actionEvent) throws Exception {
+    public void getEmail(ActionEvent actionEvent) {
+        email = emailText.getText();
+    }
+
+    @FXML
+    public void getUsername(ActionEvent actionEvent) {
         username = usernameText.getText();
         if(!User.isUserAcceptable(username)) {
             switch (User.getUserNameError()) {
@@ -67,7 +72,10 @@ public class SignUpController implements Initializable {
             }
             return;
         }
-        email = emailText.getText();
+    }
+
+    @FXML
+    public void nextPage(ActionEvent actionEvent) throws Exception {
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
@@ -97,4 +105,5 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+
 }
