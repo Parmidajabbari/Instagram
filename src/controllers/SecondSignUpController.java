@@ -17,7 +17,7 @@ public class SecondSignUpController implements Initializable {
 
     private static String email;
     private static String username;
-    private static String result;
+    private static String result = "";
     public static void setEmail(String Email) {
         email = Email;
     }
@@ -50,6 +50,7 @@ public class SecondSignUpController implements Initializable {
             //send userCode to server
             String message = Tasks.getCheckCode(username, email, userCode);
             Client.sendRequest(message);
+            resultText.setText(result);
             if(isDone) {
                 FourthSignUpController.setEmail(email);
                 codeText.setEditable(false);

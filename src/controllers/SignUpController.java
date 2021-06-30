@@ -10,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Time;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class SignUpController implements Initializable {
     private static String result;
@@ -18,7 +20,7 @@ public class SignUpController implements Initializable {
 
     private String username;
 
-    private static boolean isDone;
+    public static boolean isDone;
 
     @FXML
     TextField emailText;
@@ -80,6 +82,7 @@ public class SignUpController implements Initializable {
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
         resultText.setText(result);
+        TimeUnit.SECONDS.sleep(1);
         if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);

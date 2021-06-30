@@ -22,7 +22,7 @@ public class Client {
             indexOfConn = input.readInt();
 
             ClientListener clientListener = new ClientListener(socket);
-            new Thread(clientListener);
+            new Thread(clientListener).start();
         }
         catch (IOException e) {
             e.printStackTrace();

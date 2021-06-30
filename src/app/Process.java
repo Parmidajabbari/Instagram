@@ -28,7 +28,7 @@ public class Process {
     public void doTask() throws IOException {
         String task = jsonObject.get("task").getAsString();
 
-        switch (task.toLowerCase(Locale.ROOT)) {
+        switch (task) {
 
             case "signUpPart1" : signupPart1Task();
                 break;
@@ -301,7 +301,7 @@ public class Process {
     private void checkCodeTask() {
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
-           SecondSignUpController.setResult(jsonObject.get("Result").getAsString());
+            SecondSignUpController.setResult(jsonObject.get("Result").getAsString());
             SecondSignUpController.setIsDone(false);
 
         }
@@ -395,11 +395,9 @@ public class Process {
     }
 
     private void signupPart1Task() {
-        System.out.println("frfrfe");
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
            SignUpController.setResult(jsonObject.get("Result").getAsString());
-  ;
             SignUpController.setIsDone(false);
         }
         else {
