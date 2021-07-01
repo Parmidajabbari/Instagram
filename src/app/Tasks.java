@@ -27,7 +27,7 @@ public class Tasks {
     private static final String timeline =
             "{'task':'timeline', 'currentUserId':'%s'}";
     private static final String newPost =
-            "{'task':'newPost', 'currentUserId':'%s', 'photoString':'%s', 'caption':'%s'}";
+            "{'task':'newPost', 'currentUserId':'%s', 'caption':'%s'}";
     private static final String like =
             "{'task':'like', 'currentUserId':'%s', 'postId':'%s'}";
     private static final String unLike =
@@ -101,8 +101,8 @@ public class Tasks {
         return (String.format(timeline, currentUserId));
     }
 
-    public static String getNewPostTask(String currentUserId, String photoString, String caption) {
-        return (String.format(newPost, currentUserId, photoString, caption));
+    public static String getNewPostTask(String currentUserId, String caption) {
+        return (String.format(newPost, currentUserId, caption));
     }
 
     public static String getLikeTask(String currentUserId, String postId) {
