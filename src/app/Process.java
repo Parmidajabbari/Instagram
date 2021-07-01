@@ -132,12 +132,11 @@ public class Process {
             String username = jsonObject.get("ownerName").getAsString();
             String date = jsonObject.get("uploaded").getAsString();
             int ownerId = jsonObject.get("ownerId").getAsInt();
-            //System.out.println("0wnername   " + username);
             byte[] bytes = Client.readMessage();
             Post post = new Post(bytes,caption,likesCount,commentsCount,username,date,ownerId,isLiked);
             System.out.println(post.getOwnerName());
-            ShowPostController.setPost(post);
-            Thread.sleep(2000);
+            HomePagePostController.setPost(post);
+            Thread.sleep(8000);
         }
     }
 

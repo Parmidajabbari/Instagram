@@ -55,6 +55,10 @@ public class ShowPostController implements Initializable {
         ShowPostController.postId = postId;
     }
 
+    public static Post getPost() {
+        return post;
+    }
+
     @FXML
     public void like(ActionEvent actionEvent) throws IOException {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));

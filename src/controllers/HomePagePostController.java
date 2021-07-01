@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class HomePagePostController implements Initializable {
 
     private static int postId;
-    private static Post post;
+    public static Post post;
 
     @FXML
     static AnchorPane copyPane;
@@ -42,10 +42,6 @@ public class HomePagePostController implements Initializable {
     Label date;
     @FXML
     Label username;
-
-    public static AnchorPane getCopyPane() {
-        return copyPane;
-    }
 
     public static void setPost(Post post) {
         HomePagePostController.post = post;
@@ -67,6 +63,12 @@ public class HomePagePostController implements Initializable {
         PageController.closePage(actionEvent);
         PageController.openPage("commentPage");
     }
+
+    @FXML
+    public void back(ActionEvent actionEvent) {
+        PageController.closePage(actionEvent);
+    }
+
     public static File writeByte(byte[] bytes) {
         File file = new File("");
         try {
@@ -81,23 +83,21 @@ public class HomePagePostController implements Initializable {
         return file;
     }
 
-    public static Post getPost() {
-        return post;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       //ShowPostController.getPost();
         copyPane = new AnchorPane();
         if(post != null) {
-            File file = writeByte(post.getImageBytes());
-            Image image = new Image(file.toURI().toString());
+            Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
             photo.setImage(image);
             caption.setText(post.getCaption());
             username.setText(post.getOwnerName());
             likesCount.setText(Integer.toString(post.getLikes()));
             commentsCount.setText(Integer.toString(post.getComments()));
             date.setText(post.getUploaded());
-            copyPane = postPane;
+            HomePageController.setAnchorPane(postPane);
         }
     }
+
 }
