@@ -23,7 +23,7 @@ public class Tasks {
     private static final String checkCode =
             "{'task':'checkCode', 'currentUserId':'0', 'username':'%s', 'email':'%s', 'code':'%s'}";
     private static final String login =
-            "{'task':'login', 'currentUserId':'0', 'username':'%s' 'password':'%s'}";
+            "{'task':'login', 'currentUserId':'0', 'username':'%s', 'password':'%s'}";
     private static final String timeline =
             "{'task':'timeline', 'currentUserId':'%s'}";
     private static final String newPost =
