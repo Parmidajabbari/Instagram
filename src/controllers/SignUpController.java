@@ -78,6 +78,7 @@ public class SignUpController implements Initializable {
             resultText.setText(result);
             if(isDone) {
                 SecondSignUpController.setEmail(email);
+                SecondSignUpController.setUsername(username);
                 FourthSignUpController.setUserName(username);
                 emailText.setEditable(false);
             }
