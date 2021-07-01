@@ -68,7 +68,12 @@ public class Process {
                 break;
             case "search" : searchTask();
                 break;
-            case "postView" : postViewTask();
+            case "postView" :
+                try {
+                    postViewTask();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "notification" : notificationTask();
                 break;
@@ -79,6 +84,8 @@ public class Process {
             case "changeBio" : editBioTask();
                 break;
             case "changeProPic" : editPhotoTask();
+                break;
+            case "getImage" :    getImage();
                 break;
         }
 
@@ -111,14 +118,18 @@ public class Process {
             ActivityPageController.setList(notifications);
         }
     }
+    private static byte[] bytes;
 
-    private void postViewTask() throws IOException {
+    public static void setBytes(byte[] bytes) {
+        Process.bytes = bytes;
+    }
+
+    private void postViewTask() throws IOException, InterruptedException {
 
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
         }
         else {
-            byte[] bytes = Client.readMessage();
             String caption = jsonObject.get("caption").getAsString();
             boolean isLiked = jsonObject.get("isLiked").getAsBoolean();
             int likesCount = jsonObject.get("likes").getAsInt();
@@ -126,9 +137,11 @@ public class Process {
             String username = jsonObject.get("ownerName").getAsString();
             String date = jsonObject.get("uploaded").getAsString();
             int ownerId = jsonObject.get("ownerId").getAsInt();
+            System.out.println("0wnername   " + username);
             Post post = new Post(bytes,caption,likesCount,commentsCount,username,date,ownerId,isLiked);
-
+            System.out.println(post.getOwnerName());
             ShowPostController.setPost(post);
+            Thread.sleep(5000);
         }
     }
 
@@ -434,5 +447,8 @@ public class Process {
         else {
             EditProfileController.setResult(jsonObject.get("Result").getAsString());
         }
+    }
+    private void getImage() throws IOException {
+        bytes = Client.readMessage();
     }
 }

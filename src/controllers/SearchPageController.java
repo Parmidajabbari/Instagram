@@ -49,6 +49,7 @@ public class SearchPageController {
         search = name;
         String massage = Tasks.getSearchTask(Integer.toString(LoginPageController.getUserId()), name);
         Client.sendRequest(massage);
+        Thread.sleep(5000);
         resultText.setText(result);
 
         if(isDone) {

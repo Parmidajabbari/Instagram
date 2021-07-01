@@ -14,6 +14,7 @@ public class ClientListener implements Runnable{
     private DataOutputStream output;
     private DataInputStream input;
     private DataInputStream onlineInput;
+    private boolean isImage;
 
     public ClientListener(Socket socket) throws IOException {
         this.socket = socket;

@@ -81,11 +81,15 @@ public class HomePagePostController implements Initializable {
         return file;
     }
 
+    public static Post getPost() {
+        return post;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         copyPane = new AnchorPane();
-        File file = writeByte(post.getImageBytes());
-        if(file != null) {
+        if(post != null) {
+            File file = writeByte(post.getImageBytes());
             Image image = new Image(file.toURI().toString());
             photo.setImage(image);
             caption.setText(post.getCaption());
