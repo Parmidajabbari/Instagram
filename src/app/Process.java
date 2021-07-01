@@ -112,19 +112,22 @@ public class Process {
         }
     }
 
-    private void postViewTask() {
+    private void postViewTask() throws IOException {
+
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
         }
         else {
-            String photo = jsonObject.get("image").getAsString();
+            byte[] bytes = Client.readMessage();
             String caption = jsonObject.get("caption").getAsString();
+            boolean isLiked = jsonObject.get("isLiked").getAsBoolean();
             int likesCount = jsonObject.get("likes").getAsInt();
             int commentsCount = jsonObject.get("comments").getAsInt();
             String username = jsonObject.get("ownerName").getAsString();
             String date = jsonObject.get("uploaded").getAsString();
             int ownerId = jsonObject.get("ownerId").getAsInt();
-            Post post = new Post(photo,caption,likesCount,commentsCount,username,date,ownerId);
+            Post post = new Post(bytes,caption,likesCount,commentsCount,username,date,ownerId,isLiked);
+
             ShowPostController.setPost(post);
         }
     }

@@ -15,18 +15,17 @@ import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HomePagePostController implements Initializable {
 
-    public static int postId;
-    public static Post post;
+    private static int postId;
+    private static Post post;
 
     @FXML
-    public static AnchorPane copyPane;
+    static AnchorPane copyPane;
 
     @FXML
     AnchorPane postPane;
@@ -68,20 +67,33 @@ public class HomePagePostController implements Initializable {
         PageController.closePage(actionEvent);
         PageController.openPage("commentPage");
     }
+    public static File writeByte(byte[] bytes) {
+        File file = new File("");
+        try {
+            OutputStream os = new FileOutputStream(file);
+            os.write(bytes);
+            os.close();
+        }
+
+        catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+        return file;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            photo.setImage(ShowPostController.decodeBase64BinaryToImage(post.getPhotoString()));
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        copyPane = new AnchorPane();
+        File file = writeByte(post.getImageBytes());
+        if(file != null) {
+            Image image = new Image(file.toURI().toString());
+            photo.setImage(image);
+            caption.setText(post.getCaption());
+            username.setText(post.getOwnerName());
+            likesCount.setText(Integer.toString(post.getLikes()));
+            commentsCount.setText(Integer.toString(post.getComments()));
+            date.setText(post.getUploaded());
+            copyPane = postPane;
         }
-        caption.setText(post.getCaption());
-        username.setText(post.getUsername());
-        likesCount.setText(Integer.toString(post.getLikesCount()));
-        commentsCount.setText(Integer.toString(post.getCommentsCount()));
-        date.setText(post.getDateTime());
-        copyPane = postPane;
     }
 }

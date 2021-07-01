@@ -46,7 +46,7 @@ public class MyProfileController implements Initializable {
     GridPane gridPane;
 
     @FXML
-    public AnchorPane anchorPane;
+    AnchorPane anchorPane;
 
     public static void setProfile(Profile profile) {
         MyProfileController.profile = profile;

@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class SearchPageController {
 
-    public static String result = "";
-    public static String search;
-    public static int showUserId;
+    private static String result = "";
+    private static String search;
+    private static int showUserId;
     @FXML
     JFXTextField searchText;
 

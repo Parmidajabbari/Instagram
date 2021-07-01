@@ -20,6 +20,7 @@ public class ClientListener implements Runnable{
         input = new DataInputStream(socket.getInputStream());
       //  output = new DataOutputStream(socket.getOutputStream());
         onlineInput = new DataInputStream(socket.getInputStream());
+
     }
 
 //    public void sendMassage() throws IOException {

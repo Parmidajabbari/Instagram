@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class HomePageController implements Initializable {
 
     private int index = 0;
-    public static ArrayList<Integer> postIds = new ArrayList<>();
+    private static ArrayList<Integer> postIds = new ArrayList<>();
     @FXML
     JFXButton next;
     @FXML
@@ -84,6 +84,9 @@ public class HomePageController implements Initializable {
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
         anchorPane = HomePagePostController.getCopyPane();
+        if(anchorPane == null) {
+            System.out.println("sss");
+        }
         gridPane.add(anchorPane,0,0);
         index++;
     }
@@ -100,15 +103,17 @@ public class HomePageController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = HomePagePostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane!= null) {
+            anchorPane = HomePagePostController.getCopyPane();
+            gridPane.add(anchorPane,0,0);
+            index++;
+        }
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getTimelineTask(Integer.toString(LoginPageController.getUserId()));
-        //#############
         try {
             Client.sendRequest(message);
         }
