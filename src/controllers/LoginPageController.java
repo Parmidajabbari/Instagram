@@ -51,19 +51,12 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML
-    public void getUserName(ActionEvent actionEvent) {
-        username = usernameText.getText();
-    }
-
-    @FXML
-    public void getPassword(ActionEvent actionEvent) {
-        password = passwordText.getText();
-    }
-
-    @FXML
     public void login(ActionEvent actionEvent) throws Exception {
+        username = usernameText.getText();
+        password = passwordText.getText();
         String message = Tasks.getLoginTask(username,password);
         Client.sendRequest(message);
+        Thread.sleep(6000);
         resultText.setText(result);
         if(isDone) {
             PageController.closePage(actionEvent);

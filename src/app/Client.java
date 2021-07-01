@@ -28,7 +28,9 @@ public class Client {
             e.printStackTrace();
         }
     }
+    public static void sendImage(byte[] imageBytes) {
 
+    }
     public static void sendRequest(String json) throws IOException {
         try {
             output.writeUTF(json);
