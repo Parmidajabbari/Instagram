@@ -32,7 +32,7 @@ public class Process {
 
             case "signUpPart1" : signupPart1Task();
                 break;
-            case "signupPart2" : signupTask();
+            case "signUpPart2" : signupTask();
                 break;
             case "showFollowers" : showFollowersTask();
                 break;
