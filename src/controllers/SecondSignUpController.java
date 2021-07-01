@@ -50,6 +50,7 @@ public class SecondSignUpController implements Initializable {
         //send userCode to server
         String message = Tasks.getCheckCode(username, email, userCode);
         Client.sendRequest(message);
+        Thread.sleep(5000);
         resultText.setText(result);
         if(isDone) {
             FourthSignUpController.setEmail(email);

@@ -18,26 +18,26 @@ public class ClientListener implements Runnable{
     public ClientListener(Socket socket) throws IOException {
         this.socket = socket;
         input = new DataInputStream(socket.getInputStream());
-        output = new DataOutputStream(socket.getOutputStream());
+      //  output = new DataOutputStream(socket.getOutputStream());
         onlineInput = new DataInputStream(socket.getInputStream());
     }
 
-    public void sendMassage() throws IOException {
-        while (onlineInput.readBoolean()) {
-            try {
-                output.writeUTF("Online");
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                TimeUnit.MINUTES.sleep(1);
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    public void sendMassage() throws IOException {
+//        while (onlineInput.readBoolean()) {
+//            try {
+//                output.writeUTF("Online");
+//            }
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                TimeUnit.MINUTES.sleep(1);
+//            }
+//            catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     @Override
     public void run() {

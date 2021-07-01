@@ -1,7 +1,6 @@
 package controllers;
 
 import app.Client;
-import app.Process;
 import app.Tasks;
 import app.User;
 import com.jfoenix.controls.JFXTextField;
@@ -21,7 +20,7 @@ public class SignUpController implements Initializable {
 
     private String username;
 
-    public static boolean isDone;
+    private static boolean isDone;
 
     @FXML
     TextField emailText;
@@ -51,15 +50,6 @@ public class SignUpController implements Initializable {
     }
 
     @FXML
-    public void getEmail(ActionEvent actionEvent) {
-
-    }
-
-    public void getUsername(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
     public void nextPage(ActionEvent actionEvent) throws Exception {
         username = usernameText.getText();
         if(!User.isUserAcceptable(username)) {
@@ -82,9 +72,9 @@ public class SignUpController implements Initializable {
         //send email and username to server
         String message = Tasks.getSignUpPart1(username, email);
         Client.sendRequest(message);
+        Thread.sleep(5000);
         resultText.setText(result);
-        System.out.println(Process.isCodeOk);
-        if(Process.isCodeOk) {
+        if(isDone) {
             SecondSignUpController.setEmail(email);
             FourthSignUpController.setUserName(username);
             emailText.setEditable(false);

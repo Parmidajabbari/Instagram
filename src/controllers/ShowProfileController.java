@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 public class ShowProfileController implements Initializable {
 
-    private static Profile profile;
-    private ArrayList<Integer> postIds = new ArrayList<>();
+    public static Profile profile;
+    public ArrayList<Integer> postIds = new ArrayList<>();
     int index = 0;
 
     @FXML
@@ -49,7 +49,7 @@ public class ShowProfileController implements Initializable {
     @FXML
     GridPane gridPane;
     @FXML
-    AnchorPane anchorPane;
+    public AnchorPane anchorPane;
 
     public static void setProfile(Profile profile) {
         ShowProfileController.profile = profile;

@@ -72,6 +72,7 @@ public class FourthSignUpController implements Initializable {
         }
         String message = Tasks.getSignUpTask(userName, password, email);
         Client.sendRequest(message);
+        Thread.sleep(5000);
         resultText.setText(result);
         if(isDone) {
             PageController.closePage(actionEvent);

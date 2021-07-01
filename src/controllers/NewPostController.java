@@ -28,10 +28,10 @@ public class NewPostController implements Initializable {
     private String caption;
     private Image image;
     private String imageString;
-    private static int postId;
-    private static boolean isPosted = false;
+    public static int postId;
+    public static boolean isPosted = false;
 
-    private static String result = "";
+    public static String result = "";
 
     @FXML
     ImageView newPostPhoto;
