@@ -26,8 +26,6 @@ public class ShowPostController implements Initializable {
     private static int postId;
     private static Post post;
 
-    static AnchorPane copyPane;
-
     @FXML
     AnchorPane showPostPane;
     @FXML
@@ -42,10 +40,6 @@ public class ShowPostController implements Initializable {
     Label date;
     @FXML
     Label username;
-
-    public static AnchorPane getCopyPane() {
-        return copyPane;
-    }
 
     public static void setPost(Post post) {
         ShowPostController.post = post;
@@ -63,7 +57,6 @@ public class ShowPostController implements Initializable {
     public void like(ActionEvent actionEvent) throws IOException {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
         Client.sendRequest(massage);
-        copyPane = showPostPane;
     }
 
     @FXML
@@ -74,17 +67,12 @@ public class ShowPostController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        copyPane = new AnchorPane();
-        File file = HomePagePostController.writeByte(post.getImageBytes());
-        if(file != null) {
-            Image image = new Image(file.toURI().toString());
-            photo.setImage(image);
-            caption.setText(post.getCaption());
-            username.setText(post.getOwnerName());
-            likesCount.setText(Integer.toString(post.getLikes()));
-            commentsCount.setText(Integer.toString(post.getComments()));
-            date.setText(post.getUploaded());
-            copyPane = showPostPane;
-        }
+        Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
+        photo.setImage(image);
+        caption.setText(post.getCaption());
+        username.setText(post.getOwnerName());
+        likesCount.setText(Integer.toString(post.getLikes()));
+        commentsCount.setText(Integer.toString(post.getComments()));
+        date.setText(post.getUploaded());
     }
 }
