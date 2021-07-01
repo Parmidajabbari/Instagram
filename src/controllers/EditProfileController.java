@@ -93,15 +93,17 @@ public class EditProfileController implements Initializable {
             }
             return;
         }
-        String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
-        Client.sendRequest(secondMassage);
-        resultText.setText(result);
-        changedBio = bioText.getText();
-        String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
-        Client.sendRequest(thirdMassage);
-        resultText.setText(result);
-        PageController.closePage(actionEvent);
-        PageController.openPage("myProfile");
+        else {
+            String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
+            Client.sendRequest(secondMassage);
+            resultText.setText(result);
+            changedBio = bioText.getText();
+            String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
+            Client.sendRequest(thirdMassage);
+            resultText.setText(result);
+            PageController.closePage(actionEvent);
+            PageController.openPage("myProfile");
+        }
     }
 
     @FXML

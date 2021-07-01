@@ -52,7 +52,9 @@ public class SignUpController implements Initializable {
     @FXML
     public void nextPage(ActionEvent actionEvent) throws Exception {
         username = usernameText.getText();
+        email = emailText.getText();
         if(!User.isUserAcceptable(username)) {
+            System.out.println("ssss");
             switch (User.getUserNameError()) {
                 case "invalid" :
                 {
@@ -68,20 +70,21 @@ public class SignUpController implements Initializable {
                 }
             }
         }
-        email = emailText.getText();
-        //send email and username to server
-        String message = Tasks.getSignUpPart1(username, email);
-        Client.sendRequest(message);
-        Thread.sleep(5000);
-        resultText.setText(result);
-        if(isDone) {
-            SecondSignUpController.setEmail(email);
-            FourthSignUpController.setUserName(username);
-            emailText.setEditable(false);
-        }
-        if(!emailText.isEditable()) {
-            PageController.closePage(actionEvent);
-            PageController.openPage("signupPage2");
+        else {
+            //send email and username to server
+            String message = Tasks.getSignUpPart1(username, email);
+            Client.sendRequest(message);
+            Thread.sleep(5000);
+            resultText.setText(result);
+            if(isDone) {
+                SecondSignUpController.setEmail(email);
+                FourthSignUpController.setUserName(username);
+                emailText.setEditable(false);
+            }
+            if(!emailText.isEditable()) {
+                PageController.closePage(actionEvent);
+                PageController.openPage("signupPage2");
+            }
         }
     }
 
