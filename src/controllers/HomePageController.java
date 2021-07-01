@@ -29,7 +29,11 @@ public class HomePageController implements Initializable {
     GridPane gridPane;
 
     @FXML
-    AnchorPane anchorPane;
+    private static AnchorPane anchorPane;
+
+    public static void setAnchorPane(AnchorPane anchorPane) {
+        HomePageController.anchorPane = anchorPane;
+    }
 
     public static void setPostIds(ArrayList<Integer> postIds) {
         HomePageController.postIds = postIds;
@@ -72,7 +76,7 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) throws IOException, InterruptedException {
+    public void nextPost(ActionEvent actionEvent) throws Exception {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -82,25 +86,15 @@ public class HomePageController implements Initializable {
             next.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
-        System.out.println(" mmmm:  " + massage);
         Client.sendRequest(massage);
         Thread.sleep(4000);
-        if(HomePagePostController.getPost() == null) {
-            System.out.println("null post");
-        }
-        anchorPane = HomePagePostController.getCopyPane();
-        if(anchorPane==null) {
-            System.out.println("null anchor");
-        }
-        if(anchorPane!= null) {
-            gridPane.add(anchorPane,0,0);
-            index++;
-        }
+        PageController.openPage("homePagePost");
+        index++;
 
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) throws IOException, InterruptedException {
+    public void prevPost(ActionEvent actionEvent) throws Exception {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -112,17 +106,8 @@ public class HomePageController implements Initializable {
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
         Thread.sleep(4000);
-        if(HomePagePostController.getPost() == null) {
-            System.out.println("null post");
-        }
-        anchorPane = HomePagePostController.getCopyPane();
-        if(anchorPane == null) {
-            System.out.println("null anchor");
-        }
-        if(anchorPane!= null) {
-            gridPane.add(anchorPane,0,0);
-            index--;
-        }
+        PageController.openPage("homePagePost");
+        index--;
 
     }
 
