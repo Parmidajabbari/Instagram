@@ -51,8 +51,8 @@
             <Image url="@../media/instagramlogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameText" layoutX="86.0" layoutY="197.0" onAction="#getUserName" prefHeight="36.0" prefWidth="344.0" promptText="Username" />
-      <TextField fx:id="passwordText" layoutX="85.0" layoutY="251.0" onAction="#getPassword" prefHeight="36.0" prefWidth="344.0" promptText="Password" />
+      <TextField fx:id="usernameText" layoutX="86.0" layoutY="197.0" prefHeight="36.0" prefWidth="344.0" promptText="Username" />
+      <TextField fx:id="passwordText" layoutX="85.0" layoutY="251.0" prefHeight="36.0" prefWidth="344.0" promptText="Password" />
       <Button fx:id="SignUp" layoutX="278.0" layoutY="560.0" mnemonicParsing="false" onAction="#signUp" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: white;" text="Sign up." textFill="#0090f7">
          <font>
             <Font name="System Bold" size="13.0" />

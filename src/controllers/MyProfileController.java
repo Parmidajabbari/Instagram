@@ -124,20 +124,22 @@ public class MyProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameText.setText(profile.getUserName());
-        bioText.setText(profile.getBio());
-        followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
-        followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
-        postsCountText.setText(Integer.toString(profile.getPosts().size()));
-        String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId() ), Integer.toString(postIds.get(index)));
-        index++;
-        try {
-            Client.sendRequest(massage);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(profile != null) {
+            usernameText.setText(profile.getUserName());
+            bioText.setText(profile.getBio());
+            followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
+            followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
+            postsCountText.setText(Integer.toString(profile.getPosts().size()));
+            String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId() ), Integer.toString(postIds.get(index)));
+            index++;
+            try {
+                Client.sendRequest(massage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            anchorPane = ShowPostController.getCopyPane();
+            gridPane.add(anchorPane,0,0);
         }
-        anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
     }
 
 }
