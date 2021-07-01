@@ -85,8 +85,7 @@ public class Process {
                 break;
             case "changeProPic" : editPhotoTask();
                 break;
-            case "getImage" :    getImage();
-                break;
+
         }
 
     }
@@ -118,11 +117,7 @@ public class Process {
             ActivityPageController.setList(notifications);
         }
     }
-    private static byte[] bytes;
 
-    public static void setBytes(byte[] bytes) {
-        Process.bytes = bytes;
-    }
 
     private void postViewTask() throws IOException, InterruptedException {
 
@@ -137,11 +132,12 @@ public class Process {
             String username = jsonObject.get("ownerName").getAsString();
             String date = jsonObject.get("uploaded").getAsString();
             int ownerId = jsonObject.get("ownerId").getAsInt();
-            System.out.println("0wnername   " + username);
+            //System.out.println("0wnername   " + username);
+            byte[] bytes = Client.readMessage();
             Post post = new Post(bytes,caption,likesCount,commentsCount,username,date,ownerId,isLiked);
             System.out.println(post.getOwnerName());
             ShowPostController.setPost(post);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         }
     }
 
@@ -448,7 +444,5 @@ public class Process {
             EditProfileController.setResult(jsonObject.get("Result").getAsString());
         }
     }
-    private void getImage() throws IOException {
-        bytes = Client.readMessage();
-    }
+
 }
