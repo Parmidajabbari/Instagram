@@ -18,23 +18,17 @@ import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
 
-    private int index = 0;
+    private static int index = 0;
     private static ArrayList<Integer> postIds = new ArrayList<>();
     @FXML
     JFXButton next;
     @FXML
     JFXButton prev;
 
-    @FXML
-    GridPane gridPane;
 
-    @FXML
-    private static AnchorPane anchorPane;
-
-    public static void setAnchorPane(AnchorPane anchorPane) {
-        HomePageController.anchorPane = anchorPane;
+    public static int getPostId() {
+        return postIds.get(index);
     }
-
     public static void setPostIds(ArrayList<Integer> postIds) {
         HomePageController.postIds = postIds;
     }
