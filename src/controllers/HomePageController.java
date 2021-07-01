@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class HomePageController implements Initializable {
 
     private int index = 0;
-    public static ArrayList<Integer> postIds = new ArrayList<>();
+    private static ArrayList<Integer> postIds = new ArrayList<>();
     @FXML
     JFXButton next;
     @FXML
@@ -72,7 +72,7 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) throws IOException {
+    public void nextPost(ActionEvent actionEvent) throws IOException, InterruptedException {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -83,13 +83,23 @@ public class HomePageController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        if(HomePagePostController.getPost() == null) {
+            System.out.println("null post");
+        }
         anchorPane = HomePagePostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane==null) {
+            System.out.println("null anchor");
+        }
+        if(anchorPane!= null) {
+            gridPane.add(anchorPane,0,0);
+            index++;
+        }
+
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) throws IOException {
+    public void prevPost(ActionEvent actionEvent) throws IOException, InterruptedException {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -100,19 +110,29 @@ public class HomePageController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        if(HomePagePostController.getPost() == null) {
+            System.out.println("null post");
+        }
         anchorPane = HomePagePostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane == null) {
+            System.out.println("null anchor");
+        }
+        if(anchorPane!= null) {
+            gridPane.add(anchorPane,0,0);
+            index--;
+        }
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String message = Tasks.getTimelineTask(Integer.toString(LoginPageController.getUserId()));
-        //#############
         try {
             Client.sendRequest(message);
+            Thread.sleep(4000);
         }
-        catch (IOException e) {
+        catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 

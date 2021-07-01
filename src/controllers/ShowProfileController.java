@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 public class ShowProfileController implements Initializable {
 
-    public static Profile profile;
-    public ArrayList<Integer> postIds = new ArrayList<>();
+    private static Profile profile;
+    private ArrayList<Integer> postIds = new ArrayList<>();
     int index = 0;
 
     @FXML
@@ -49,7 +49,7 @@ public class ShowProfileController implements Initializable {
     @FXML
     GridPane gridPane;
     @FXML
-    public AnchorPane anchorPane;
+    AnchorPane anchorPane;
 
     public static void setProfile(Profile profile) {
         ShowProfileController.profile = profile;
@@ -135,8 +135,10 @@ public class ShowProfileController implements Initializable {
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
         anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane!= null) {
+            gridPane.add(anchorPane,0,0);
+            index--;
+        }
     }
 
     @Override

@@ -46,7 +46,7 @@ public class MyProfileController implements Initializable {
     GridPane gridPane;
 
     @FXML
-    public AnchorPane anchorPane;
+    AnchorPane anchorPane;
 
     public static void setProfile(Profile profile) {
         MyProfileController.profile = profile;
@@ -71,8 +71,10 @@ public class MyProfileController implements Initializable {
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
         anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane!= null) {
+            gridPane.add(anchorPane,0,0);
+            index++;
+        }
     }
 
     @FXML
@@ -88,8 +90,10 @@ public class MyProfileController implements Initializable {
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
         anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
-        index++;
+        if(anchorPane!= null) {
+            gridPane.add(anchorPane,0,0);
+            index--;
+        }
     }
 
     @FXML

@@ -25,7 +25,7 @@ public class EditProfileController implements Initializable {
     private String changedUsername;
     private String changedBio;
     private String photoString;
-    public static String result = "";
+    private static String result = "";
 
     public static void setResult(String result) {
         EditProfileController.result = result;

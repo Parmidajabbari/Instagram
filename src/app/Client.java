@@ -17,8 +17,7 @@ public class Client {
     private static DataInputStream input;
     private static DataOutputStream output;
     private int indexOfConn;
-    private byte[] byteBuffer;
-    int bufferLength = 0;
+
 
     public void setConnection() throws IOException {
         try {
@@ -33,7 +32,6 @@ public class Client {
             ClientListener clientListener = new ClientListener(socket);
             new Thread(clientListener).start();
 
-            byteBuffer = new byte[0];
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -60,56 +58,7 @@ public class Client {
             e.printStackTrace();
         }
     }
-//    public static byte[] readMessage() throws IOException {
-//
-//        byte[] ret = byteBuffer.clone();
-//        boolean lengthFound = false;
-//        int length = 0;
-//        int lastLengthByte = 0;
-//        int lastMask = 1;
-//        int bufferLength = Client.bufferLength;
-//        while(true){
-//
-//            while ((!lengthFound) && (bufferLength > lastLengthByte)){
-//                byte currLengthByte = ret[lastLengthByte];
-//                if (currLengthByte >= 0) {
-//                    lengthFound = true;
-//                    length += lastMask * currLengthByte;
-//                }
-//                else {
-//                    length = lastMask * (currLengthByte + 128);
-//                    lastMask *= 128;
-//                }
-//                lastLengthByte++;
-//            }
-//
-//            if(lengthFound){
-//                if(bufferLength >= length + lastLengthByte){
-//                    byte[] tempB
-//                            = new byte[bufferLength - length - lastLengthByte];
-//                    for (int i = 0; i < tempB.length; i++)
-//                        tempB[i] = ret[i + length + lastLengthByte];
-//                    byteBuffer = tempB;
-//                    this.bufferLength = tempB.length;
-//
-//                    byte[] realRetThisTime = new byte[length];
-//                    System.arraycopy(ret, lastLengthByte
-//                            , realRetThisTime, 0, length);
-//                    return realRetThisTime;
-//                }
-//            }
-//
-//            byte[] tempB = new byte[512];
-//            int numOfBytesRead = input.read(tempB, 0, 512);
-//            byte[] tempRet = ret.clone();
-//            bufferLength += numOfBytesRead;
-//            ret = new byte[bufferLength];
-//            System.arraycopy(tempRet, 0, ret, 0, tempRet.length);
-//            if (numOfBytesRead >= 0)
-//                System.arraycopy(tempB, 0, ret, tempRet.length, numOfBytesRead);
-//
-//        }
-//    }
+
 
     public static void sendMessage(byte[] message) throws IOException {
         int messageLen = message.length;
@@ -134,7 +83,56 @@ public class Client {
         output.write(fullMessage);
         output.flush();
     }
+    public static byte[] readMessage() throws IOException {
+        int bufferLength = 0;
+        byte[] byteBuffer = new byte[0];
+        byte[] ret = byteBuffer.clone();
+        boolean lengthFound = false;
+        int length = 0;
+        int lastLengthByte = 0;
+        int lastMask = 1;
+        while(true){
 
+            while ((!lengthFound) && (bufferLength > lastLengthByte)){
+                byte currLengthByte = ret[lastLengthByte];
+                if (currLengthByte >= 0) {
+                    lengthFound = true;
+                    length += lastMask * currLengthByte;
+                }
+                else {
+                    length = lastMask * (currLengthByte + 128);
+                    lastMask *= 128;
+                }
+                lastLengthByte++;
+            }
+
+            if(lengthFound){
+                if(bufferLength >= length + lastLengthByte){
+                    byte[] tempB
+                            = new byte[bufferLength - length - lastLengthByte];
+                    for (int i = 0; i < tempB.length; i++)
+                        tempB[i] = ret[i + length + lastLengthByte];
+                    byteBuffer = tempB;
+                    bufferLength = tempB.length;
+
+                    byte[] realRetThisTime = new byte[length];
+                    System.arraycopy(ret, lastLengthByte
+                            , realRetThisTime, 0, length);
+                    return realRetThisTime;
+                }
+            }
+
+            byte[] tempB = new byte[512];
+            int numOfBytesRead = input.read(tempB, 0, 512);
+            byte[] tempRet = ret.clone();
+            bufferLength += numOfBytesRead;
+            ret = new byte[bufferLength];
+            System.arraycopy(tempRet, 0, ret, 0, tempRet.length);
+            if (numOfBytesRead >= 0)
+                System.arraycopy(tempB, 0, ret, tempRet.length, numOfBytesRead);
+
+        }
+    }
     public int getIndexOfConn() {
         return indexOfConn;
     }

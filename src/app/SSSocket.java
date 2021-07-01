@@ -1,8 +1,6 @@
 package app;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -27,7 +25,62 @@ public class SSSocket {
         in = socket.getInputStream();
     }
 
+    public SSSocket (DataInputStream in, DataOutputStream out ){
+        this.out = out;
+        this.in = in;
+        byteBuffer = new byte[0];
+    }
 
+    public byte[] readMessage() throws IOException {
+
+        byte[] ret = byteBuffer.clone();
+        boolean lengthFound = false;
+        int length = 0;
+        int lastLengthByte = 0;
+        int lastMask = 1;
+        int bufferLength = this.bufferLength;
+        while(true){
+
+            while ((!lengthFound) && (bufferLength > lastLengthByte)){
+                byte currLengthByte = ret[lastLengthByte];
+                if (currLengthByte >= 0) {
+                    lengthFound = true;
+                    length += lastMask * currLengthByte;
+                }
+                else {
+                    length = lastMask * (currLengthByte + 128);
+                    lastMask *= 128;
+                }
+                lastLengthByte++;
+            }
+
+            if(lengthFound){
+                if(bufferLength >= length + lastLengthByte){
+                    byte[] tempB
+                            = new byte[bufferLength - length - lastLengthByte];
+                    for (int i = 0; i < tempB.length; i++)
+                        tempB[i] = ret[i + length + lastLengthByte];
+                    byteBuffer = tempB;
+                    this.bufferLength = tempB.length;
+
+                    byte[] realRetThisTime = new byte[length];
+                    System.arraycopy(ret, lastLengthByte
+                            , realRetThisTime, 0, length);
+                    return realRetThisTime;
+                }
+            }
+
+            byte[] tempB = new byte[512];
+            int numOfBytesRead = in.read(tempB, 0, 512);
+            byte[] tempRet = ret.clone();
+            bufferLength += numOfBytesRead;
+            ret = new byte[bufferLength];
+            System.arraycopy(tempRet, 0, ret, 0, tempRet.length);
+            if (numOfBytesRead >= 0)
+                System.arraycopy(tempB, 0, ret, tempRet.length, numOfBytesRead);
+
+        }
+    }
 
     public void sendMessage(byte[] message) throws IOException {
         int messageLen = message.length;

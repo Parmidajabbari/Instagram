@@ -18,7 +18,7 @@ public class ActivityPageController implements Initializable {
 
     private static ObservableList<String> list = FXCollections.observableArrayList();
     @FXML
-    public JFXListView<String> notificationList;
+    JFXListView<String> notificationList;
 
     public static void setList(ObservableList<String> list) {
         ActivityPageController.list = list;

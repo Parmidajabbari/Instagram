@@ -30,10 +30,10 @@ public class NewPostController implements Initializable {
     private Image image;
     private File file;
     private String imageString = "";
-    public static int postId;
-    public static boolean isPosted = false;
+    private static int postId;
+    private static boolean isPosted = false;
 
-    public static String result = "";
+    private static String result = "";
 
     @FXML
     ImageView newPostPhoto;
@@ -61,29 +61,6 @@ public class NewPostController implements Initializable {
         String fileName = new File(fullName).getName();
         int dotIndex = fileName.lastIndexOf('.');
         return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
-    }
-    public static byte[] loadFile(File file) throws IOException {
-        InputStream is = new FileInputStream(file);
-
-        long length = file.length();
-        if (length > Integer.MAX_VALUE) {
-            // File is too large
-        }
-        byte[] bytes = new byte[(int)length];
-
-        int offset = 0;
-        int numRead = 0;
-        while (offset < bytes.length
-                && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
-            offset += numRead;
-        }
-
-        if (offset < bytes.length) {
-            throw new IOException("Could not completely read file "+file.getName());
-        }
-
-        is.close();
-        return bytes;
     }
 
     public static String encodeFileToBase64Binary(File file) throws IOException {

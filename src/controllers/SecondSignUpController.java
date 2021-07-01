@@ -18,6 +18,7 @@ public class SecondSignUpController implements Initializable {
     private static String email;
     private static String username;
     private static String result = "";
+
     public static void setEmail(String Email) {
         email = Email;
     }
@@ -28,7 +29,6 @@ public class SecondSignUpController implements Initializable {
     public static void setResult(String result) {
         SecondSignUpController.result = result;
     }
-
     private static boolean isDone;
 
     @FXML
