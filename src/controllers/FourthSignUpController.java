@@ -46,6 +46,10 @@ public class FourthSignUpController implements Initializable {
         FourthSignUpController.result = result;
     }
 
+    public static boolean isIsDone() {
+        return isDone;
+    }
+
     @FXML
     public void completeSignUp(ActionEvent actionEvent) throws Exception {
         password = passwordText.getText();

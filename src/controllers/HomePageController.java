@@ -82,6 +82,7 @@ public class HomePageController implements Initializable {
             next.setDisable(false);
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
+        System.out.println(" mmmm:  " + massage);
         Client.sendRequest(massage);
         Thread.sleep(4000);
         if(HomePagePostController.getPost() == null) {

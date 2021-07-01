@@ -11,7 +11,7 @@ public class Post{ //implements Comparable<Post>{
     private String task;
     private boolean error;
     private String Result;
-    private final String image;
+    //private final String image;
     private final String caption;
     private final int likes;
     private final int comments;
@@ -22,7 +22,6 @@ public class Post{ //implements Comparable<Post>{
     private byte[] imageBytes;
 
     public Post(byte[] imageBytes, String caption, int likes, int comments, String ownerName, String uploaded, int ownerId,boolean isLiked) {
-        image = null;
         this.imageBytes = imageBytes;
         this.caption = caption;
         this.likes = likes;
