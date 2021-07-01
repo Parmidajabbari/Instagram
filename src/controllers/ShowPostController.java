@@ -22,10 +22,10 @@ import java.util.ResourceBundle;
 
 public class ShowPostController implements Initializable {
 
-    private static int postId;
-    private static Post post;
+    public static int postId;
+    public static Post post;
 
-    private static AnchorPane copyPane;
+    public static AnchorPane copyPane;
 
     @FXML
     AnchorPane showPostPane;

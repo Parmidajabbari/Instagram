@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class SearchPageController {
 
-    private static String result = "";
-    private static String search;
-    private static int showUserId;
+    public static String result = "";
+    public static String search;
+    public static int showUserId;
     @FXML
     JFXTextField searchText;
 
@@ -37,7 +37,7 @@ public class SearchPageController {
         SearchPageController.result = result;
     }
 
-    private static boolean isDone;
+    public static boolean isDone;
 
     public static void setIsDone(boolean isDone) {
         SearchPageController.isDone = isDone;

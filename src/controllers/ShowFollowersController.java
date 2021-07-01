@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class ShowFollowersController implements Initializable {
 
-    private static ObservableList<String> list = FXCollections.observableArrayList();
+    public static ObservableList<String> list = FXCollections.observableArrayList();
 
     @FXML
     JFXListView<String> followersList;

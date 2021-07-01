@@ -22,11 +22,11 @@ import java.util.ResourceBundle;
 
 public class HomePagePostController implements Initializable {
 
-    private static int postId;
-    private static Post post;
+    public static int postId;
+    public static Post post;
 
     @FXML
-    private static AnchorPane copyPane;
+    public static AnchorPane copyPane;
 
     @FXML
     AnchorPane postPane;

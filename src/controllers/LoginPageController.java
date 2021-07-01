@@ -20,10 +20,10 @@ public class LoginPageController implements Initializable {
 
     private String username;
     private String password;
-    private static boolean isDone = false;
-    private static int userId;
+    public static boolean isDone = false;
+    public static int userId;
 
-    private static String result = "";
+    public static String result = "";
 
     @FXML
     TextField usernameText;

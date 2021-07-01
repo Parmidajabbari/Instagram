@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class HomePageController implements Initializable {
 
     private int index = 0;
-    private static ArrayList<Integer> postIds = new ArrayList<>();
+    public static ArrayList<Integer> postIds = new ArrayList<>();
     @FXML
     JFXButton next;
     @FXML

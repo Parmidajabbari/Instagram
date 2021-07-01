@@ -16,12 +16,11 @@ import java.util.ResourceBundle;
 
 public class CommentPageController implements Initializable {
 
-    private static ObservableList<String> list = FXCollections.observableArrayList();
+    public static ObservableList<String> list = FXCollections.observableArrayList();
     @FXML
     JFXListView<String> commentsList;
 
-    @FXML
-    private JFXTextField newCommentText;
+    @FXML private JFXTextField newCommentText;
 
     public static void setList(ObservableList<String> list) {
         CommentPageController.list = list;
