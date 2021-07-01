@@ -28,7 +28,8 @@ public class NewPostController implements Initializable {
 
     private String caption;
     private Image image;
-    private String imageString;
+    private File file;
+    private String imageString = "";
     public static int postId;
     public static boolean isPosted = false;
 
@@ -93,12 +94,11 @@ public class NewPostController implements Initializable {
     protected void setPhoto(ActionEvent actionEvent) throws Exception {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
         String extension = getFileExtension(file.getName());
         if(extension.equals("jpg") || extension.equals("png")) {
             image = new Image(file.toURI().toString());
             newPostPhoto.setImage(image);
-            imageString = encodeFileToBase64Binary(file);
         }
         else {
             return;
@@ -113,10 +113,11 @@ public class NewPostController implements Initializable {
 
     @FXML
     public void share(ActionEvent actionEvent) throws Exception {
-        byte[] bytes = imageString.getBytes(StandardCharsets.UTF_8);
         caption = captionText.getText();
-        String massage = Tasks.getNewPostTask(Integer.toString(LoginPageController.getUserId()),imageString,caption);
+        String massage = Tasks.getNewPostTask(Integer.toString(LoginPageController.getUserId()),caption);
         Client.sendRequest(massage);
+        Thread.sleep(1000);
+        Client.sendMessage(Files.readAllBytes(file.toPath()));
         Thread.sleep(8000);
         resultText.setText(result);
         if(isPosted) {
