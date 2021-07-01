@@ -164,7 +164,7 @@ public class Process {
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
-            resultText.setText(jsonObject.get("result").getAsString());
+            resultText.setText(jsonObject.get("Result").getAsString());
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
