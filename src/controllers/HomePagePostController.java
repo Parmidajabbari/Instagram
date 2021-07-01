@@ -25,9 +25,6 @@ public class HomePagePostController implements Initializable {
     public static Post post;
 
     @FXML
-    static AnchorPane copyPane;
-
-    @FXML
     AnchorPane postPane;
 
     @FXML
@@ -53,9 +50,9 @@ public class HomePagePostController implements Initializable {
 
     @FXML
     public void like(ActionEvent actionEvent) throws IOException {
+        postId = HomePageController.getPostId();
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
         Client.sendRequest(massage);
-        copyPane = postPane;
     }
 
     @FXML
@@ -69,25 +66,9 @@ public class HomePagePostController implements Initializable {
         PageController.closePage(actionEvent);
     }
 
-    public static File writeByte(byte[] bytes) {
-        File file = new File("");
-        try {
-            OutputStream os = new FileOutputStream(file);
-            os.write(bytes);
-            os.close();
-        }
-
-        catch (Exception e) {
-            System.out.println("Exception: " + e);
-        }
-        return file;
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       //ShowPostController.getPost();
-        copyPane = new AnchorPane();
         if(post != null) {
             Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
             photo.setImage(image);
@@ -96,7 +77,6 @@ public class HomePagePostController implements Initializable {
             likesCount.setText(Integer.toString(post.getLikes()));
             commentsCount.setText(Integer.toString(post.getComments()));
             date.setText(post.getUploaded());
-            HomePageController.setAnchorPane(postPane);
         }
     }
 

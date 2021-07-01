@@ -114,8 +114,6 @@ public class EditProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //get profile photo from server
-        //profilePhoto.setImage();
     }
 
 }

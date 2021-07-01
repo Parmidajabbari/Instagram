@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 public class MyProfileController implements Initializable {
 
     private static Profile profile;
-    private ArrayList<Integer> postIds = new ArrayList<>();
-    private int index = 0;
+    private static ArrayList<Integer> postIds = new ArrayList<>();
+    private static int index = 0;
 
     @FXML
     JFXTextField usernameText;
@@ -42,12 +42,9 @@ public class MyProfileController implements Initializable {
     @FXML
     JFXButton prev;
 
-    @FXML
-    GridPane gridPane;
-
-    @FXML
-    AnchorPane anchorPane;
-
+    private static int setPostId() {
+        return postIds.get(index);
+    }
     public static void setProfile(Profile profile) {
         MyProfileController.profile = profile;
     }
@@ -70,11 +67,7 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getCopyPane();
-        if(anchorPane!= null) {
-            gridPane.add(anchorPane,0,0);
-            index++;
-        }
+        index++;
     }
 
     @FXML
@@ -89,11 +82,7 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getCopyPane();
-        if(anchorPane!= null) {
-            gridPane.add(anchorPane,0,0);
-            index--;
-        }
+        index--;
     }
 
     @FXML
@@ -141,8 +130,6 @@ public class MyProfileController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            anchorPane = ShowPostController.getCopyPane();
-            gridPane.add(anchorPane,0,0);
         }
     }
 

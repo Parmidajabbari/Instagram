@@ -73,7 +73,7 @@ public class NewPostController implements Initializable {
         chooser.setTitle("Open File");
         file = chooser.showOpenDialog(new Stage());
         String extension = getFileExtension(file.getName());
-        if(extension.equals("jpg") || extension.equals("png")) {
+        if(extension.equals("jpg") || extension.equals("png") || extension.equals("jpeg")) {
             image = new Image(file.toURI().toString());
             newPostPhoto.setImage(image);
         }

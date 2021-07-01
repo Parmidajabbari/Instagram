@@ -46,11 +46,6 @@ public class ShowProfileController implements Initializable {
     @FXML
     JFXButton prev;
 
-    @FXML
-    GridPane gridPane;
-    @FXML
-    AnchorPane anchorPane;
-
     public static void setProfile(Profile profile) {
         ShowProfileController.profile = profile;
     }
@@ -117,8 +112,6 @@ public class ShowProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
         index++;
     }
 
@@ -134,11 +127,7 @@ public class ShowProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
-        anchorPane = ShowPostController.getCopyPane();
-        if(anchorPane!= null) {
-            gridPane.add(anchorPane,0,0);
-            index--;
-        }
+        index--;
     }
 
     @Override
@@ -161,8 +150,6 @@ public class ShowProfileController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        anchorPane = ShowPostController.getCopyPane();
-        gridPane.add(anchorPane,0,0);
     }
 
 }
