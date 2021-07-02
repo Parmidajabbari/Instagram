@@ -56,6 +56,7 @@ public class HomePagePostController implements Initializable {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()), Integer.toString(postId));
         Client.sendRequest(massage);
         likeButton.setStyle("-fx-background-color: red;");
+        likesCount.setText(Integer.toString(post.getLikes()+1));
     }
 
     @FXML
