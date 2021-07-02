@@ -27,7 +27,6 @@ public class ShowFollowingsController implements Initializable {
     @FXML
     void back(ActionEvent event) throws Exception {
         PageController.closePage(event);
-        PageController.openPage("showProfile");
     }
 
     @FXML
@@ -45,6 +44,11 @@ public class ShowFollowingsController implements Initializable {
             Client.sendRequest(message);
         }
         catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         followingsList.setItems(list);

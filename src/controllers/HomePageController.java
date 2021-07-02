@@ -70,6 +70,10 @@ public class HomePageController implements Initializable {
 
     @FXML
     public void nextPost(ActionEvent actionEvent) throws Exception {
+        if(index == 0) {
+            prev.setVisible(true);
+            prev.setDisable(false);
+        }
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);

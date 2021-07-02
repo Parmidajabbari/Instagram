@@ -3,6 +3,7 @@ package controllers;
 import app.Client;
 import app.Post;
 import app.Tasks;
+import com.jfoenix.controls.JFXButton;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +41,8 @@ public class ShowPostController implements Initializable {
     Label date;
     @FXML
     Label username;
+    @FXML
+    JFXButton likeButton;
 
     public static void setPost(Post post) {
         ShowPostController.post = post;
@@ -57,6 +60,7 @@ public class ShowPostController implements Initializable {
     public void like(ActionEvent actionEvent) throws IOException {
         String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
         Client.sendRequest(massage);
+        likeButton.setStyle("-fx-background-color: red;");
     }
 
     @FXML
@@ -80,6 +84,9 @@ public class ShowPostController implements Initializable {
             likesCount.setText(Integer.toString(post.getLikes()));
             commentsCount.setText(Integer.toString(post.getComments()));
             date.setText(post.getUploaded());
+            if(post.isLiked()) {
+                likeButton.setStyle("-fx-background-color: red;");
+            }
         }
     }
 }
