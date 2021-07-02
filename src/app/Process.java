@@ -224,9 +224,12 @@ public class Process {
             resultText.setStyle("-fx-text-inner-color: red;");
         }
         else {
+            String bio = "";
             String username = jsonObject.get("userName").getAsString();
             String date = jsonObject.get("created").getAsString();
-            String bio = jsonObject.get("bio").getAsString();
+//            if(!jsonObject.get("bio").isJsonNull()) {
+//                bio = jsonObject.get("bio").getAsString();
+//            }
             int followersNumber = jsonObject.get("followersNumber").getAsInt();
             int followingsNumber = jsonObject.get("followingNumber").getAsInt();
             boolean isFollowing = jsonObject.get("isFollowing").getAsBoolean();
@@ -238,17 +241,12 @@ public class Process {
                     postIds.add(jArray.get(i).getAsInt());
                 }
             }
-            if(bio == null) {
+            if(bio == "") {
                 bio = "bio";
             }
             Profile profile = new Profile(username,date,bio ,followersNumber,followingsNumber,postIds,isFollowing);
-
-            if(SearchPageController.getShowUserId()!= 0) {
-                ShowProfileController.setProfile(profile);
-            }
-            else {
-                MyProfileController.setProfile(profile);
-            }
+             ShowProfileController.setProfile(profile);
+             MyProfileController.setProfile(profile);
             Thread.sleep(3000);
         }
 
