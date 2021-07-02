@@ -12,8 +12,8 @@
       <Line endX="177.0" layoutX="186.0" layoutY="382.0" startX="-182.0" />
       <Line endX="176.0" layoutX="182.0" layoutY="344.0" startX="-175.0" />
       <Label fx:id="caption" layoutX="7.0" layoutY="344.0" prefHeight="40.0" prefWidth="350.0" />
-      <Label fx:id="likesCount" layoutX="54.0" layoutY="386.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
-      <Label fx:id="commentsCount" layoutX="235.0" layoutY="384.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
+      <Label fx:id="likesCount" layoutX="60.0" layoutY="386.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
+      <Label fx:id="commentsCount" layoutX="236.0" layoutY="384.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: white;" />
       <JFXButton fx:id="likeButton" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="14.0" layoutY="386.0" onAction="#like" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text=" " textFill="WHITE">
          <graphic>
             <FontAwesomeIconView glyphName="HEART" nodeOrientation="RIGHT_TO_LEFT" size="18" />
