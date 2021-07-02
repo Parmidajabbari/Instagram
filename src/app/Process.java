@@ -25,7 +25,7 @@ public class Process {
         jsonObject = gson.fromJson(message, JsonObject.class);
     }
 
-    public void doTask() throws IOException {
+    public void doTask() throws IOException, InterruptedException {
         String task = jsonObject.get("task").getAsString();
 
         switch (task) {
@@ -34,9 +34,9 @@ public class Process {
                 break;
             case "signUpPart2" : signupTask();
                 break;
-            case "showFollowers" : showFollowersTask();
+            case "getFollowersList" : showFollowersTask();
                 break;
-            case "showFollowings" : showFollowingsTask();
+            case "getFollowingList" : showFollowingsTask();
                 break;
             case "showComments" : showCommentsTask();
                 break;
@@ -136,6 +136,7 @@ public class Process {
             Post post = new Post(bytes,caption,likesCount,commentsCount,username,date,ownerId,isLiked);
             System.out.println(post.getOwnerName());
             HomePagePostController.setPost(post);
+            ShowPostController.setPost(post);
             Thread.sleep(8000);
         }
     }
@@ -143,10 +144,13 @@ public class Process {
     private void searchTask() throws IOException {
         boolean error = jsonObject.get("error").getAsBoolean();
         if(error) {
+            System.out.println("error");
+            System.out.println(jsonObject.get("Result").getAsString());
             SearchPageController.setResult(jsonObject.get("Result").getAsString());
             SearchPageController.setIsDone(false);
         }
         else {
+            System.out.println(jsonObject.get("Result").getAsString());
             SearchPageController.setShowUserId(jsonObject.get("Result").getAsInt());
             SearchPageController.setIsDone(true);
             String message = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),
@@ -211,7 +215,8 @@ public class Process {
         }
     }
 
-    private void profileViewTask() {
+    private void profileViewTask() throws InterruptedException {
+        System.out.println("SALAM");
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
         if(error) {
@@ -224,7 +229,6 @@ public class Process {
             String bio = jsonObject.get("bio").getAsString();
             int followersNumber = jsonObject.get("followersNumber").getAsInt();
             int followingsNumber = jsonObject.get("followingNumber").getAsInt();
-            int userId = jsonObject.get("userId").getAsInt();
             boolean isFollowing = jsonObject.get("isFollowing").getAsBoolean();
 
             ArrayList<Integer> postIds = new ArrayList<Integer>();
@@ -234,13 +238,18 @@ public class Process {
                     postIds.add(jArray.get(i).getAsInt());
                 }
             }
-            Profile profile = new Profile(username,userId,date,bio,followersNumber,followingsNumber,postIds,isFollowing);
-            if(userId == LoginPageController.getUserId()) {
-                MyProfileController.setProfile(profile);
+            if(bio == null) {
+                bio = "bio";
             }
-            else {
+            Profile profile = new Profile(username,date,bio ,followersNumber,followingsNumber,postIds,isFollowing);
+
+            if(SearchPageController.getShowUserId()!= 0) {
                 ShowProfileController.setProfile(profile);
             }
+            else {
+                MyProfileController.setProfile(profile);
+            }
+            Thread.sleep(3000);
         }
 
     }
@@ -358,12 +367,12 @@ public class Process {
 
         }
         else {
-            JsonArray array = jsonObject.getAsJsonArray("followings");
+            JsonArray array = jsonObject.getAsJsonArray("connections");
             ArrayList<String> arrayCopy = new ArrayList<>();
             ObservableList<String> followings = FXCollections.observableArrayList();
 
             for (JsonElement jsonElement : array) {
-                arrayCopy.add(jsonElement.getAsString());
+                arrayCopy.add(jsonElement.);
             }
             for (String following : arrayCopy) {
                 followings.add(following);
@@ -379,7 +388,7 @@ public class Process {
 
         }
         else {
-            JsonArray array = jsonObject.getAsJsonArray("followers");
+            JsonArray array = jsonObject.getAsJsonArray("connections");
             ArrayList<String> arrayCopy = new ArrayList<>();
             ObservableList<String> followers = FXCollections.observableArrayList();
 

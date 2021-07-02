@@ -38,7 +38,7 @@ public class ShowFollowingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String message = Tasks.getShowFollowers(Integer.toString(LoginPageController.getUserId()),
+        String message = Tasks.getShowFollowings(Integer.toString(LoginPageController.getUserId()),
                 SearchPageController.getSearch());
 
         try {

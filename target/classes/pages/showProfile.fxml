@@ -55,7 +55,7 @@
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="followingsCountText" alignment="CENTER" editable="false" layoutX="363.0" layoutY="70.0" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
+      <TextField fx:id="followingsCountText" alignment="CENTER" editable="false" layoutX="364.0" layoutY="71.0" prefHeight="33.0" prefWidth="45.0" style="-fx-background-color: white;" text="0">
          <font>
             <Font name="Proxima Nova Semibold" size="19.0" />
          </font>
@@ -114,5 +114,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <JFXButton layoutX="280.0" layoutY="72.0" onAction="#showFollowers" prefHeight="60.0" prefWidth="60.0" text=" " />
+      <JFXButton layoutX="357.0" layoutY="72.0" onAction="#showFollowings" prefHeight="60.0" prefWidth="60.0" text=" " />
    </children>
 </AnchorPane>

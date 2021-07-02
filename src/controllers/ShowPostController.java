@@ -64,15 +64,22 @@ public class ShowPostController implements Initializable {
         PageController.closePage(actionEvent);
         PageController.openPage("commentPage");
     }
+    @FXML
+    public void close(ActionEvent actionEvent) {
+        PageController.closePage(actionEvent);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
-        photo.setImage(image);
-        caption.setText(post.getCaption());
-        username.setText(post.getOwnerName());
-        likesCount.setText(Integer.toString(post.getLikes()));
-        commentsCount.setText(Integer.toString(post.getComments()));
-        date.setText(post.getUploaded());
+        if(post != null) {
+            postId = post.getOwnerId();
+            Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
+            photo.setImage(image);
+            caption.setText(post.getCaption());
+            username.setText(post.getOwnerName());
+            likesCount.setText(Integer.toString(post.getLikes()));
+            commentsCount.setText(Integer.toString(post.getComments()));
+            date.setText(post.getUploaded());
+        }
     }
 }

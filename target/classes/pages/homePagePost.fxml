@@ -24,9 +24,9 @@
       <Line endY="155.5" layoutX="327.0" layoutY="188.0" startY="-150.0" />
       <Label fx:id="username" layoutX="34.0" layoutY="-1.0" prefHeight="33.0" prefWidth="164.0" />
       <Label fx:id="date" layoutX="242.0" layoutY="-1.0" prefHeight="33.0" prefWidth="121.0" />
-      <JFXButton layoutX="-5.0" onAction="#back" prefHeight="31.0" prefWidth="26.0" text=" ">
+      <JFXButton layoutX="-3.0" layoutY="-3.0" onAction="#close" prefHeight="27.0" prefWidth="31.0" text=" ">
          <graphic>
-            <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="20" text="" wrappingWidth="28.571428298950195" />
+            <FontAwesomeIconView glyphName="TIMES" size="22" text="" wrappingWidth="19.428571701049805" />
          </graphic>
       </JFXButton>
    </children>

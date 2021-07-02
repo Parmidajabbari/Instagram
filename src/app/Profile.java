@@ -4,16 +4,21 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Profile {
+    private String task;
+    private boolean error;
+    private String Result;
     private String userName;
+    private String firstName;
+    private String lastName;
     private String created;
     private String bio;
     private int followersNumber;
     private int followingNumber;
-    private int userId;
-    private ArrayList<Integer> posts;
     private boolean isFollowing;
+    private ArrayList<Integer> posts;
+    private String proPic;
 
-    public Profile(String userName , int userId , String created, String bio, int followersNumber, int followingNumber, ArrayList<Integer> posts,boolean isFollowing) {
+    public Profile(String userName  , String created, String bio, int followersNumber, int followingNumber, ArrayList<Integer> posts,boolean isFollowing) {
         this.userName = userName;
         this.created = created;
         this.bio = bio;
@@ -21,12 +26,8 @@ public class Profile {
         this.followingNumber = followingNumber;
         this.posts = posts;
         this.isFollowing = isFollowing;
-        this.userId = userId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
     public String getUserName() {
         return userName;

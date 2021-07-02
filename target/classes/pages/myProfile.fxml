@@ -109,5 +109,7 @@
             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="60" />
          </graphic>
       </JFXButton>
+      <JFXButton layoutX="292.0" layoutY="74.0" onAction="#showFollowers" prefHeight="60.0" prefWidth="60.0" text=" " />
+      <JFXButton layoutX="379.0" layoutY="74.0" onAction="#showFollowings" prefHeight="60.0" prefWidth="60.0" text=" " />
    </children>
 </AnchorPane>

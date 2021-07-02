@@ -54,14 +54,16 @@ public class ShowProfileController implements Initializable {
     public void sendMassage(ActionEvent actionEvent) {
     }
     @FXML
-    public void followOrUnfollow(ActionEvent actionEvent) throws IOException {
+    public void followOrUnfollow(ActionEvent actionEvent) throws IOException, InterruptedException {
         if(follow.getText().equals("Follow")) {
-            String massage = Tasks.getFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
+            String massage = Tasks.getFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(SearchPageController.getShowUserId()));
             Client.sendRequest(massage);
+            Thread.sleep(2000);
         }
         else {
-            String massage = Tasks.getUnFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(profile.getUserId()));
+            String massage = Tasks.getUnFollowTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(SearchPageController.getShowUserId()));
             Client.sendRequest(massage);
+            Thread.sleep(2000);
         }
     }
     @FXML
@@ -101,7 +103,17 @@ public class ShowProfileController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) throws IOException {
+    public void showFollowers(ActionEvent actionEvent) throws Exception {
+        PageController.openPage("showFollowersPage");
+    }
+
+    @FXML
+    public void showFollowings(ActionEvent actionEvent) throws Exception {
+        PageController.openPage("showFollowingsPage");
+    }
+
+    @FXML
+    public void nextPost(ActionEvent actionEvent) throws Exception {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -112,11 +124,13 @@ public class ShowProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        PageController.openPage("showPost");
         index++;
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) throws IOException {
+    public void prevPost(ActionEvent actionEvent) throws Exception {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -127,29 +141,31 @@ public class ShowProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        PageController.openPage("showPost");
         index--;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameText.setText(profile.getUserName());
-        bioText.setText(profile.getBio());
-        followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
-        followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
-        postsCountText.setText(Integer.toString(profile.getPosts().size()));
-        if(profile.isFollowing()) {
-            follow.setText("Following");
+        prev.setVisible(false);
+        prev.setDisable(true);
+        if(profile != null) {
+            postIds = profile.getPosts();
+            usernameText.setText(profile.getUserName());
+            bioText.setText(profile.getBio());
+            followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
+            followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
+            postsCountText.setText(Integer.toString(profile.getPosts().size()));
+            if(profile.isFollowing()) {
+                follow.setText("Following");
+            }
+            else {
+                follow.setText("Follow");
+            }
+
         }
-        else {
-            follow.setText("Follow");
-        }
-        String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId() ), Integer.toString(postIds.get(index)));
-        index++;
-        try {
-            Client.sendRequest(massage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
 }
