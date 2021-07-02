@@ -54,7 +54,6 @@ public class SignUpController implements Initializable {
         username = usernameText.getText();
         email = emailText.getText();
         if(!User.isUserAcceptable(username)) {
-            System.out.println("ssss");
             switch (User.getUserNameError()) {
                 case "invalid" :
                 {

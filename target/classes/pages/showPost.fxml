@@ -29,6 +29,11 @@
             <Line endY="129.29290771484375" layoutX="354.0" layoutY="119.0" startY="-125.0" />
             <Label fx:id="date" layoutX="241.0" layoutY="215.0" prefHeight="30.0" prefWidth="93.0" />
             <Label fx:id="username" layoutX="4.0" layoutY="-1.0" prefHeight="30.0" prefWidth="93.0" />
+            <JFXButton layoutX="-25.0" layoutY="-19.0" onAction="#close" prefHeight="31.0" prefWidth="18.0" text=" ">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TIMES" size="17" text="" wrappingWidth="19.428571701049805" />
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <Line endX="228.0" endY="-6.5" layoutX="141.0" layoutY="12.0" startX="-125.5" startY="-6.5" />

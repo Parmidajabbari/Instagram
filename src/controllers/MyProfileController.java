@@ -56,7 +56,7 @@ public class MyProfileController implements Initializable {
     }
 
     @FXML
-    public void nextPost(ActionEvent actionEvent) throws IOException {
+    public void nextPost(ActionEvent actionEvent) throws Exception {
         if(index == postIds.size()-1) {
             next.setVisible(false);
             next.setDisable(true);
@@ -67,11 +67,13 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        PageController.openPage("showPost");
         index++;
     }
 
     @FXML
-    public void prevPost(ActionEvent actionEvent) throws IOException {
+    public void prevPost(ActionEvent actionEvent) throws Exception {
         if(index == 0) {
             prev.setVisible(false);
             prev.setDisable(true);
@@ -82,6 +84,8 @@ public class MyProfileController implements Initializable {
         }
         String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postIds.get(index)));
         Client.sendRequest(massage);
+        Thread.sleep(4000);
+        PageController.openPage("showPost");
         index--;
     }
 
@@ -110,6 +114,16 @@ public class MyProfileController implements Initializable {
     }
 
     @FXML
+    public void showFollowings(ActionEvent actionEvent) throws Exception {
+        PageController.openPage("showFollowingsPage");
+    }
+
+    @FXML
+    public void showFollowers(ActionEvent actionEvent) throws Exception {
+        PageController.openPage("showFollowersPage");
+    }
+
+    @FXML
     public void close(ActionEvent actionEvent) {
         PageController.closePage(actionEvent);
         System.exit(0);
@@ -117,19 +131,26 @@ public class MyProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        String firstMassage = Tasks.getProfileViewTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(LoginPageController.getUserId()));
+        try {
+            Client.sendRequest(firstMassage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        prev.setVisible(false);
+        prev.setDisable(true);
         if(profile != null) {
+            postIds = profile.getPosts();
             usernameText.setText(profile.getUserName());
             bioText.setText(profile.getBio());
             followersCountText.setText(Integer.toString(profile.getFollowersNumber()));
             followingsCountText.setText(Integer.toString(profile.getFollowingNumber()));
             postsCountText.setText(Integer.toString(profile.getPosts().size()));
-            String massage = Tasks.getPostViewTask(Integer.toString(LoginPageController.getUserId() ), Integer.toString(postIds.get(index)));
-            index++;
-            try {
-                Client.sendRequest(massage);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 

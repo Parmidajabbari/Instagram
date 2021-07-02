@@ -3,6 +3,7 @@ package controllers;
 import app.Client;
 import app.Post;
 import app.Tasks;
+import com.jfoenix.controls.JFXButton;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +40,8 @@ public class HomePagePostController implements Initializable {
     Label date;
     @FXML
     Label username;
+    @FXML
+    JFXButton likeButton;
 
     public static void setPost(Post post) {
         HomePagePostController.post = post;
@@ -50,9 +53,9 @@ public class HomePagePostController implements Initializable {
 
     @FXML
     public void like(ActionEvent actionEvent) throws IOException {
-        postId = HomePageController.getPostId();
-        String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()),Integer.toString(postId));
+        String massage = Tasks.getLikeTask(Integer.toString(LoginPageController.getUserId()), Integer.toString(postId));
         Client.sendRequest(massage);
+        likeButton.setStyle("-fx-background-color: red;");
     }
 
     @FXML
@@ -62,14 +65,13 @@ public class HomePagePostController implements Initializable {
     }
 
     @FXML
-    public void back(ActionEvent actionEvent) {
+    public void close(ActionEvent actionEvent) {
         PageController.closePage(actionEvent);
     }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(post != null) {
+            postId = post.getOwnerId();
             Image image = new Image(new ByteArrayInputStream(post.getImageBytes()));
             photo.setImage(image);
             caption.setText(post.getCaption());
@@ -77,6 +79,9 @@ public class HomePagePostController implements Initializable {
             likesCount.setText(Integer.toString(post.getLikes()));
             commentsCount.setText(Integer.toString(post.getComments()));
             date.setText(post.getUploaded());
+            if(post.isLiked()) {
+                likeButton.setStyle("-fx-background-color: red;");
+            }
         }
     }
 

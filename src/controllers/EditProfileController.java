@@ -73,33 +73,36 @@ public class EditProfileController implements Initializable {
 
     @FXML
     public void done(ActionEvent actionEvent) throws Exception {
-        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),photoString);
-        Client.sendRequest(massage);
-        String username = usernameText.getText();
-        if(!User.isUserAcceptable(username)) {
-            switch (User.getUserNameError()) {
-                case "invalid" :
-                {
-                    resultText.setText("Username contains invalid characters");
-                    resultText.setStyle("-fx-text-inner-color: red;");
-                    break;
-                }
-                case "length" :
-                {
-                    resultText.setText("Username length must be between 3 and 20");
-                    resultText.setStyle("-fx-text-inner-color: red;");
-                    break;
+//        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),);
+//        Client.sendRequest(massage);
+        changedUsername = usernameText.getText();
+        if(changedUsername != null) {
+            if (!User.isUserAcceptable(changedUsername)) {
+                switch (User.getUserNameError()) {
+                    case "invalid": {
+                        resultText.setText("Username contains invalid characters");
+                        resultText.setStyle("-fx-text-inner-color: red;");
+                        break;
+                    }
+                    case "length": {
+                        resultText.setText("Username length must be between 3 and 20");
+                        resultText.setStyle("-fx-text-inner-color: red;");
+                        break;
+                    }
                 }
             }
-            return;
+            else {
+                String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
+                Client.sendRequest(secondMassage);
+                Thread.sleep(3000);
+                resultText.setText(result);
+            }
         }
         else {
-            String secondMassage = Tasks.getEditUsername(Integer.toString(LoginPageController.getUserId()),changedUsername);
-            Client.sendRequest(secondMassage);
-            resultText.setText(result);
             changedBio = bioText.getText();
             String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
             Client.sendRequest(thirdMassage);
+            Thread.sleep(3000);
             resultText.setText(result);
             PageController.closePage(actionEvent);
             PageController.openPage("myProfile");

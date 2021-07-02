@@ -32,6 +32,10 @@ public class Post{ //implements Comparable<Post>{
         this.isLiked = isLiked;
     }
 
+    public boolean isLiked() {
+        return isLiked;
+    }
+
     public int getLikes() {
         return likes;
     }

@@ -25,7 +25,6 @@ public class HomePageController implements Initializable {
     @FXML
     JFXButton prev;
 
-
     public static int getPostId() {
         return postIds.get(index);
     }
@@ -107,6 +106,8 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        prev.setVisible(false);
+        prev.setDisable(true);
         String message = Tasks.getTimelineTask(Integer.toString(LoginPageController.getUserId()));
         try {
             Client.sendRequest(message);
@@ -115,7 +116,6 @@ public class HomePageController implements Initializable {
         catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
 

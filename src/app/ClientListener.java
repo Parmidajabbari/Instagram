@@ -51,7 +51,7 @@ public class ClientListener implements Runnable{
                 System.out.println(message);
                 process.doTask();
             }
-            catch (IOException e) {
+            catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
 

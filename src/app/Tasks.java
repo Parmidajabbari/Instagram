@@ -7,9 +7,9 @@ public class Tasks {
     private static final String signUpPart1 =
             "{'task':'signUpPart1', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
     private static final String showFollowers =
-            "{'task':'showFollowers', 'currentUserId':'%s', 'username':'%s'}";
+            "{'task':'getFollowersList', 'currentUserId':'%s', 'username':'%s'}";
     private static final String showFollowings =
-            "{'task':'showFollowings', 'currentUserId':'%s', 'username':'%s'}";
+            "{'task':'getFollowingList', 'currentUserId':'%s', 'username':'%s'}";
     private static final String showComments =
             "{'task':'showComments', 'currentUserId':'%s', 'postId':'%s'}";
     private static final String editUsername =
