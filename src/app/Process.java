@@ -361,42 +361,36 @@ public class Process {
 
     }
 
-    private void showFollowingsTask() {
-        boolean error = jsonObject.get("error").getAsBoolean();
+    private void showFollowingsTask() throws InterruptedException {
+        FollowersList followingsList = new Gson().fromJson(message,FollowersList.class);
+        boolean error = followingsList.isError();
         if (error) {
 
         }
         else {
-            JsonArray array = jsonObject.getAsJsonArray("connections");
-            ArrayList<String> arrayCopy = new ArrayList<>();
+            ArrayList<UserHolder> list = followingsList.getConnections();
             ObservableList<String> followings = FXCollections.observableArrayList();
 
-            for (JsonElement jsonElement : array) {
-                arrayCopy.add(jsonElement.);
-            }
-            for (String following : arrayCopy) {
-                followings.add(following);
+            for (UserHolder following : list) {
+                followings.add(following.getUsername());
             }
             ShowFollowingsController.setList(followings);
         }
 
     }
 
-    private void showFollowersTask() {
-        boolean error = jsonObject.get("error").getAsBoolean();
+    private void showFollowersTask() throws InterruptedException {
+        FollowersList followersList = new Gson().fromJson(message,FollowersList.class);
+        boolean error = followersList.isError();
         if (error) {
 
         }
         else {
-            JsonArray array = jsonObject.getAsJsonArray("connections");
-            ArrayList<String> arrayCopy = new ArrayList<>();
+            ArrayList<UserHolder> list = followersList.getConnections();
             ObservableList<String> followers = FXCollections.observableArrayList();
 
-            for (JsonElement jsonElement : array) {
-                arrayCopy.add(jsonElement.getAsString());
-            }
-            for (String follower : arrayCopy) {
-                followers.add(follower);
+            for (UserHolder follower : list) {
+                followers.add(follower.getUsername());
             }
             ShowFollowersController.setList(followers);
         }

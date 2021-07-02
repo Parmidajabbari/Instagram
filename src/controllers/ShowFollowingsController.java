@@ -47,6 +47,11 @@ public class ShowFollowingsController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         followingsList.setItems(list);
     }
 }
