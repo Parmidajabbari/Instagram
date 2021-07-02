@@ -56,7 +56,6 @@ public class SearchPageController {
             PageController.closePage(event);
             PageController.openPage("showProfile");
         }
-
     }
 
     @FXML

@@ -27,7 +27,6 @@ public class ShowFollowingsController implements Initializable {
     @FXML
     void back(ActionEvent event) throws Exception {
         PageController.closePage(event);
-        PageController.openPage("showProfile");
     }
 
     @FXML
