@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -145,6 +146,8 @@ public class MyProfileController implements Initializable {
         prev.setVisible(false);
         prev.setDisable(true);
         if(profile != null) {
+            Image image = new Image(new ByteArrayInputStream(profile.getProPic()));
+            profilePhoto.setImage(image);
             postIds = profile.getPosts();
             usernameText.setText(profile.getUserName());
             bioText.setText(profile.getBio());

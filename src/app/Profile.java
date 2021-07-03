@@ -16,9 +16,13 @@ public class Profile {
     private int followingNumber;
     private boolean isFollowing;
     private ArrayList<Integer> posts;
-    private String proPic;
+    private byte[] proPic;
 
-    public Profile(String userName  , String created, String bio, int followersNumber, int followingNumber, ArrayList<Integer> posts,boolean isFollowing) {
+    public byte[] getProPic() {
+        return proPic;
+    }
+
+    public Profile(byte[] proPic, String userName  , String created, String bio, int followersNumber, int followingNumber, ArrayList<Integer> posts, boolean isFollowing) {
         this.userName = userName;
         this.created = created;
         this.bio = bio;
@@ -26,6 +30,7 @@ public class Profile {
         this.followingNumber = followingNumber;
         this.posts = posts;
         this.isFollowing = isFollowing;
+        this.proPic = proPic;
     }
 
 

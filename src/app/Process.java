@@ -215,7 +215,7 @@ public class Process {
         }
     }
 
-    private void profileViewTask() throws InterruptedException {
+    private void profileViewTask() throws InterruptedException, IOException {
         System.out.println("SALAM");
         boolean error = jsonObject.get("error").getAsBoolean();
         JFXTextField resultText = new JFXTextField();
@@ -227,9 +227,9 @@ public class Process {
             String bio = "";
             String username = jsonObject.get("userName").getAsString();
             String date = jsonObject.get("created").getAsString();
-//            if(!jsonObject.get("bio").isJsonNull()) {
-//                bio = jsonObject.get("bio").getAsString();
-//            }
+            if(!jsonObject.get("bio").isJsonNull()) {
+                bio = jsonObject.get("bio").getAsString();
+            }
             int followersNumber = jsonObject.get("followersNumber").getAsInt();
             int followingsNumber = jsonObject.get("followingNumber").getAsInt();
             boolean isFollowing = jsonObject.get("isFollowing").getAsBoolean();
@@ -244,10 +244,11 @@ public class Process {
             if(bio == "") {
                 bio = "bio";
             }
-            Profile profile = new Profile(username,date,bio ,followersNumber,followingsNumber,postIds,isFollowing);
+            byte[] bytes = Client.readMessage();
+            Profile profile = new Profile(bytes,username,date,bio ,followersNumber,followingsNumber,postIds,isFollowing);
              ShowProfileController.setProfile(profile);
              MyProfileController.setProfile(profile);
-            Thread.sleep(3000);
+            Thread.sleep(8000);
         }
 
     }
