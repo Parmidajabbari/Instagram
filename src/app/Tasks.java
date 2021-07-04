@@ -17,7 +17,7 @@ public class Tasks {
     private static final String editBio =
             "{'task':'changeBio', 'currentUserId':'%s', 'newBio':'%s'}";
     private static final String editPhoto =
-            "{'task':'changeProPic', 'currentUserId':'%s', 'newPhoto':'%s'}";
+            "{'task':'changeProPic', 'currentUserId':'%s'}";
     private static final String sendEmail =
             "{'task':'sendEmail', 'currentUserId':'0', 'username':'%s', 'email':'%s'}";
     private static final String checkCode =
@@ -53,8 +53,8 @@ public class Tasks {
     private static final String direct =
             "{'task':'direct', 'currentUserId':'%s', 'secondUserId':'%s', 'message':'%s'}";
 
-    public static String getEditPhoto(String currentUserId, String newPhoto) {
-        return (String.format(editPhoto, currentUserId, newPhoto));
+    public static String getEditPhoto(String currentUserId) {
+        return (String.format(editPhoto, currentUserId));
     }
 
     public static String getEditBio(String currentUserId, String newBio) {
