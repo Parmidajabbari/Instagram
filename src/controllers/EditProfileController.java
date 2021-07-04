@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
@@ -22,6 +23,7 @@ import static controllers.NewPostController.getFileExtension;
 public class EditProfileController implements Initializable {
 
     private Image image;
+    private File file;
     private String changedUsername;
     private String changedBio;
     private String photoString;
@@ -52,13 +54,11 @@ public class EditProfileController implements Initializable {
     public void changeProfilePhoto(ActionEvent actionEvent) throws Exception {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
         String extension = getFileExtension(file.getName());
-        if(extension.equals("jpg") || extension.equals("png")) {
+        if(extension.equals("jpg") || extension.equals("png") || extension.equals("jpeg")) {
             image = new Image(file.toURI().toString());
             profilePhoto.setImage(image);
-            photoString = NewPostController.encodeFileToBase64Binary(file);
-
         }
         else {
             return;
@@ -73,8 +73,13 @@ public class EditProfileController implements Initializable {
 
     @FXML
     public void done(ActionEvent actionEvent) throws Exception {
-//        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()),);
-//        Client.sendRequest(massage);
+        if(file != null) {
+        String massage = Tasks.getEditPhoto(Integer.toString(LoginPageController.getUserId()));
+        Client.sendRequest(massage);
+        Thread.sleep(1000);
+        Client.sendMessage(Files.readAllBytes(file.toPath()));
+        }
+        Thread.sleep(8000);
         changedUsername = usernameText.getText();
         if(changedUsername != null) {
             if (!User.isUserAcceptable(changedUsername)) {
@@ -98,15 +103,14 @@ public class EditProfileController implements Initializable {
                 resultText.setText(result);
             }
         }
-        else {
-            changedBio = bioText.getText();
-            String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
-            Client.sendRequest(thirdMassage);
-            Thread.sleep(3000);
-            resultText.setText(result);
-            PageController.closePage(actionEvent);
-            PageController.openPage("myProfile");
-        }
+        changedBio = bioText.getText();
+        String thirdMassage = Tasks.getEditBio(Integer.toString(LoginPageController.getUserId()),changedBio);
+        Client.sendRequest(thirdMassage);
+        Thread.sleep(3000);
+        resultText.setText(result);
+        PageController.closePage(actionEvent);
+        PageController.openPage("myProfile");
+
     }
 
     @FXML
